@@ -1,6 +1,6 @@
 from django.db import models
 from hospital.models import BaseUser,Hospital
-class Patient(models.Model,BaseUser):
+class Patient(BaseUser):
     #Choices
     Marital_Status_Choices = (('single', "Single"),
                           ("married", "Married"),
