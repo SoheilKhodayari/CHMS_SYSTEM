@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'history_records.surgical_history',
     'hospital',
     'patient',
+    'pharmacy',
 )
 
 MIDDLEWARE_CLASSES = (
