@@ -25,7 +25,7 @@ Hospital_Type_CHOICES=(
        (0,"public"),
        (1,"private")
    )
-class BaseUser(models.Model,object):
+class BaseUser(object):
     def __init__(self,*args,**kwargs):
        super(BaseUser,self).__init__(*args, **kwargs)
        self.__model_label__ = 'BaseUser'
