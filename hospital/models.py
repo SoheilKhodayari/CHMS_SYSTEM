@@ -25,7 +25,7 @@ Hospital_Type_CHOICES=(
        (0,"public"),
        (1,"private")
    )
-class BaseUser(object):
+class BaseUser(models.Model,object):
     def __init__(self,*args,**kwargs):
        super(BaseUser,self).__init__(*args, **kwargs)
        self.__model_label__ = 'BaseUser'
@@ -143,7 +143,7 @@ class Address(models.Model):
                                             self.postal_code
                                             )
 
-class Staff(models.Model,BaseUser):
+class Staff(BaseUser):
 
     def __init__(self, *args, **kwargs):
       super(Staff,self).__init__(*args, **kwargs)
