@@ -12,7 +12,12 @@ class Drug(models.Model,object):
 
     description=models.TextField("Drug Description",blank=True,null=True)
 
+<<<<<<< HEAD
     DRUG_TYPE_CHOICES=((0,'Tablet'),
+=======
+    DRUG_TYPE_CHOICES=(
+        (0,'Tablet'),
+>>>>>>> parent of a9526e9... Revert "Pharmacy Added"
         (1,'Capsule'),
         (2,'Syrup'),
         (3,'Ampoule'),
@@ -23,15 +28,25 @@ class Drug(models.Model,object):
         (8,'Gel'),
         (9,'Drop'),
         (10,'Powder & Sachet'),
+<<<<<<< HEAD
         (11,'Spray'), (12,'Serum')
                          )
 
+=======
+        (11,'Spray'),
+        (12,'Serum')
+    )
+>>>>>>> parent of a9526e9... Revert "Pharmacy Added"
     drug_type=models.IntegerField(verbose_name="Drug Type",choices=DRUG_TYPE_CHOICES)
 
     date_produced=models.DateField("Produced Date",blank=True,null=True)
     date_due=models.DateField("Due Date")
 
     number_available=models.PositiveIntegerField(verbose_name="Available Drug Number",default=0)
+<<<<<<< HEAD
+=======
+    current_pharmacy=models.ForeignKey(Pharmacy)
+>>>>>>> parent of a9526e9... Revert "Pharmacy Added"
 
     def __unicode__(self):
         return "%s"%(self.name)
@@ -47,6 +62,10 @@ class Drug(models.Model,object):
         return True
 
     class Meta:
+<<<<<<< HEAD
+=======
+        model=Drug
+>>>>>>> parent of a9526e9... Revert "Pharmacy Added"
         verbose_name="Drug"
         ordering = [ 'name', 'drug_type', 'number_available']
         unique_together=( 'name','drug_type')
