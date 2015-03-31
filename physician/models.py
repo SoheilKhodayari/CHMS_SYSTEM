@@ -59,7 +59,7 @@ class Physician(BaseUser):
 
 
     #More basic Info
-    user_type=2
+    #user_type=
     Tel  = models.CharField(max_length=25)
     ssn = models.CharField(max_length=9, unique=True)
     birthday = models.DateField()
