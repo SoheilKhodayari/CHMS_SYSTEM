@@ -1,6 +1,10 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
+from equipment.models import physiotherapy ,radiotherapy ,ccu,icu,emergency, women_obstetric,\
+                                    internal_div,  Orthopedic_surgery_div,child_div,\
+                                    Urology_surgery_div, Eye_surgery_div, General_surgery_div, Heart_surgery_div,\
+                                     Face_Plastic_surgery_div, Brain_and_Nerve_surgery_div, ENT_surgery_div
 
 USER_CHOICES = (
        (0,'Paziresh'),
@@ -44,6 +48,164 @@ class Hospital(models.Model,object): #TO DO updating hospital equipment , drugst
    Hospital_ID=models.IntegerField(primary_key=True)
    Hospital_Name=models.CharField(max_length=250)
    Hospital_Type=models.IntegerField(max_length=1,choices=Hospital_Type_CHOICES)
+ #hospital equipments attributes & methods
+ #units are accessed by their related_name using select_related() method
+   physiotherapy=models.OneToOneField(physiotherapy,related_name='physiotherapy',null=True)
+   radiotherapy=models.OneToOneField(radiotherapy,related_name='radiotherapy',null=True)
+   ccu=models.OneToOneField(ccu,related_name='ccu',null=True)
+   icu=models.OneToOneField(icu,related_name='icu',null=True)
+   internal_div=models.OneToOneField(internal_div,related_name='internal_div',null=True)
+   child_div=models.OneToOneField(child_div,related_name='child_div',null=True)
+   emergency=models.OneToOneField(emergency,related_name='emergency',null=True)
+   women_obstetric=models.OneToOneField(women_obstetric,related_name='women_obstetric',null=True)
+   Orthopedic_surgery_div=models.OneToOneField(Orthopedic_surgery_div,
+                                               related_name='Orthopedic_surgery_div',null=True)
+   Urology_surgery_div=models.OneToOneField(Urology_surgery_div,related_name='Urology_surgery_div',null=True)
+   Eye_surgery_div=models.OneToOneField(Eye_surgery_div,related_name='Eye_surgery_div',null=True)
+   General_surgery_div=models.OneToOneField(General_surgery_div,related_name='General_surgery_div',null=True)
+   Heart_surgery_div=models.OneToOneField(Heart_surgery_div,related_name='Heart_surgery_div',null=True)
+   Face_Plastic_surgery_div=models.OneToOneField(Face_Plastic_surgery_div
+                                                ,related_name='Face_Plastic_surgery_div',null=True)
+   Brain_and_Nerve_surgery_div=models.OneToOneField(Brain_and_Nerve_surgery_div,
+                                                    related_name='Brain_and_Nerve_surgery_div',null=True)
+   ENT_surgery_div=models.OneToOneField(ENT_surgery_div,related_name='ENT_surgery_div',null=True)
+
+   @property
+   def physiotherapy_object(self):
+       try:
+           return self.physiotherapy
+       except:
+           return None
+   @property
+   def radiotherapy_object(self):
+       try:
+           return self.radiotherapy
+       except:
+           return None
+   @property
+   def ccu_object(self):
+       try:
+           return self.ccu
+       except:
+           return None
+   @property
+   def icu_object(self):
+       try:
+           return self.icu
+       except:
+           return None
+   @property
+   def internal_div_object(self):
+       try:
+           return self.internal_div
+       except:
+           return None
+   @property
+   def child_div_object(self):
+       try:
+           return self.child_div
+       except:
+           return None
+
+   @property
+   def emergency_object(self):
+       try:
+           return self.emergency
+       except:
+           return None
+   @property
+   def women_obstetric_object(self):
+       try:
+           return self.women_obstetric
+       except:
+           return None
+   @property
+   def Orthopedic_surgery_div_object(self):
+       try:
+           return self.Orthopedic_surgery_div
+       except:
+           return None
+   @property
+   def Urology_surgery_div_object(self):
+       try:
+           return self.Urology_surgery_div
+       except:
+           return None
+   @property
+   def Eye_surgery_div_object(self):
+        try:
+           return self.Eye_surgery_div
+        except:
+           return None
+   @property
+   def General_surgery_div_object(self):
+         try:
+           return self.General_surgery_div
+         except:
+           return None
+   @property
+   def Heart_surgery_div_object(self):
+        try:
+           return self.Heart_surgery_div
+        except:
+           return None
+   @property
+   def Face_Plastic_surgery_div_object(self):
+        try:
+           return self.Face_Plastic_surgery_div
+        except:
+           return None
+   @property
+   def Brain_and_Nerve_surgery_div_object(self):
+        try:
+           return self.Brain_and_Nerve_surgery_div
+        except:
+           return None
+   @property
+   def ENT_surgery_div_object(self):
+         try:
+           return self.ENT_surgery_div
+         except:
+           return None
+
+   @property
+   def update_equipment_labels(self):
+        """ This updates the self.equipments_labels  """
+        if self.physiotherapy_object:
+            self.equipment_labels+=['physiotherapy']
+        if self.radiotherapy_object:
+            self.equipment_labels+=["radiotherapy"]
+        if self.ccu_object:
+            self.equipment_labels+=["ccu"]
+        if self.icu_object:
+            self.equipment_labels+=["icu"]
+        if self.internal_div_object:
+            self.equipment_labels+=["internal_div"]
+        if self.child_div_object:
+            self.equipment_labels+=["child_div"]
+        if self.emergency_object:
+            self.equipment_labels+=["emergency"]
+        if self.women_obstetric_object:
+            self.equipment_labels+=["women_obstetric"]
+
+        if self.Orthopedic_surgery_div_object:
+            self.equipment_labels+=["Orthopedic_surgery_div"]
+        if self.Urology_surgery_div_object:
+            self.equipment_labels+=["Urology_surgery_div"]
+        if self.Eye_surgery_div_object:
+            self.equipment_labels+=["Eye_surgery_div"]
+        if self.General_surgery_div_object:
+           self.equipment_labels+=["General_surgery_div"]
+        if self.Heart_surgery_div_object:
+            self.equipment_labels+=["Heart_surgery_div"]
+        if self.Face_Plastic_surgery_div_object:
+            self.equipment_labels+=["Face_Plastic_surgery_div"]
+        if self.Brain_and_Nerve_surgery_div_object:
+            self.equipment_labels+=["Brain_and_Nerve_surgery_div"]
+        if self.ENT_surgery_div_object:
+            self.equipment_labels+=["ENT_surgery_div"]
+
+        return self.equipment_labels
 
    #TEL,email,website,Address,Fax,Staff are Done by foreignKey
 
