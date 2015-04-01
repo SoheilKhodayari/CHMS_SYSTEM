@@ -89,8 +89,7 @@ class Physician(BaseUser):
 
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
-    parent_hospital=models.ForeignKey(Hospital)
-    patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True)
+    hospital=models.ForeignKey(Hospital)
     specialty=models.CharField(max_length=3,choices=SPECIALITY_CHOICES)
     graduation_university_name=models.CharField(max_length=200)
     graduation_university_country=models.CharField(max_length=200)
