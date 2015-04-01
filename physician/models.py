@@ -24,27 +24,25 @@ class Physician(BaseUser):
 
     
     SPECIALITY_CHOICES = (
-            ('cr','cardialogist') #قلب
-            ('dr','dermatologist'), #متخصص پوست
-            ('en','endocrinologist'), #متخصص غدد
-            ('ent','ENT (Ear Nose Throat) Specialist'), #متخصص گوش و حلق و بینی
-            ('ge','Gerontologist'), #متخصص امراض پیری
-            ('gy','Gynaecologist'), #متخصص زنان و زایمان
-            ('ha','Haematologist'), #متخصص هماتولوژی (خون شناسی)
-            ('in','Internist'), #متخصص بیماری های داخلی
-            ('ne','Neurologist'), # متخصص اعصاب
-            ('ob','Obstetrician'), #پزشک متخصص زایمان
-            ('on','Oncologist'), #متخصص سرطان
-            ('op','Ophthalmologist'), #چشم پزشک
-            ('or','Orthodontist'), #دندانپزشک متخصص ارتودنسی
-            ('ort','Orthopaedis'), #ارتوپد
-            ('pd','Pediatrician'), #متخصص اطفال
-            ('po','Podiatrist'), #پزشک متخصص درمان پا
-            ('ra','Radiologist'), #رادیولوژیست
-            ('sr','Surgeon'), #جراح
-            ('ur','Urologist') #جراح و متخصص کلیه و مجاری ادرار
-            
-                          
+            ('cr','cardialogist'), #
+            ('dr','dermatologist'), #
+            ('en','endocrinologist'), #
+            ('ent','ENT (Ear Nose Throat) Specialist'), #
+            ('ge','Gerontologist'), #
+            ('gy','Gynaecologist'), #
+            ('ha','Haematologist'), #
+            ('in','Internist'), #
+            ('ne','Neurologist'), # 
+            ('ob','Obstetrician'), #
+            ('on','Oncologist'), #
+            ('op','Ophthalmologist'), #
+            ('or','Orthodontist'), #
+            ('ort','Orthopaedis'), #
+            ('pd','Pediatrician'), #
+            ('po','Podiatrist'), #
+            ('ra','Radiologist'), #
+            ('sr','Surgeon'), #
+            ('ur','Urologist'), #        
                           
                           )
     
@@ -59,7 +57,7 @@ class Physician(BaseUser):
 
 
     #More basic Info
-    user_type=2
+    #user_type=
     Tel  = models.CharField(max_length=25)
     ssn = models.CharField(max_length=9, unique=True)
     birthday = models.DateField()
@@ -94,7 +92,7 @@ class Physician(BaseUser):
     graduation_university_name=models.CharField(max_length=200)
     graduation_university_country=models.CharField(max_length=200)
     graduation_university_city=models.CharField(max_length=200)
-    degree=models.CharField(max_length='3',choices=DEGREE_CHOICES)
+    degree=models.CharField(max_length=2,choices=DEGREE_CHOICES)
     
 
     def get_address_as_string(self):
