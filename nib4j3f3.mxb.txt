@@ -1,0 +1,22 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   CHMS/urls.pyc
+#	new file:   documents/__init__.py
+#	new file:   documents/admin.py
+#	new file:   documents/migrations/__init__.py
+#	new file:   documents/models.py
+#	new file:   documents/tests.py
+#	new file:   documents/views.py
+#	new file:   equipment/admin.pyc
+#	new file:   patient/urls.py
+#	new file:   patient/urls.pyc
+#	new file:   patient/views.pyc
+#	new file:   physician/admin.pyc
+#	new file:   physician/migrations/__init__.pyc
+#
+
