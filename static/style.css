@@ -1,0 +1,46 @@
+body{
+	background: #e3e3e3;
+	color: #454545;
+	font-family: sans-serif;
+}
+form{
+	width: 80%;
+	background: #fff;
+	border-radius: 15px;
+	box-shadow: 2px 2px 0px #ccc;
+	padding: 15px;
+/*	text-align: justify;*/
+	margin: auto;
+	margin-top: 25px;
+}
+input{
+	width: 200px;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	padding: 12px 6px;
+}
+input[type="submit"]{
+	width: 100%;
+	background: #3ed37d;
+	border: none;
+	border-bottom: 2px solid #27ae60;
+	padding: 12px 6px;
+	color: #fff;
+}
+input[type="submit"]:hover{
+	cursor: pointer;
+}
+p{
+	display: inline-block;
+	margin-right: 15px;
+}
+select{
+	width: 200px;
+	border:1px solid #ccc;
+	border-radius: 5px;
+	padding: 12px 6px;	
+}
+legend{
+	font-size: 1.5em;
+
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Register</title>
+	<link rel="stylesheet" type="text/css" href='{% static "style.css" %} '>
+</head>
+<body>
+	<form method="post">
+		<legend>Physician Registration Form</legend>
+		<hr>
+		<p><input name="username" placeholder="Username">  </p>
+		<p><input name="first_name" placeholder="Firstname">  </p>
+		<p><input name="last_name" placeholder="Lastname">  </p>
+		<p><input name="email" type="email" placeholder="Email">  </p>
+		<p><input name="tel" type="tel" placeholder="Tel">  </p>
+		<p><input name="ssn" placeholder="ssn"></p>
+		<p><input name="birthday" type="date" placeholder="Birthday"></p>
+		<p><input name="age" placeholder="Age"></p>
+		<p> 
+			<select>
+				<option value="0">single</option>
+				<option value="1">married</option>
+			</select>
+		</p>
+		<p><input name="occupation" placeholder="Occupation">  </p>
+		<p><input name="country" placeholder="Country">  </p>
+		<p><input name="city" placeholder="City">  </p>
+		<p><input name="district" placeholder="District">  </p>
+		<p><input name="street" placeholder="Street">  </p>
+		<p><input name="alley" placeholder="Alley">  </p>
+		<p><input name="building-no" placeholder="Building-no">  </p>
+		<p><input name="postal-code" placeholder="Postal Code">  </p>
+		<p><input name="speciality" placeholder="Speciality">  </p>
+		<p><input name="graduation_university_name" placeholder="graduation university name"></p>
+		<p><input name="graduation_university_country" placeholder="graduation university country"></p>
+		<p><input name="graduation_university_city" placeholder="graduation university city"></p>
+		<p><input name="degree" placeholder="Degree">  </p>
+		<br>
+		<input type="submit">
+	</form>
+</body>
+</html>

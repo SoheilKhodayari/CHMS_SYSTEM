@@ -4,6 +4,6 @@ import views
 urlpatterns = patterns('',
 
     url(r'^$', views.index, name='patient_index'),
-    url(r'^resiter$', views.register, name='patirnt_register'),
+    url(r'^register$', views.register, name='patirnt_register'),
     
 )

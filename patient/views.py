@@ -7,7 +7,7 @@ from models import *
 
 
 def index(request):
-    return HttpResponse("salam")
+    return render(request , 'patient/register.html')
     
 
 
