@@ -6,7 +6,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'CHMS.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+    url(r'^$', include('hospital.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^patient/',include('patient.urls')),
     
