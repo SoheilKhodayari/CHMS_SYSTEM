@@ -1,5 +1,4 @@
 from django.db import models
-from django.core.validators import RegexValidator
 from django.contrib.auth.models import User
 from equipment.models import physiotherapy ,radiotherapy ,ccu,icu,emergency, women_obstetric,\
                                     internal_div,  Orthopedic_surgery_div,child_div,\
@@ -29,14 +28,75 @@ Hospital_Type_CHOICES=(
        (0,"public"),
        (1,"private")
    )
-class BaseUser(models.Model,object):
+class BaseUser(models.Model,object): #Person
     def __init__(self,*args,**kwargs):
        super(BaseUser,self).__init__(*args, **kwargs)
        self.__model_label__ = 'BaseUser'
        self._parent_model = 'BaseUser'
 
     user_type=models.IntegerField(choices=USER_CHOICES,primary_key=True)
-    user=models.OneToOneField(User) #getting all attributes of User
+    user=models.OneToOneField(User)
+
+    Marital_Status_Choices = (('single', "Single"),
+                          ("married", "Married"),
+                          )
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female'),
+    )
+
+    # below fields are inherited via User
+    #username=models.CharField(max_length=50,unique=True,primary_key=True)
+    #password=models.CharField(max_length=50)
+    #first_name=models.CharField(max_length=50)
+    #last_name=models.CharField(max_length=50)
+    #email = models.EmailField(max_length=75,blank=True,null=True)
+
+
+    #More basic Info
+    Tel  = models.CharField(max_length=25)
+    ssn = models.CharField(max_length=9, unique=True)
+    birthday = models.DateField()
+    age = models.CharField(max_length=10, blank=True, null=True)
+
+    #Extra Info
+    marital_status = models.CharField(max_length=250,
+                                      choices=Marital_Status_Choices,
+                                      default="Single",
+                                      blank=True,
+                                      null=True)
+
+    marital_status_notes = models.CharField(max_length=250,
+                                            null=True,
+                                            blank=True)
+
+    occupation = models.CharField(max_length=100,blank=True,null=True)
+    occupation_notes = models.CharField(max_length=100,
+                                        null=True,
+                                        blank=True
+                                        )
+
+    #Home address
+    country = models.CharField(max_length=200, default = 'Iran')
+    city=models.CharField(max_length=25)
+    district=models.CharField(max_length=25)
+    street=models.CharField(max_length=30)
+    alley=models.CharField(max_length=30,blank=True)
+    building_no = models.CharField(max_length=200)
+    postal_code=models.CharField(max_length=30)
+
+
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+
+    def get_address_as_string(self):
+        return '%s - %s, %s\n %s,%s, %s -%s' %(self.country,
+                                            self.city,
+                                            self.district,
+                                            self.street,
+                                            self.alley,
+                                            self.building_no,
+                                            self.postal_code
+                                            )
 
 class Hospital(models.Model,object): #TO DO updating hospital equipment , drugstore ?
 
@@ -44,12 +104,14 @@ class Hospital(models.Model,object): #TO DO updating hospital equipment , drugst
       super(Hospital,self).__init__(*args, **kwargs)
       self.__model_label__ = 'hospital'
       self._parent_model = 'hospital'
+      self.equipment_labels=list()
 
    Hospital_ID=models.IntegerField(primary_key=True)
    Hospital_Name=models.CharField(max_length=250)
    Hospital_Type=models.IntegerField(max_length=1,choices=Hospital_Type_CHOICES)
- #hospital equipments attributes & methods
- #units are accessed by their related_name using select_related() method
+
+   #hospital equipments attributes & methods
+   #units are accessed by their related_name using select_related() method
    physiotherapy=models.OneToOneField(physiotherapy,related_name='physiotherapy',null=True)
    radiotherapy=models.OneToOneField(radiotherapy,related_name='radiotherapy',null=True)
    ccu=models.OneToOneField(ccu,related_name='ccu',null=True)
@@ -207,7 +269,6 @@ class Hospital(models.Model,object): #TO DO updating hospital equipment , drugst
 
         return self.equipment_labels
 
-   #TEL,email,website,Address,Fax,Staff are Done by foreignKey
 
    def __unicode__(self):
         return self.Hospital_Name
@@ -323,6 +384,7 @@ class Staff(BaseUser):
 
     def __unicode__(self):
         return "%s" % self.user.username
+
 
 
 
