@@ -8,6 +8,7 @@
 </head>
 <body>
 	<form method="post" action="/patient/register">
+	{% csrf_token %}
 		<legend>Patient Registration Form</legend>
 		<hr>
 		<p><input name="username" placeholder="Username">  </p>

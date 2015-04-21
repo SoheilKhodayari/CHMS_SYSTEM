@@ -37,12 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'history_records.medical_history',
-    'history_records.surgical_history',
+    'Medical Diagnosis File',
     'hospital',
     'patient',
     'pharmacy',
-    'equipment',
-    'physician',
+    'equipment'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,6 +84,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (

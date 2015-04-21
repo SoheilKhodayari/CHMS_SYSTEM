@@ -7,7 +7,8 @@
 	<link rel="stylesheet" type="text/css" href='{% static "style.css" %} '>
 </head>
 <body>
-	<form method="post">
+	<form method="post" >
+	{% csrf_token %}
 		<legend>Physician Registration Form</legend>
 		<hr>
 		<p><input name="username" placeholder="Username">  </p>
