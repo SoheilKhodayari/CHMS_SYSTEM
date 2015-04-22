@@ -41,7 +41,8 @@ INSTALLED_APPS = (
     'hospital',
     'patient',
     'pharmacy',
-    'equipment'
+    'equipment',
+    'physician'
 )
 
 MIDDLEWARE_CLASSES = (
