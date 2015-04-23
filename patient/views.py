@@ -21,13 +21,14 @@ def register(request):
 #     email=request.POST['email']
 #     Tel=request.POST['tel']
 #     ssn=request.POST['ssn']
-      b_day=request.POST.get('day','')
-      b_month=request.POST.get('month','')
-      b_year=request.POST.get('year','')
-      try:
-         birth=datetime.datetime(b_year,b_month,b_day)
-      except:
-         birth=None
+      #b_day=request.POST.get('day','')
+      #b_month=request.POST.get('month','')
+     # b_year=request.POST.get('year','')
+      #try:
+     # birth=datetime.datetime(b_year,b_month,b_day)
+      birth=request.POST['birthday']
+      #except:
+        # birth=None
 #     age=request.POST['age']
 #     marital_status=request.POST['marital_status']
 #     marital_status_notes=request.POST['marital_status_notes']
@@ -73,6 +74,7 @@ def register(request):
                         postal_code=request.POST['postal_code']
                     )
       patient.save()
+      c['birth']=birth
       c.update(csrf(request))
       return render_to_response('patient/patient_login.html',c,context_instance=RequestContext(request))
    return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
