@@ -54,9 +54,9 @@ class BaseUser(models.Model,object): #Person
 
 
     #More basic Info
-    Tel  = models.CharField(max_length=25)
-    ssn = models.CharField(max_length=9, unique=True)
-    birthday = models.DateField()
+    Tel  = models.CharField(max_length=25,null=True)
+    ssn = models.CharField(max_length=9, unique=True,null=True)
+    birthday = models.DateField(null=True)
     age = models.CharField(max_length=10, blank=True, null=True)
 
     #Extra Info
@@ -78,15 +78,15 @@ class BaseUser(models.Model,object): #Person
 
     #Home address
     country = models.CharField(max_length=200, default = 'Iran')
-    city=models.CharField(max_length=25)
-    district=models.CharField(max_length=25)
-    street=models.CharField(max_length=30)
-    alley=models.CharField(max_length=30,blank=True)
-    building_no = models.CharField(max_length=200)
-    postal_code=models.CharField(max_length=30)
+    city=models.CharField(max_length=25,null=True)
+    district=models.CharField(max_length=25,null=True)
+    street=models.CharField(max_length=30,null=True)
+    alley=models.CharField(max_length=30,blank=True,null=True)
+    building_no = models.CharField(max_length=200,null=True)
+    postal_code=models.CharField(max_length=30,null=True)
 
 
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,null=True)
 
     def get_address_as_string(self):
         return '%s - %s, %s\n %s,%s, %s -%s' %(self.country,
