@@ -28,14 +28,9 @@ Hospital_Type_CHOICES=(
        (0,"public"),
        (1,"private")
    )
-class BaseUser(models.Model,object): #Person
-    def __init__(self,*args,**kwargs):
-       super(BaseUser,self).__init__(*args, **kwargs)
-       self.__model_label__ = 'BaseUser'
-       self._parent_model = 'BaseUser'
-
-    user_type=models.IntegerField(choices=USER_CHOICES,primary_key=True)
-    user=models.OneToOneField(User)
+class BaseUser(models.Model): #Person
+    user_type=models.IntegerField(choices=USER_CHOICES,null=True)
+    user=models.OneToOneField(User,primary_key=True)
 
     Marital_Status_Choices = (('single', "Single"),
                           ("married", "Married"),

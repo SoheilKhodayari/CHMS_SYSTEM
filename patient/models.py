@@ -4,10 +4,10 @@ class Patient(BaseUser):
     firstname=models.CharField(max_length=50) # used for searching
     lastname=models.CharField(max_length=50)  # used for searching
 
-    parent_hospital=models.ForeignKey(Hospital)
-    patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True)
-    patient_section=models.CharField("section",max_length=100)
-    patient_room=models.CharField("room_num",max_length=100)
+    parent_hospital=models.ForeignKey(Hospital,null=True)
+    patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True,null=True)
+    patient_section=models.CharField("section",max_length=100,null=True)
+    patient_room=models.CharField("room_num",max_length=100,null=True)
 
     def get_address_as_string(self):
         return '%s - %s, %s\n %s,%s, %s -%s' %(self.country,

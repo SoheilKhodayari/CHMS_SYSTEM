@@ -3,7 +3,7 @@ import views
 
 urlpatterns = patterns('',
 
-    url(r'^$', views.index, name='patient_index'),
+    url(r'^login$', views.p_login, name='patient_login'),
     url(r'^register$', views.register, name='patirnt_register'),
     
 )

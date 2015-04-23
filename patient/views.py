@@ -1,48 +1,87 @@
-
 import datetime
-from django.http.response import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+from django.template import RequestContext
+from django.core.context_processors import csrf
+from patient.models import Patient
+from django.contrib.auth.models import User
 
 from models import *
 
 
-def index(request):
-    return render(request, 'patient/register.html')
-
 
 def register(request):
+   c={}
+   if request.method=="POST":
+#     username=request.POST['username']
+#     first_name=request.POST['first_name']
+#     last_name=request.POST['last_name']
+#     email=request.POST['email']
+#     Tel=request.POST['tel']
+#     ssn=request.POST['ssn']
+      b_day=request.POST.get('day','')
+      b_month=request.POST.get('month','')
+      b_year=request.POST.get('year','')
+      try:
+         birth=datetime.datetime(b_year,b_month,b_day)
+      except:
+         birth=None
+#     age=request.POST['age']
+#     marital_status=request.POST['marital_status']
+#     marital_status_notes=request.POST['marital_status_notes']
+#     occupation=request.POST['occupation']
+#     occupation_notes=request.POST['occupation_notes']
+#     country=request.POST['country']
+#     city=request.POST['city']
+#     district=request.POST['district']
+#     street=request.POST['street']
+#     alley=request.POST['alley']
+#     building_no=request.POST['building_no']
+#     postal_code=request.POST['postal_code']
+      fname=request.POST['first_name']
+      lname=request.POST['last_name']
+      user=User(username=request.POST['username'] ,
+                password=request.POST['ssn'],
+                first_name=fname,
+                last_name=lname,
+                email=request.POST['email']
+                )
 
-    # return HttpResponse(request.POST['birthday'])
-    # birthday = datetime.date(request.POST['birthday'])
 
-    patient = Patient(
-        username=request.POST['username'],
-        first_name=request.POST['first_name'],
-        last_name=request.POST['last_name'],
-        email=request.POST['email'],
-        Tel=request.POST['tel'],
-        ssn=request.POST['ssn'],
-        # birthday=request.POST['Birthday'],
-        age=request.POST['age'],
-        marital_status=request.POST['marital_status'],
-        # marital_status_notes=request.POST['marital_status_notes'],
-        occupation=request.POST['occupation'],
-        # occupation_notes=request.POST['occupation_notes'],
-        country=request.POST['country'],
-        city=request.POST['city'],
-        district=request.POST['district'],
-        street=request.POST['street'],
-        alley=request.POST['alley'],
-        building_no=request.POST['building-no'],
-        postal_code=request.POST['postal-code']
-    )
-    return HttpResponse("Salam")
     
-    
-    
+      patient=Patient(  #user_id=None,
+                        user_type=2,
+                        user=user,
+                        firstname=fname,
+                        lastname=lname,
+                        Tel=request.POST['tel'],
+                        ssn=request.POST['ssn'],
+                        birthday=birth,
+                        age=request.POST['age'],
+                        marital_status=request.POST['marital_status'],
+                        #marital_status_notes=request.POST['marital_status_notes'],
+                        occupation=request.POST['occupation'],
+                        #occupation_notes=request.POST['occupation_notes'],
+                        country=request.POST['country'],
+                        city=request.POST['city'],
+                        district=request.POST['district'],
+                        street=request.POST['street'],
+                        alley=request.POST['alley'],
+                        building_no=request.POST['building_no'],
+                        postal_code=request.POST['postal_code']
+                    )
+      patient.save()
+      c.update(csrf(request))
+      return render_to_response('patient/patient_login.html',c,context_instance=RequestContext(request))
+   return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
     
 
-
+def p_login(request): # TODO : verify login auth
+    c={}
+    c.update(csrf(request))
+    return render_to_response('patient/patient_login.html',c,context_instance=RequestContext(request))
 
 
 
