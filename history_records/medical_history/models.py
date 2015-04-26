@@ -49,7 +49,8 @@ class MedicalHistory(models.Model):
     had_allergic_disease = models.BooleanField(default = None)
     pregnancy_warning = models.BooleanField(default = None)
 
-    patient_detail = models.OneToOneField(Patient) # surgery records are connected accordingly,
+    patient_detail = models.OneToOneField(Patient,related_name='history') # surgery records are connected accordingly,
+
 
     patient_current_status = models.TextField("Status",
                               max_length=500,
@@ -118,4 +119,68 @@ class Surgery(models.Model): # Surgery
 
     def __unicode__(self):
         return "%s,%s"%(self.classification,self.icd_10_pcs)
+
+
+from django.db import models
+
+
+
+class BaseDocument(models.Model):
+    date=models.DateField()
+    comment=models.CharField(max_length=200)
+
+
+
+class X_ray(BaseDocument):
+    image=models.ImageField(upload_to='x_rays')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='x_ray')
+    area=models.OneToOneField(X_ray_area)
+    view=models.OneToOneField(X_ray_view)
+
+
+class Ct(BaseDocument):
+    image=models.ImageField(upload_to='cts')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='ct')
+    area=models.CharField(max_length=50)
+    CT_DESCRIPTION_CHOISES=('With injection','Without injection')
+    description=models.CharField(max_length=20,choices=CT_DESCRIPTION_CHOISES)
+
+
+
+
+class Mri(BaseDocument):
+    image=models.ImageField(upload_to='mris')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='mri')
+    area=models.OneToOneField(Mri_area)
+
+
+
+class Test(BaseDocument):
+    image=models.ImageField(upload_to='tests')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='test')
+
+class X_ray_area(models.Model):
+    area=models.CharField(max_length=20)
+
+
+class X_ray_view(models.Model):
+    view=models.CharField(max_length=20)
+
+class Ct_area(models.Model):
+    view=models.CharField(max_length=20)
+
+
+class Mri_area(models.Model):
+    area=models.CharField(max_length=20)
+
+class Test_type(models.Model):
+    type=models.CharField(max_length=20)
+    desciption=models.CharField(max_length=100,null=True)
+
+
+
+
+
+
+
 
