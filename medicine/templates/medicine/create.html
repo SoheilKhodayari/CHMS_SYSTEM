@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Add Medicine <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input name="code" id="code" type="text" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" id="name" type="text" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input name="description" id="description" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="medicine_type">Type</label>
+          		<select name="medicine_type" id="medicine_type" type="text" class="form-control">
+                <option value="Tablet">Tablet</option>
+				<option value="Capsule">Capsule</option>
+				<option value="Syrup">Syrup</option>
+                <option value="Vial">Vial</option>
+                <option value="Ointment">Ointment</option>
+                <option value="Cream">Cream</option>
+                <option value="Lotion">Lotion</option>
+                <option value="Gel">Gel</option>
+                <option value="Drop">Drop</option>
+                <option value="Powder & Sachet">Powder & Sachet</option>
+                <option value="Spray">Spray</option>
+                <option value="Serum">Serum</option>
+			</select>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">amount</label>
+        <input name="amount" id="amount" type="number" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="due_date">due_date</label>
+        <input name="due_date" id="due_date" type="date" class="form-control" required>
+      </div>
+
+      <p>
+        <button type="submit" class="btn btn-success btn-block"/> Create</button>
+      </p>
+    </form>
+
+    <p>
+
+    </p>
+  </article>
+
+{% endblock content %}
+</div>

@@ -1,11 +1,14 @@
 from django.db import models
 from hospital.models import BaseUser,Hospital
+from django.contrib.auth.models import User
 class Patient(BaseUser):
     firstname=models.CharField(max_length=50) # used for searching
     lastname=models.CharField(max_length=50)  # used for searching
 
+
+    #user=models.OneToOneField(User,primary_key=True,verbose_name='Patient')
     parent_hospital=models.ForeignKey(Hospital,null=True)
-    patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True,null=True)
+    patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True,null=True) #To Be Deleted
     patient_section=models.CharField("section",max_length=100,null=True)
     patient_room=models.CharField("room_num",max_length=100,null=True)
 

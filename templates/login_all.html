@@ -1,0 +1,28 @@
+<html>
+<body>
+
+<form method="POST" action="/login_all/">
+{% csrf_token %}
+
+
+<label for="username">username:</label>
+           <input type="text" name="username" id="username"/>
+           <input type="text" name="password" id="passowrd" />
+           <input type="submit" value="submit" name="submit_search_button"  />
+
+
+        </form>
+<p> {{ error }}</p>
+
+<div>
+
+<p> </p>
+</div>
+
+
+
+
+
+
+</body>
+</html>

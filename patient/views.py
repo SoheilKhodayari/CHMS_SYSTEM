@@ -7,10 +7,10 @@ from django.template import RequestContext
 from django.core.context_processors import csrf
 from patient.models import Patient
 from django.contrib.auth.models import User
-
-from models import *
-
-
+from django.contrib import auth
+from patient.models import *
+from django.contrib.auth.decorators import login_required
+from urllib import urlencode
 
 def register(request):
    c={}
@@ -43,12 +43,13 @@ def register(request):
 #     postal_code=request.POST['postal_code']
       fname=request.POST['first_name']
       lname=request.POST['last_name']
-      user=User(username=request.POST['username'] ,
+      user=User.objects.create_user(username=request.POST['username'] ,
                 password=request.POST['ssn'],
                 first_name=fname,
                 last_name=lname,
                 email=request.POST['email']
                 )
+      user.save()
 
 
     
@@ -76,16 +77,21 @@ def register(request):
       patient.save()
       c['birth']=birth
       c.update(csrf(request))
-      return render_to_response('patient/patient_login.html',c,context_instance=RequestContext(request))
+      return render_to_response('login_all.html',c,context_instance=RequestContext(request))
    return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
     
 
-def p_login(request): # TODO : verify login auth
+
+
+
+def home(request):
+    if not request.user.is_authenticated() or request.user.get_profile().user_type!=2:
+        d = {'server_message':"Not Logged In."}
+        query_str = urlencode(d)
+        return HttpResponseRedirect('/login_all/?' +query_str)
     c={}
     c.update(csrf(request))
-    return render_to_response('patient/patient_login.html',c,context_instance=RequestContext(request))
-
-
+    return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
 
 
 

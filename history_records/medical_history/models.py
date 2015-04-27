@@ -129,36 +129,6 @@ class BaseDocument(models.Model):
     date=models.DateField()
     comment=models.CharField(max_length=200)
 
-
-
-class X_ray(BaseDocument):
-    image=models.ImageField(upload_to='x_rays')
-    historyFile=models.ForeignKey(MedicalHistory,related_name='x_ray')
-    area=models.OneToOneField(X_ray_area)
-    view=models.OneToOneField(X_ray_view)
-
-
-class Ct(BaseDocument):
-    image=models.ImageField(upload_to='cts')
-    historyFile=models.ForeignKey(MedicalHistory,related_name='ct')
-    area=models.CharField(max_length=50)
-    CT_DESCRIPTION_CHOISES=('With injection','Without injection')
-    description=models.CharField(max_length=20,choices=CT_DESCRIPTION_CHOISES)
-
-
-
-
-class Mri(BaseDocument):
-    image=models.ImageField(upload_to='mris')
-    historyFile=models.ForeignKey(MedicalHistory,related_name='mri')
-    area=models.OneToOneField(Mri_area)
-
-
-
-class Test(BaseDocument):
-    image=models.ImageField(upload_to='tests')
-    historyFile=models.ForeignKey(MedicalHistory,related_name='test')
-
 class X_ray_area(models.Model):
     area=models.CharField(max_length=20)
 
@@ -176,6 +146,36 @@ class Mri_area(models.Model):
 class Test_type(models.Model):
     type=models.CharField(max_length=20)
     desciption=models.CharField(max_length=100,null=True)
+
+
+class X_ray(BaseDocument):
+    image=models.ImageField(upload_to='x_rays')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='x_ray')
+    area=models.OneToOneField(X_ray_area)
+    view=models.OneToOneField(X_ray_view)
+
+
+class Ct(BaseDocument):
+    image=models.ImageField(upload_to='cts')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='ct')
+    area=models.CharField(max_length=50)
+    CT_DESCRIPTION_CHOISES=(('With injection','Without injection'), )
+    description=models.CharField(max_length=20,choices=CT_DESCRIPTION_CHOISES)
+
+
+
+
+class Mri(BaseDocument):
+    image=models.ImageField(upload_to='mris')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='mri')
+    area=models.OneToOneField(Mri_area)
+
+
+
+class Test(BaseDocument):
+    image=models.ImageField(upload_to='tests')
+    historyFile=models.ForeignKey(MedicalHistory,related_name='test')
+
 
 
 

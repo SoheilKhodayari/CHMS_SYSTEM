@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% if not medicines %}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    There are no drugs, <a href="{% url 'medicine_app:medicines-create' %}">Please Enter One</a>.
+  </div>
+{% endif %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">List Of Medicines <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for medicine in medicines %}
+        <tr>
+          <td><a href="{% url 'medicine_app:medicines-detail' medicine.code %}">{{ medicine.code }}</a></td>
+          <td>{{ medicine.name }}</td>
+          <td>{{ medicine.medicine_type }}</td>
+          <td>{{ medicine.amount }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <article class="panel-body">
+    <p>
+      <a href="{% url 'medicine_app:medicines-create' %}" class="btn btn-success btn-block"> Add Medicine </a>
+    </p>
+  </article>
+
+</div>
+
+{% endblock content %}

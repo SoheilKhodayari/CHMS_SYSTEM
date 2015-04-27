@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Pharmacy - Login </title>
+
+  <link rel="stylesheet" href="css/reset.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  <div class="wrap">
+		<div class="avatar">
+      <img src="{% static 'img/phare.png' %}">
+		</div>
+      <form method="post" action="/pharmacy/login/">
+	       {% csrf_token %}
+		<input type="text" placeholder="username" name="username" required>
+		<div class="bar">
+			<i></i>
+		</div>
+		<input type="password" placeholder="password" name="password"required>
+		<a href="" class="forgot_link">forgot ?</a>
+		<button>Sign in</button>
+        <p >{{ request.session.server_message }}</p>
+        </form>
+	</div>
+
+  <script src="{% static 'js/index.js' %}"></script>
+
+</body>
+
+</html>

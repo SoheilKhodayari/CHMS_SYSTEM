@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">modify Medication <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input name="code" id="code" type="text" value="{{ medicine.code }}" class="form-control" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" id="name" type="text" value="{{ medicine.name }}" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descrition</label>
+        <input name="description" id="description" type="text" value="{{ medicine.description }}" class="form-control"name>
+      </div>
+
+      <div class="form-group">
+        <label for="medicine_type">Type</label>
+        <input name="medicine_type" id="medicine_type" type="text" value="{{ medicine.medicine_type }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input name="amount" id="amount" type="number" value="{{ medicine.amount }}" class="form-control" required>
+      </div>
+
+      <p>
+        <button type="submit" class="btn btn-success btn-block"/>Modify</button>
+      </p>
+    </form>
+
+    <section>
+      <p>
+        <a href="{% url 'medicine_app:medicines-list' %}" class="btn btn-primary btn-block"> Back To List </a>
+      </p>
+      <p>
+        <a href="{% url 'medicine_app:medicines-delete' medicine.code %}" class="btn btn-primary btn-block"> Remove Medication </a>
+      </p>
+    </section>
+  </article>
+  
+</div>
+
+{% endblock content %}
+
