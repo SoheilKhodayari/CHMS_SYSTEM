@@ -130,6 +130,25 @@ class BaseDocument(models.Model):
     comment=models.CharField(max_length=200)
 
 
+class X_ray_area(models.Model):
+    area=models.CharField(max_length=20)
+
+
+class X_ray_view(models.Model):
+    view=models.CharField(max_length=20)
+
+class Ct_area(models.Model):
+    area=models.CharField(max_length=20)
+
+
+class Mri_area(models.Model):
+    area=models.CharField(max_length=20)
+
+class Test_type(models.Model):
+    type=models.CharField(max_length=20)
+    desciption=models.CharField(max_length=100,null=True)
+
+
 
 class X_ray(BaseDocument):
     image=models.ImageField(upload_to='x_rays')
@@ -141,8 +160,9 @@ class X_ray(BaseDocument):
 class Ct(BaseDocument):
     image=models.ImageField(upload_to='cts')
     historyFile=models.ForeignKey(MedicalHistory,related_name='ct')
-    area=models.CharField(max_length=50)
-    CT_DESCRIPTION_CHOISES=('With injection','Without injection')
+    area=models.ForeignKey(Ct_area)
+    CT_DESCRIPTION_CHOISES=(('1','With injection'),
+                            ('0','Without injection'))
     description=models.CharField(max_length=20,choices=CT_DESCRIPTION_CHOISES)
 
 
@@ -159,23 +179,10 @@ class Test(BaseDocument):
     image=models.ImageField(upload_to='tests')
     historyFile=models.ForeignKey(MedicalHistory,related_name='test')
 
-class X_ray_area(models.Model):
-    area=models.CharField(max_length=20)
 
 
-class X_ray_view(models.Model):
-    view=models.CharField(max_length=20)
-
-class Ct_area(models.Model):
-    view=models.CharField(max_length=20)
 
 
-class Mri_area(models.Model):
-    area=models.CharField(max_length=20)
-
-class Test_type(models.Model):
-    type=models.CharField(max_length=20)
-    desciption=models.CharField(max_length=100,null=True)
 
 
 
