@@ -177,14 +177,10 @@ class X_ray(BaseDocument):
 class Ct(BaseDocument):
     image=models.ImageField(upload_to='cts')
     historyFile=models.ForeignKey(MedicalHistory,related_name='ct')
-<<<<<<< HEAD
     area=models.ForeignKey(Ct_area)
     CT_DESCRIPTION_CHOISES=(('1','With injection'),
                             ('0','Without injection'))
-=======
-    area=models.CharField(max_length=50)
-    CT_DESCRIPTION_CHOISES=(('With injection','Without injection'), )
->>>>>>> 4ca755f79ffcedba819f1fa88612c4d8c7556c29
+
     description=models.CharField(max_length=20,choices=CT_DESCRIPTION_CHOISES)
 
 
@@ -201,13 +197,6 @@ class Test(BaseDocument):
     image=models.ImageField(upload_to='tests')
     historyFile=models.ForeignKey(MedicalHistory,related_name='test')
 
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 4ca755f79ffcedba819f1fa88612c4d8c7556c29
 
 
 

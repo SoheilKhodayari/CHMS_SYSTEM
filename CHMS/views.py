@@ -74,3 +74,5 @@ def login(request):
     return render_to_response('login_all.html',c,context_instance=RequestContext(request))
 
 
+def get_reports(request):
+    
