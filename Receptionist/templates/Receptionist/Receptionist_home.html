@@ -1,0 +1,26 @@
+<html>
+<body>
+
+<form method="get" action="/rec/home/">
+
+
+<label for="id_q">Search:</label>
+           <input type="text" name="q" id="id_q"/>
+           <input type="submit" value="Submit" name="submit_search_button"  />
+
+
+        </form>
+
+You searched for "{{ query_string }}" and the results are listed below.
+<div>
+
+<p>{{found_entries}} </p>
+</div>
+
+
+
+
+
+
+</body>
+</html>

@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+LOGIN_URL = "login_all/"
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
+AUTH_PROFILE_MODULE = 'hospital.BaseUser'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '72=v)f8!^d!b0%mxmc%hfhu(!40lc9&8@loh%222xx4a(98_u-'
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'equipment',
     'physician',
     'Receptionist',
+    'medicine',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +56,22 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages'
+)
+
+# TEMPLATE_LOADERS = (
+#     #'django.template.loaders.app_directories.load_template_source',
+#     'django.template.loaders.filesystem.Loader',
+#     'django.template.loaders.app_directories.Loader',
+#     'django.template.loaders.filesystem',
+# )
 ROOT_URLCONF = 'CHMS.urls'
 
 WSGI_APPLICATION = 'CHMS.wsgi.application'
@@ -87,7 +104,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
-
+TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR , "static"),

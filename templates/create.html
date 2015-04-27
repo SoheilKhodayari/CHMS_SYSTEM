@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Add Medication <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="code">Code</label>
+        <input name="code" id="code" type="text" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" id="name" type="text" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input name="description" id="description" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="medicine_type">Type</label>
+        <input name="medicine_type" id="medicine_type" type="text" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="amount">amount</label>
+        <input name="amount" id="amount" type="number" class="form-control" required>
+      </div>
+
+      <p>
+        <button type="submit" class="btn btn-success btn-block"/> Create</button>
+      </p>
+    </form>
+
+    <p>
+
+    </p>
+  </article>
+
+{% endblock content %}

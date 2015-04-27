@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      Detail Medicine <i class="fa fa-medkit"></i>
+    </h1>
+  </div>
+
+  <article class="panel-body">
+    {% if object.code %}
+      <p>Code: <strong>{{ object.code }}</strong></p>
+    {% endif %}
+    
+    {% if object.name %}
+      <p>name: <strong>{{ object.name|title }}</strong></p>
+    {% endif %}
+    
+    {% if object.description %}
+      <p>Description: <strong>{{ object.description }}</strong></p>
+    {% endif %}
+    
+    {% if object.medicine_type %}
+      <p>Type: <strong>{{ object.medicine_type|title }}</strong></p>
+    {% endif %}
+
+    {% if object.amount %}
+      <p>amount: <strong>{{ object.amount }}</strong></p>
+    {% endif %}
+ 
+      <p>
+        <a href="{% url 'medicine_app:medicines-list' %}" class="btn btn-success btn-block"> Back To List </a>
+      </p>
+    {% if user.is_superuser %}
+      <p>
+        <a href="{% url 'medicine_app:medicines-update' object.code %}" class="btn btn-primary btn-block"> modify Medication </a>
+      </p>
+      <p>
+        <a href="{% url 'medicine_app:medicines-delete' object.code %}" class="btn btn-primary btn-block"> remove Medication </a>
+      </p>
+    {% endif %}
+  </article>
+
+</div>
+
+{% endblock content %}

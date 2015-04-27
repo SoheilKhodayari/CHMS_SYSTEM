@@ -6,11 +6,12 @@ from equipment.models import physiotherapy ,radiotherapy ,ccu,icu,emergency, wom
                                      Face_Plastic_surgery_div, Brain_and_Nerve_surgery_div, ENT_surgery_div
 
 USER_CHOICES = (
-       (0,'Paziresh'),
+       (0,'Receptionist'),
        (1,'Boss'),
        (2,'patient'),
        (3,'systemAdmin'),
        (4,'CasualUser'),
+       (5,'Pharmacy')
 
        #TO DO : more/less user choices
    )
@@ -49,9 +50,9 @@ class BaseUser(models.Model): #Person
 
 
     #More basic Info
-    Tel  = models.CharField(max_length=25,null=True)
+    Tel  = models.CharField(max_length=25,null=True,blank=True)
     ssn = models.CharField(max_length=9, unique=True,null=True)
-    birthday = models.DateField(null=True)
+    birthday = models.DateField(null=True,blank=True)
     age = models.CharField(max_length=10, blank=True, null=True)
 
     #Extra Info
@@ -73,15 +74,15 @@ class BaseUser(models.Model): #Person
 
     #Home address
     country = models.CharField(max_length=200, default = 'Iran')
-    city=models.CharField(max_length=25,null=True)
-    district=models.CharField(max_length=25,null=True)
-    street=models.CharField(max_length=30,null=True)
-    alley=models.CharField(max_length=30,blank=True,null=True)
-    building_no = models.CharField(max_length=200,null=True)
-    postal_code=models.CharField(max_length=30,null=True)
+    city=models.CharField(max_length=25,null=True,blank=True)
+    district=models.CharField(max_length=25,null=True,blank=True)
+    street=models.CharField(max_length=30,null=True,blank=True)
+    alley=models.CharField(max_length=30,null=True,blank=True)
+    building_no = models.CharField(max_length=200,null=True,blank=True)
+    postal_code=models.CharField(max_length=30,null=True,blank=True)
 
 
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,null=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES,null=True,blank=True)
 
     def get_address_as_string(self):
         return '%s - %s, %s\n %s,%s, %s -%s' %(self.country,
@@ -92,7 +93,13 @@ class BaseUser(models.Model): #Person
                                             self.building_no,
                                             self.postal_code
                                             )
+    def __unicode__(self):
+          return "%s's profile" % self.user
 
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#        profile, created = BaseUser.objects.get_or_create(user=instance)
+#     post_save.connect(create_user_profile, sender=User)
 class Hospital(models.Model,object): #TO DO updating hospital equipment , drugstore ?
 
    def __init__(self, *args, **kwargs):
@@ -107,25 +114,25 @@ class Hospital(models.Model,object): #TO DO updating hospital equipment , drugst
 
    #hospital equipments attributes & methods
    #units are accessed by their related_name using select_related() method
-   physiotherapy=models.OneToOneField(physiotherapy,related_name='physiotherapy',null=True)
-   radiotherapy=models.OneToOneField(radiotherapy,related_name='radiotherapy',null=True)
-   ccu=models.OneToOneField(ccu,related_name='ccu',null=True)
-   icu=models.OneToOneField(icu,related_name='icu',null=True)
-   internal_div=models.OneToOneField(internal_div,related_name='internal_div',null=True)
-   child_div=models.OneToOneField(child_div,related_name='child_div',null=True)
-   emergency=models.OneToOneField(emergency,related_name='emergency',null=True)
-   women_obstetric=models.OneToOneField(women_obstetric,related_name='women_obstetric',null=True)
+   physiotherapy=models.OneToOneField(physiotherapy,related_name='physiotherapy',null=True,blank=True)
+   radiotherapy=models.OneToOneField(radiotherapy,related_name='radiotherapy',null=True,blank=True)
+   ccu=models.OneToOneField(ccu,related_name='ccu',null=True,blank=True)
+   icu=models.OneToOneField(icu,related_name='icu',null=True,blank=True)
+   internal_div=models.OneToOneField(internal_div,related_name='internal_div',null=True,blank=True)
+   child_div=models.OneToOneField(child_div,related_name='child_div',null=True,blank=True)
+   emergency=models.OneToOneField(emergency,related_name='emergency',null=True,blank=True)
+   women_obstetric=models.OneToOneField(women_obstetric,related_name='women_obstetric',null=True,blank=True)
    Orthopedic_surgery_div=models.OneToOneField(Orthopedic_surgery_div,
-                                               related_name='Orthopedic_surgery_div',null=True)
-   Urology_surgery_div=models.OneToOneField(Urology_surgery_div,related_name='Urology_surgery_div',null=True)
-   Eye_surgery_div=models.OneToOneField(Eye_surgery_div,related_name='Eye_surgery_div',null=True)
-   General_surgery_div=models.OneToOneField(General_surgery_div,related_name='General_surgery_div',null=True)
-   Heart_surgery_div=models.OneToOneField(Heart_surgery_div,related_name='Heart_surgery_div',null=True)
+                                               related_name='Orthopedic_surgery_div',null=True,blank=True)
+   Urology_surgery_div=models.OneToOneField(Urology_surgery_div,related_name='Urology_surgery_div',null=True,blank=True)
+   Eye_surgery_div=models.OneToOneField(Eye_surgery_div,related_name='Eye_surgery_div',null=True,blank=True)
+   General_surgery_div=models.OneToOneField(General_surgery_div,related_name='General_surgery_div',null=True,blank=True)
+   Heart_surgery_div=models.OneToOneField(Heart_surgery_div,related_name='Heart_surgery_div',null=True,blank=True)
    Face_Plastic_surgery_div=models.OneToOneField(Face_Plastic_surgery_div
-                                                ,related_name='Face_Plastic_surgery_div',null=True)
+                                                ,related_name='Face_Plastic_surgery_div',null=True,blank=True)
    Brain_and_Nerve_surgery_div=models.OneToOneField(Brain_and_Nerve_surgery_div,
-                                                    related_name='Brain_and_Nerve_surgery_div',null=True)
-   ENT_surgery_div=models.OneToOneField(ENT_surgery_div,related_name='ENT_surgery_div',null=True)
+                                                    related_name='Brain_and_Nerve_surgery_div',null=True,blank=True)
+   ENT_surgery_div=models.OneToOneField(ENT_surgery_div,related_name='ENT_surgery_div',null=True,blank=True)
 
    @property
    def physiotherapy_object(self):
@@ -342,12 +349,12 @@ class Address(models.Model):
       self._parent_model = 'Hospital'
 
     country = models.CharField(max_length=200, default = 'Iran')
-    city=models.CharField(max_length=25)
-    district=models.CharField(max_length=25)
-    street=models.CharField(max_length=30)
-    alley=models.CharField(max_length=30,blank=True)
-    building_no = models.CharField(max_length=200)
-    postal_code=models.CharField(max_length=30)
+    city=models.CharField(max_length=25,null=True,blank=True)
+    district=models.CharField(max_length=25,null=True,blank=True)
+    street=models.CharField(max_length=30,null=True,blank=True)
+    alley=models.CharField(max_length=30,null=True,blank=True)
+    building_no = models.CharField(max_length=200,null=True,blank=True)
+    postal_code=models.CharField(max_length=30,null=True,blank=True)
 
     hospital = models.ForeignKey(Hospital)
 

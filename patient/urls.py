@@ -1,9 +1,9 @@
 from django.conf.urls import patterns, url
-import views
+from patient import views
 
 urlpatterns = patterns('',
 
-    url(r'^login$', views.p_login, name='patient_login'),
     url(r'^register$', views.register, name='patirnt_register'),
+    url(r'^home$', views.home, name='patient_home'),
     
 )

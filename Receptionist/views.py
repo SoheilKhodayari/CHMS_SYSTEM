@@ -6,38 +6,19 @@ from django.contrib import auth
 from django.core.context_processors import csrf
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from search import *
+from Receptionist.search import *
 from patient.models import Patient
 from django.contrib.auth.models import User
-
-
-def rec_login(request):
-    context = {'error':''}
-    if request.method == 'POST':
-        username = request.POST.get('username', '') #retunr '' if no username
-        password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-
-        if user is not None:
-            auth.login(request,user)
-            #return HttpResponseRedirect('/rec/home')
-            return render_to_response('Receptionist_home.html',context,context_instance=RequestContext(request))
-        else:
-			context['error'] = ' wrong credentials try again'
-			return render_to_response('Receptionist_login.html',context,context_instance=RequestContext(request))
-
-
-    context.update(csrf(request))
-    return render_to_response('Receptionist_login.html',context,context_instance=RequestContext(request))
-
-def rec_logout(request):
-    auth.logout(request)
-    return HttpResponse('Successfully Logged Out')
+from urllib import urlencode
 
 
 
-#@login_required(login_url='/rec/login')
+
 def home(request):
+    if not request.user.is_authenticated() or request.user.get_profile().user_type!=0:
+        d = {'server_message':"Not Logged In."}
+        query_str = urlencode(d)
+        return HttpResponseRedirect('/login_all/?' +query_str)
     if request.method == 'GET':
         if request.GET.get("submit_search_button"): # if search submit button clicked
             query_string = ''
@@ -50,13 +31,13 @@ def home(request):
                 found_entries = Patient.objects.filter(entry_query)
 
 
-            return render_to_response('Receptionist_home.html',
+            return render_to_response('Receptionist/Receptionist_home.html',
                           { 'query_string': query_string, 'found_entries': found_entries },
                           context_instance=RequestContext(request))
 
     #To Do: Handle Other parts of Receptionsit Here
 
-    return render_to_response('Receptionist_home.html',{},context_instance=RequestContext(request))
+    return render_to_response('Receptionist/Receptionist_home.html',{},context_instance=RequestContext(request))
 
 
 
