@@ -31,7 +31,7 @@ Hospital_Type_CHOICES=(
    )
 class BaseUser(models.Model): #Person
     user_type=models.IntegerField(choices=USER_CHOICES,null=True)
-    user=models.OneToOneField(User,primary_key=True)
+    user=models.OneToOneField(User,primary_key=True,related_name='profile')
 
     Marital_Status_Choices = (('single', "Single"),
                           ("married", "Married"),

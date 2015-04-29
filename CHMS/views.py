@@ -6,6 +6,7 @@ from patient.models import Patient
 from django.http import HttpResponse
 from Receptionist.views import *
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render
 
 
 def firstpage(request):
@@ -75,4 +76,5 @@ def login(request):
 
 
 def get_reports(request):
-    
+    hospitals=request.POST.getlist('hospitals')
+    render(request,'CHMS/reports.html')

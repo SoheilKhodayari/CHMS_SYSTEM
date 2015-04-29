@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'physician',
     'Receptionist',
     'medicine',
+    'androidApp'
 )
 
 MIDDLEWARE_CLASSES = (
