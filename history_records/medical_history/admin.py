@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from models import *
 
-admin.site.register(MedicalHistory)
+admin.site.register(MedicalFile)
 admin.site.register(MedicationList)
 admin.site.register(Disease)
 admin.site.register(Surgery)
@@ -15,3 +15,8 @@ admin.site.register(Test)
 admin.site.register(Test_type)
 admin.site.register(Mri)
 admin.site.register(Mri_area)
+admin.site.register(Medical_history_sheet)
+admin.site.register(Physician_order_sheet)
+admin.site.register(Progress_notes_sheet)
+admin.site.register(Unit_summary_sheet)
+admin.site.register(Order)
