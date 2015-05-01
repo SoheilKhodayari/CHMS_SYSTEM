@@ -77,4 +77,4 @@ def login(request):
 
 def get_reports(request):
     hospitals=request.POST.getlist('hospitals')
-    render(request,'CHMS/reports.html')
+    return render(request,'CHMS/reports.html')
