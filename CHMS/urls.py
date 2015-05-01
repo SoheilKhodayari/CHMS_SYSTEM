@@ -10,12 +10,12 @@ urlpatterns = patterns('',
     url(r'pharmacy/', include('pharmacy.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^patient/',include('patient.urls')),
-    url(r'^app/',include('androidApp.urls')),
     url(r'^$', views.firstpage , name = 'firstpage'),
-    url(r'^rec/',include('Receptionist.urls')),
+    url(r'^rec/',include('Receptionist.urls', namespace='rec_app')),
     url(r'^login_all/',views.login,name='login_all'),
     url(r'^logout/',views.logout,name='logout'),
     url(r'^medicine/', include('medicine.urls',namespace='medicine_app')), # pharmacy
+
     url(r'^reports/',views.get_reports,name='reports'),
 
     

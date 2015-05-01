@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+{% if not patients %}
+  <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    There are no patients for now!
+
+      <a href="{% url 'rec_app:patients-create' %}">
+       Enter One</a>.
+    {% endif %}
+  </div>
+
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Patient List</h1>
+  </div>
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Section</th>
+        <th>Room</th>
+        <th>Age</th>
+        <th>Gender</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for patient in patients %}
+        <tr>
+          <td><a href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
+          <td>{{ patient.firstname }}</td>
+          <td>{{ patient.lastname }}</td>
+            <td>{{ patient.patient_section }}</td>
+            <td>{{ patient.patient_room }}</td>
+          <td>{{ patient.age }}</td>
+          <td>
+            {% if patient.gender == 'M' %}
+              <i class="fa fa-male"></i> M
+            {% else %}
+              <i class="fa fa-female"></i> F
+            {% endif %}
+          </td>
+
+
+
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+    <article class="panel-body">
+      <p>
+        <a href="{% url 'rec_app:patients-create' %}" class="btn btn-success btn-block"> Patient Registration </a>
+      </p>
+    </article>
+
+
+</div>
+
+{% endblock %}

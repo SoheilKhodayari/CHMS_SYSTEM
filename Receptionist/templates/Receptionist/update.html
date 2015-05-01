@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">modify Patient <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="username">username</label>
+        <input name="username" id="username" type="text" value="{{ patient.username }}" class="form-control" readonly>
+      </div>
+
+     <div class="form-group">
+        <label for="first_name">first_name</label>
+        <input name="first_name" id="first_name" type="text" class="form-control" value="{{ patient.firstname }}"required>
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">last_name</label>
+        <input name="last_name" id="last_name" type="text" class="form-control" value="{{ patient.lastname }}" required>
+      </div>
+            <div class="form-group">
+        <label for="section">section</label>
+        <input name="section" id="section" type="text" class="form-control" value="{{ patient.patient_section }}" required>
+      </div>
+              <div class="form-group">
+        <label for="room">room</label>
+        <input name="room" id="room" type="text" class="form-control" value="{{ patient.patient_room }}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="age">age</label>
+        <input name="age" id="age" type="number" class="form-control" value="{{ patient.age}}" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">gender</label>
+        <select name="gender" id="gender" class="form-control" value="{{ patient.gender }}" required>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="ssn">ssn</label>
+        <input name="ssn" id="ssn" type="text" value="{{ patient.ssn }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="birthday">birthday</label>
+        <input name="birthday" id="birthday" type="date" value="{{ patient.birthday }}" class="form-control">
+      </div>
+            <div class="form-group">
+        <label for="Tel">Tel</label>
+        <input name="Tel" id="Tel" type="text" value="{{ patient.Tel }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="occupation">occupation</label>
+        <input name="occupation" id="occupation" type="text" value="{{ patient.occupation }}" class="form-control">
+      </div>
+       <div class="form-group">
+        <label for="email">email</label>
+        <input name="email" id="email" type="text" value="{{ patient.user.email }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="marital_status">marital_status</label>
+        <select name="marital_status" id="marital_status" value="{{ patient.marital_status }}" class="form-control" required>
+          <option value="single">Single</option>
+          <option value="married">Married</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="country">country</label>
+        <input name="country" id="country" type="text" value="{{ patient.country }}" class="form-control">
+      </div>
+
+        <div class="form-group">
+        <label for="city">city</label>
+        <input name="city" id="city" type="text" value="{{ patient.city }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="district">district</label>
+        <input name="district" id="district" type="text" value="{{ patient.district }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="street">street</label>
+        <input name="street" id="street" type="text" value="{{ patient.street }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="alley">alley</label>
+        <input name="alley" id="alley" type="text" value="{{ patient.alley }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="building_no">building_no</label>
+        <input name="building_no" id="building_no" type="number" value="{{ patient.building_no }}" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label for="postal_code">postal_code</label>
+        <input name="postal_code" id="postal_code" type="text" value="{{ patient.postal_code }}" class="form-control">
+      </div>
+
+
+      <p>
+        <button type="submit" class="btn btn-success btn-block"/>Modify</button>
+      </p>
+    </form>
+
+    <section>
+      <p>
+        <a href="{% url 'rec_app:patients-list' %}" class="btn btn-primary btn-block"> Back To List </a>
+      </p>
+       <p>
+        <a href="{% url 'rec_app:patients-delete' patient.username %}" class="btn btn-primary btn-block"> Delete Patient </a>
+      </p>
+    </section>
+  </article>
+  
+</div>
+
+{% endblock content %}

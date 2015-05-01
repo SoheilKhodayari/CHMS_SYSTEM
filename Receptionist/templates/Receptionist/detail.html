@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">
+      Patient Detail <strong>{{ patient.firstname|title }} {{ patient.lastname|title }}</strong> <i class="fa fa-wheelchair"></i>
+    </h1>
+  </div>
+
+  <article class="panel-body">
+
+
+    {% if patient.username %}
+      <p>Username: <strong>{{ patient.username }}</strong></p>
+    {% endif %}
+    
+    {% if patient.firstname %}
+      <p>Firstname: <strong>{{ patient.firstname|title }}</strong></p>
+    {% endif %}
+    
+    {% if patient.lastname %}
+      <p>Lastname: <strong>{{ patient.last_name|title }}</strong></p>
+    {% endif %}
+
+   {% if patient.patient_section %}
+      <p>Section: <strong>{{ patient.patient_section }}</strong></p>
+    {% endif %}
+
+    {% if patient.patient_room %}
+      <p>Room: <strong>{{ patient.patient_room}}</strong></p>
+    {% endif %}
+
+    {% if patient.ssn %}
+      <p>SSN: <strong>{{ patient.ssn }}</strong></p>
+    {% endif %}
+    
+    {% if patient.age %}
+      <p>Age: <strong>{{ patient.age }}</strong></p>
+    {% endif %}
+
+    {% if patient.birthday %}
+      <p>Birthday: <strong>{{ patient.birthday}}</strong></p>
+    {% endif %}
+
+    
+    {% if patient.gender %}
+      <p>Gender: <strong>{{ patient.gender }}</strong></p>
+    {% endif %}
+    
+    {% if patient.get_address_as_string %}
+      <p>Address: <strong>{{ patient.get_address_as_string }}</strong></p>
+    {% endif %}
+    
+    {% if patient.email %}
+      <p>Email: <strong>{{ patient.email }}</strong></p>
+    {% endif %}
+    
+    {% if patient.Tel %}
+      <p>Tel: <strong>{{ patient.Tel }}</strong></p>
+    {% endif %}
+
+    {% if patient.marital_status %}
+      <p>marital_status: <strong>{{ patient.marital_status }}</strong></p>
+    {% endif %}
+
+    {% if patient.occupation %}
+      <p>occupation: <strong>{{ patient.occupation }}</strong></p>
+    {% endif %}
+
+
+      <hr title="GUARDIAN">
+
+     {% if ward %}
+      <p>Guardian Name: <strong>{{ ward.guardian_name }}</strong></p>
+    {% endif %}
+
+     {% if ward %}
+      <p>Guardian Relation: <strong>{{ ward.relation_to_guardian }}</strong></p>
+    {% endif %}
+
+     {% if ward %}
+      <p>Guardian Phone: <strong>{{ ward.guardian_phone }}</strong></p>
+    {% endif %}
+
+     <hr title="SCHEDULE">
+     {% if sch %}
+      <p>Event : <strong>{{ sch.event }}</strong></p>
+    {% endif %}
+
+     {% if sch %}
+      <p> Event Date: <strong>{{ sch.event_date }}</strong></p>
+    {% endif %}
+
+     {% if sch %}
+      <p>Event Time : <strong>{{ sch.event_time }}</strong></p>
+    {% endif %}
+
+    {% if sch %}
+      <p>Related_division: <strong>{{ sch.related_division }}</strong></p>
+    {% endif %}
+
+    {% if sch %}
+      <p>Description: <strong>{{ sch.description }}</strong></p>
+    {% endif %}
+
+
+
+
+
+    <p>
+      <a href="{% url 'rec_app:patients-list' %}" class="btn btn-primary btn-block"> Back To List </a>
+    </p>
+    <p>
+      <a href="{% url 'rec_app:patients-update' patient.username %}" class="btn btn-primary btn-block"> Modify This Patient </a>
+    </p>
+    <p>
+      <a href="{% url 'rec_app:patients-delete' patient.username %}" class="btn btn-primary btn-block"> Delete This Patient </a>
+    </p>
+      {% if not ward %}
+        <p>
+      <a href="{% url 'rec_app:allocate-ward' patient.username %}" class="btn btn-primary btn-block"> Allocate Guardian </a>
+    </p>
+      {% else %}
+    <p>
+      <a href="{% url 'rec_app:update-ward' patient.username %}" class="btn btn-primary btn-block"> Update Guardian </a>
+    </p>
+      {% endif %}
+
+     {% if not sch %}
+        <p>
+      <a href="{% url 'rec_app:set-schedule' patient.username %}" class="btn btn-primary btn-block"> Set Schedule </a>
+    </p>
+      {% else %}
+    <p>
+      <a href="{% url 'rec_app:update-schedule' patient.username %}" class="btn btn-primary btn-block"> Update Schedule </a>
+    </p>
+      {% endif %}
+  </article>
+
+</div>
+
+
+
+
+{% endblock content %}

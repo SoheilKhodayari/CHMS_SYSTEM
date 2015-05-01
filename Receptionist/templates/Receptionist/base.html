@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Navbar -->
+  <link href="{% static 'css/navbar.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<head>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/" >
+        <img src="{% static 'img/ete.png' %}">
+        </a>
+
+
+     </div>
+  </nav>
+</head>
+
+<div class="container">
+  {% block content %} 
+  {% endblock content %}
+
+</div>
+  
+{% block js %}
+  <!-- Jquery -->
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{% endblock js %}
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title">Update Schedule <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <article class="panel-body">
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+
+<div class="form-group">
+        <label for="event">event</label>
+        <input name="event" id="event"  type="text" value="{{ sch.event }}" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="event_date">event_date</label>
+        <input name="event_date" id="event_date" type="date" value="{{ sch.event_date }}" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="event_time">event_time</label>
+        <input name="event_time" id="event_time" type="time" value="{{ sch.event_time }}" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="related_division">related_division</label>
+        <input name="related_division" id="related_division" type="text" value="{{ sch.related_division }}" class="form-control" required>
+      </div>
+
+     <div class="form-group">
+        <label for="description">description</label>
+        <input name="description" id="description" type="text" value="{{ sch.description }}" class="form-control" required>
+      </div>
+
+
+
+
+      <p>
+        <button type="submit" class="btn btn-success btn-block"/>Update</button>
+      </p>
+    </form>
+
+    <section>
+       <p>
+        <a href="/rec/{{ username }}" class="btn btn-primary btn-block"> Back To Details </a>
+      </p>
+       <p>
+        <a href="{% url  'rec_app:delete-schedule' patient.username %}" class="btn btn-primary btn-block"> Delete This Schedule </a>
+      </p>
+    </section>
+  </article>
+
+</div>
+
+{% endblock content %}

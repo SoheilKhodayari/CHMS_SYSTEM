@@ -1,8 +1,22 @@
 from django.contrib.auth.models import User
 from django.http.response import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.http import JsonResponse
 
+try:
+    from django.http import JsonResponse
+except:
+    from django.utils import simplejson
+    from django.http import HttpResponse
+ 
+    class JsonResponse(HttpResponse):
+
+        def __init__(self, content, mimetype='application/json', status=None, content_type=None):
+             super(JsonResponse, self).__init__(
+                 content=simplejson.dumps(content),
+                 mimetype=mimetype,
+                 status=status,
+                 content_type=content_type,
+                   )
 
 @csrf_exempt
 def login(request):

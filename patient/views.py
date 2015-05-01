@@ -85,13 +85,18 @@ def register(request):
 
 
 def home(request):
-    if not request.user.is_authenticated() or request.user.get_profile().user_type!=2:
-        d = {'server_message':"Not Logged In."}
-        query_str = urlencode(d)
-        return HttpResponseRedirect('/login_all/?' +query_str)
-    c={}
-    c.update(csrf(request))
-    return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
+   try:
+       if not (request.user.is_authenticated() and request.user.get_profile().user_type==2):
+           d = {'server_message':"Not Logged In."}
+           query_str = urlencode(d)
+           return HttpResponseRedirect('/login_all/?' +query_str)
+   except:
+           d = {'server_message':"not logged in"}
+           query_str = urlencode(d)
+           return HttpResponseRedirect('/login_all/?' +query_str)
+   c={}
+   c.update(csrf(request))
+   return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
 
 
 
