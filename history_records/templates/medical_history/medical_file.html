@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Medical File</title>
+	<style type="text/css">
+	 .menus{
+	 	width: 100%;
+	 	height: 50px;
+	 	border: solid;
+	 	text-align: center;
+	 	background-color: #666;
+
+
+	 }
+	</style>
+</head>
+<body><div class="menus">menus</div>
+		<center>
+		<p><a href="{% url 'history_records:medical_history'  patient.user_id  %}">Medical History Sheet</a></p>
+		<p><a href="{% url 'history_records:phycisian_orders'  patient.user_id  %}">Physician's Order Sheet</a></p>
+		<p><a href="{% url 'history_records:progress_notes'  patient.user_id  %}">Pregress Notes Sheet</a></p>
+		<p><a href="{% url 'history_records:unit_summary'  patient.user_id  %}">Unit Summary Sheet</a></p>
+</center>
+
+</body>
+</html>

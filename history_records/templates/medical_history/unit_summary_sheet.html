@@ -1,0 +1,122 @@
+<html>
+<head>
+	<title>Unit Summary Sheet</title>
+	<style type="text/css">
+	 .menus{
+	 	width: 100%;
+	 	height: 50px;
+	 	border: solid;
+	 	text-align: center;
+	 	background-color: #666;
+
+
+	 }
+	 .center{
+	 	width: 200px;
+	 	margin: auto;
+	 }
+	 .left{
+	 	/*float: left*/
+	 }
+	 .content{
+	 	width: 100%;
+	 	height: 60px;
+	 	border: dotted 1px;
+	 	padding-top: 5px;
+
+	 }
+	 .info{
+	 	border: solid 1px;
+	 	position:relative;
+	 	display: block;
+	 	margin: 0px;
+	 	padding: 0px;
+	 	display: table;
+	 	table-layout: fixed;
+	 	width: 100%;
+	 	/*padding-top: 5px;*/
+
+	 }
+	 .div1{
+	 	display: table-cell;
+	 	margin: 0px;
+	 	padding: 0px;
+	 	/*float: left;*/
+	 	/*width: 50%;*/
+	 	border: solid 1px;
+
+	 }
+
+/*	 .info:after { 
+	   content: "."; 
+	   visibility: hidden; 
+	   display: block; 
+	   height: 0; 
+	   clear: both;
+	   width: 0;
+	}*/	
+	 .history{
+	 	clear: both;
+	 }
+	 .cell{
+	 	display: table-cell;
+	 	/*border: solid;*/
+	 }
+	 .add_no{
+	 	width:100%;
+	 	border:1px solid;
+	 	padding: 0;
+	 	margin:0;
+	 }
+	</style>
+</head>
+<body><div class="menus">menus</div>
+
+	<p class='center' >Unit Summary Sheet</p>
+	<div>
+		<p class='left' style='border:solid;width:150px;padding-bottom:0;margin-bottom:0;'>File No.:</p>
+		<div>
+		<div class='info'>
+			<div class='div1'>
+			<p>First Name: {{ patient.firstname }}</p>
+			<p>Last Name: {{ patient.lastname }}</p>
+			<p>Father Name:</p>
+			</div>
+			<div class='div1'>
+				<p>Sex: {{ patient.get_gender_display }}</p>
+				<p>Date of Birth: {{ patient.birthday }}</p>
+				<p>Occupation: {{ patient.occupation }}</p>
+			</div>
+			<div class='div1'>
+				<p>Attending Physician:</p>
+				<p>Date of Addmition:</p>
+				<p>Date of Discharge:</p>
+			</div>
+		</div>
+		<div class='info' style='padding-top:5px;'>
+		<p class='cell'>Ward:</p><p class='cell'>Room:</p><p class='cell'>Bed:</p>
+	</div>
+		<p class='add_no' >Address:</p>
+		<p class='add_no'>Phone No.:</p>
+		</div>
+		<div class='history'>
+
+			<div class='content'>Chief Complaint of the Patient & Primary Diagnosis:</div>
+			<div class='content'>Final Diagnosis:</div>
+			<div class='content'>Medical & Surgical Procedures:</div>
+			<div class='content'>Results of Paraclinical Examination:</div>
+			<div class='content'>Disease Progress (Cause of Death):</div>
+			<div class='content'>Patient's Condition on Discharge:</div>
+			<div class='content' style='height:300px;'>Recommendations after Discharge:</div>
+			<div class='content' >Physician</div>
+			
+
+
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

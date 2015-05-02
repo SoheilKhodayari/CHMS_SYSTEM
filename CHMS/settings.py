@@ -36,7 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'history_records.medical_history',
+    'history_records',
     'Medical Diagnosis File',
     'hospital',
     'patient',

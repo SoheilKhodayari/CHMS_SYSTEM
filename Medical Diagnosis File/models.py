@@ -1,5 +1,5 @@
 __author__ = 'soheil'
-from history_records.medical_history.models import Disease
+from history_records.models import Disease
 from django.db import models
 class MedicalFile(models.Model):
 

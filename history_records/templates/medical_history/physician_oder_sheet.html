@@ -1,0 +1,139 @@
+<html>
+<head>
+	<title>Phsician Orders Sheet</title>
+	<style type="text/css">
+	 .menus{
+	 	width: 100%;
+	 	height: 50px;
+	 	border: solid;
+	 	text-align: center;
+	 	background-color: #666;
+
+
+	 }
+	 .center{
+	 	width: 200px;
+	 	margin: auto;
+	 }
+
+	 .content{
+	 	width: 100%;
+	 	height: 60px;
+	 	border: dotted 1px;
+	 	padding-top: 5px;
+
+	 }
+	 .info{
+	 	border: solid 1px;
+	 	position:relative;
+	 	display: block;
+	 	margin: 0px;
+	 	padding: 0px;
+	 	display: table;
+	 	table-layout: fixed;
+	 	width: 100%;
+
+
+	 }
+	 .div1{
+	 	display: table-cell;
+	 	margin: 0px;
+	 	padding: 0px;
+
+	 	border: solid 1px;
+
+	 }
+
+	 .progress{
+	 	padding-top: 10px;
+
+	 }
+	 table{
+	 	/*padding-top: 100px;*/
+	 	border-collapse: collapse;
+	 }
+	 table,th,td{
+	 	border: 1px solid;
+	 }
+	 .notes{
+	 	width: 70%
+
+	 }
+	 .date{
+	 	width: 10%;
+	 }
+
+	 .cell{
+	 	display: table-cell;
+	 	/*border: solid;*/
+	 }
+	</style>
+</head>
+<body><div class="menus">menus</div>
+
+	<p class='center' >Physician Orders Sheet</p>
+	<div>
+		<p style='border:solid;width:150px;padding-bottom:0;margin-bottom:0;'>File No.:</p>
+		<div>
+		<div class='info'>
+			<div class='div1'>
+			<p>First Name: {{ patient.firstname }} </p>
+			<p>Last Name: {{ patient.lastname }}</p>
+			</div>
+			<div class='div1'>
+				<p>Father Name: </p>
+				<p>Date of Birth: {{ patient.birthday }}</p>
+			</div>
+			<div class='div1'>
+				<p>Attending Physician: </p>
+				<p>Date of Addmition: </p>
+			</div>
+		</div>
+		<div class='info' style='padding-top:5px;'>
+		<p class='cell'>Ward:</p><p class='cell'>Room:</p><p class='cell'>Bed:</p>
+	</div>
+		</div>
+		<div class='progress'>
+			<table style="width:100%">
+			  <thead>
+			    <td class='date'>Date and Time</td>
+			    <td class='notes'>Orders</td> 
+			    <td>Physician</td>
+			  </thead>
+			  <tbody>
+			    <td>mm/dd/yyy</td>
+			    <td>............................</td> 
+			    <td>Dr.</td>
+			  </tr>
+			    <td>mm/dd/yyy</td>
+			    <td>............................</td> 
+			    <td>Dr.</td>
+			  </tr>
+			    <td>mm/dd/yyy</td>
+			    <td>............................</td> 
+			    <td>Dr.</td>
+			  </tr>
+			    <td>mm/dd/yyy</td>
+			    <td>............................</td> 
+			    <td>Dr.</td>
+			  </tr>
+			    <td>mm/dd/yyy</td>
+			    <td>............................</td> 
+			    <td>Dr.</td>
+			  </tr>
+			  </tbody>
+			</table>
+
+
+
+			
+
+
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 from django.db import models
 from patient.models import Patient
 from datetime import  datetime
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import
 from physician.models import Physician
 class MedicationList(models.Model):
 
@@ -38,7 +38,7 @@ class MedicationList(models.Model):
 
 
 class MedicalFile(models.Model):
-    user=models.ForeignKey(User,related_name='medical_file')
+    patient=models.ForeignKey(Patient,related_name='medical_file')
     date_of_addmition=models.DateField(default=datetime.now())
     date_of_discharge=models.DateField(blank=True,null=True)
     ward=models.CharField(max_length=4)
@@ -149,8 +149,8 @@ class Physician_order_sheet(models.Model):
 
 class Order(models.Model):
     date=models.DateTimeField(default=datetime.now(),blank=True)
-    orders=models.CharField(max_length=200)
-    sheet=models.ForeignKey(Physician_order_sheet)
+    order=models.CharField(max_length=200)
+    sheet=models.ForeignKey(Physician_order_sheet,related_name='orders')
 
 
 class Unit_summary_sheet(models.Model):
@@ -175,7 +175,10 @@ class  Medical_history_sheet(models.Model):
     current_drug_theraphy_and_other_addiction=models.CharField(max_length=200)
     allergy_to=models.CharField(max_length=200)
     family_history=models.CharField(max_length=200)
-    
+    summary=models.TextField()
+    primary_dx=models.TextField()
+
+
 
 
 
