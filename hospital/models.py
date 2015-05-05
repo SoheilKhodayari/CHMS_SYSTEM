@@ -83,6 +83,7 @@ class BaseUser(models.Model): #Person
 
 
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES,null=True,blank=True)
+    father_name=models.CharField(max_length='20')
 
     def get_address_as_string(self):
         return '%s - %s, %s\n %s,%s, %s -%s' %(self.country,
@@ -133,6 +134,7 @@ class Hospital(models.Model,object): #TO DO updating hospital equipment , drugst
    Brain_and_Nerve_surgery_div=models.OneToOneField(Brain_and_Nerve_surgery_div,
                                                     related_name='Brain_and_Nerve_surgery_div',null=True,blank=True)
    ENT_surgery_div=models.OneToOneField(ENT_surgery_div,related_name='ENT_surgery_div',null=True,blank=True)
+   
 
    @property
    def physiotherapy_object(self):

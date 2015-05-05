@@ -139,8 +139,16 @@ class Surgery(models.Model): # Surgery
 
 
 class Progress_notes_sheet(models.Model):
+    medical_file=models.OneToOneField(MedicalFile,related_name='progress_note_sheet')
+    date=models.DateField(default=datetime.now())
+    attending_physician=models.ForeignKey(Physician)
+
+
+class Progress_note(models.Model):
     date=models.DateField(default=datetime.now())
     treatment_progress=models.CharField(max_length=200)
+    sheet=models.ForeignKey(Progress_notes_sheet,related_name='notes')
+    physician=models.ForeignKey(Physician)
 
 class Physician_order_sheet(models.Model):
     medical_file=models.OneToOneField(MedicalFile,related_name='physician_order_sheet')
@@ -148,9 +156,11 @@ class Physician_order_sheet(models.Model):
     attending_physician=models.ForeignKey(Physician)
 
 class Order(models.Model):
-    date=models.DateTimeField(default=datetime.now(),blank=True)
+    date=models.DateField(default=datetime.now())
+    time=models.TimeField(default=datetime.now().time())
     order=models.CharField(max_length=200)
     sheet=models.ForeignKey(Physician_order_sheet,related_name='orders')
+    physician=models.ForeignKey(Physician,related_name='orders')
 
 
 class Unit_summary_sheet(models.Model):
@@ -169,6 +179,7 @@ class Unit_summary_sheet(models.Model):
 
 class  Medical_history_sheet(models.Model):
     medical_file=models.OneToOneField(MedicalFile,related_name='medical_history_sheet')
+    attending_physician=models.ForeignKey(Physician,related_name='medical_history_sheets')
     chief_complain=models.CharField(max_length=200)
     history_of_present_illness=models.CharField(max_length=200)
     pass_diseases_history=models.CharField(max_length=200)
@@ -177,7 +188,6 @@ class  Medical_history_sheet(models.Model):
     family_history=models.CharField(max_length=200)
     summary=models.TextField()
     primary_dx=models.TextField()
-
 
 
 
