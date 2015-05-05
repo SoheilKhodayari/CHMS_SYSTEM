@@ -2,9 +2,10 @@ from django.db import models
 from hospital.models import BaseUser,Hospital
 from django.contrib.auth.models import User
 class Patient(BaseUser):
-    username=models.CharField(max_length=50,unique=True)
-    firstname=models.CharField(max_length=50) # used for searching
-    lastname=models.CharField(max_length=50)  # used for searching
+
+    username=models.CharField(max_length=50,unique=True,blank=True)
+    firstname=models.CharField(max_length=50,blank=True) # used for searching
+    lastname=models.CharField(max_length=50,blank=True)  # used for searching
 
 
     #user=models.OneToOneField(User,primary_key=True,verbose_name='Patient')
@@ -12,6 +13,13 @@ class Patient(BaseUser):
     patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True,null=True) #To Be Deleted
     patient_section=models.CharField("section",max_length=100,null=True)
     patient_room=models.CharField("room_num",max_length=100,null=True)
+
+    def save(self, *args, **kwargs):
+        self.username=self.user.username
+        self.firstname=self.user.first_name
+        self.lastname=self.user.last_name
+
+        super(Patient, self).save(*args, **kwargs)
 
     def get_address_as_string(self):
         return '%s - %s, %s\n %s,%s, %s -%s' %(self.country,

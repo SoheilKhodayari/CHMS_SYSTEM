@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="header">
+    <form method="get" action="/PatientSearch/">
+	Search: <input type="text" name="q" id="id_q" placeholder="search">
+    <input type="submit" value="Submit" name="submit_search_btn"  /> </select>
+     </form>
+</div>
+<div class="result">
+	<table>
+		<tr>
+			<th>FirstName</th>
+			<th>LastName</th>
+            <th>Age</th>
+			<th>Hospital</th>
+            <th>Hospital TEL</th>
+		</tr>
+        {% for obj in found_entries %}
+		<tr>
+			<td>{{ obj.user.first_name }}</td>
+			<td>{{ obj.user.last_name}}</td>
+			<td>{{ obj.age}}</td>
+            <td>{{ obj.parent_hospital.Hospital_Name}}</td>
+            <td>{{ obj.parent_hospital.get_phone_numbers}}</td>
+		</tr>
+        {% endfor %}
+
+	</table>
+</div>
+</body>
+<style type="text/css">
+body{
+    background: url("{% static 'ps.jpg' %}");
+    background-repeat: no-repeat;
+    background-size:cover;
+	background-attachment:fixed;
+	padding:0;
+	margin: 0;
+	font-family: sans-serif;
+}
+	div.header{
+		text-align: center;
+		background-color: #fff;
+		border-bottom: 1px solid #ccc;
+		padding: 12px 6px;
+	}
+	input{
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+	select{
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+	div.result{
+		text-align: center;
+		max-height: 350px;
+		overflow-y: scroll;
+		width: 75%;
+		margin: auto;
+	}
+	table{
+		width: 100%;
+		margin:0;
+		
+		
+	}
+	table td {
+		padding: 12px 56px;
+		background-color: #bdc3c7;
+
+	}
+	table th	{
+		background-color: #3498db;
+		padding: 12px 6px;
+		color: #fff;
+		font-size: 0.8em;
+	}
+</style>
+</html>

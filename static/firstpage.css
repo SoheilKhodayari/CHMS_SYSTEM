@@ -1,0 +1,56 @@
+@font-face{
+    font-family: 'Mitra';
+    src: url('fonts/BMitra.eot?#iefix') format('embedded-opentype'),
+    url('fonts/BMitra.woff') format('woff'),
+    url('fonts/BMitra.ttf') format('truetype');
+}
+	body{
+		background: url('bg.jpg');
+		background-repeat: no-repeat;
+		background-size:cover;
+		background-attachment:fixed;
+		padding: 0;
+		margin: 0;
+		font-family: 'Mitra';
+		color: #454545;
+	}
+	div.h{
+		margin-top: 15%;
+		height: 25%;
+	}
+	div.button{
+		width: 200px;
+		margin: auto;
+		margin-top: 15px;
+	}
+	.forground{
+		background:rgba(255,255,255,0.8);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		margin: 0 !important;
+		text-align: center;
+		padding-top: 25px;
+	}
+	a.button{
+		padding: 10px 19px;
+		width: 100%;
+		font-size: 20px;
+		line-height: 2;
+		font-weight: 400;
+		display: block;
+		text-decoration: none;
+		color: #fff;
+		background-color: #5cb85c;
+		border-radius: 5px;
+		position: relative;
+	}
+	a.button:hover{
+		background: #47a447;
+	}
+	a.orange{
+		background:#f39c12 !important;
+	}
+	a.orange:hover{
+		background-color: #e67e22 !important;
+	}

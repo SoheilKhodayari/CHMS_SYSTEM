@@ -93,6 +93,8 @@ class BaseUser(models.Model): #Person
                                             self.building_no,
                                             self.postal_code
                                             )
+
+
     def __unicode__(self):
           return "%s's profile" % self.user
 
@@ -134,6 +136,16 @@ class Hospital(models.Model,object): #TO DO updating hospital equipment , drugst
                                                     related_name='Brain_and_Nerve_surgery_div',null=True,blank=True)
    ENT_surgery_div=models.OneToOneField(ENT_surgery_div,related_name='ENT_surgery_div',null=True,blank=True)
 
+   def get_phone_numbers(self):
+        try:
+            phones=Phone.objects.filter(hospital=self)
+        except:
+            phones="No Num"
+        p=""
+        for phone in phones:
+            p+="%s | "%str(phone)
+
+        return  p[0:-2]
    @property
    def physiotherapy_object(self):
        try:
