@@ -32,7 +32,7 @@
           <td><a href="{% url 'medicine_app:medicines-detail' medicine.code %}">{{ medicine.code }}</a></td>
           <td >{{ medicine.name }}</td>
           <td>{{ medicine.medicine_type }}</td>
-          <td >{{ medicine.amount }}</td>
+          <td class="amount" >{{ medicine.amount }}</td>
 
           <td>{{ medicine.due_date }}</td>
 
@@ -48,5 +48,16 @@
   </article>
 
 </div>
+    <script>
+     var amounts = document.getElementsByClassName("amount");
 
+     for(i=0 ; i<amounts.length ; i++){
+        if(Number(amounts[i].outerText) <10){
+            amounts[i].style.backgroundColor="#e74c3c";
+        }
+     else if( 11  < Number(amounts[i].outerText)  && 50> Number(amounts[i].outerText) ){  amounts[i].style.backgroundColor="orange";
+     }
+     }
+
+ </script>
 {% endblock content %}

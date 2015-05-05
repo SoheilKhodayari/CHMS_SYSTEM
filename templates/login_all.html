@@ -1,27 +1,40 @@
-<html>
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang='en'>
+<head>
+    <meta charset="UTF-8" /> 
+    <title>
+        HTML Document Structure
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'login_all.css' %}" />
+</head>
 <body>
 
-<form method="POST" action="/login_all/">
-{% csrf_token %}
+<div id="wrapper">
 
+	<form name="login-form" class="login-form" action="/login_all/" method="POST">
+	{% csrf_token %}
+		<div class="header">
+		<h1>Login Form</h1>
+		<span>Fill out the form below to login </span>
+		</div>
+	
+		<div class="content">
+		<input name="username" type="text" id="username" class="input username" placeholder="Username" />
+		<div class="user-icon"></div>
+		<input name="password" type="password" id="password" class="input password" placeholder="Password" />
+		<div class="pass-icon"></div>		
+		</div>
 
-<label for="username">username:</label>
-           <input type="text" name="username" id="username"/>
-           <input type="text" name="password" id="passowrd" />
-           <input type="submit" value="submit" name="submit_search_button"  />
+		<div class="footer">
+		<input type="submit" name="submit" value="Login" class="button" />
+        <p class="error">{{ error}}</p>
+		</div>
+	
+	</form>
 
-
-        </form>
-<p> {{ error }}</p>
-
-<div>
-
-<p> </p>
 </div>
-
-
-
-
+<div class="gradient"></div>
 
 
 </body>

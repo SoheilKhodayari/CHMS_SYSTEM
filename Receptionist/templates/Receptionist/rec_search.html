@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<div class="header">
+	<ul>
+		<a href="{% url 'rec_app:patients-list' %}"><li>Patient List</li></a>
+		<a href="{% url 'patient_app:patirnt_register' %}"><li>Patient Register</li></a>
+		<a href="#home"><li>Hospital status</li></a>
+
+	</ul>
+</div>
+<div class="main">
+	<form method="get" action="">
+		<input type="text" name="q" id="id_q" placeholder="search" />
+        <input type="submit" value="Submit" name="submit_search_button" />
+
+	</form>
+
+	<div class="table">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Section</th>
+        <th>Room</th>
+        <th>Age</th>
+        <th>Gender</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for patient in found_entries %}
+        <tr>
+          <td><a href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
+          <td>{{ patient.user.first_name }}</td>
+          <td>{{ patient.user.last_name }}</td>
+            <td>{{ patient.patient_section }}</td>
+            <td>{{ patient.patient_room }}</td>
+          <td>{{ patient.age }}</td>
+          <td>
+            {% if patient.gender == 'M' %}
+              <i class="fa fa-male"></i> M
+            {% else %}
+              <i class="fa fa-female"></i> F
+            {% endif %}
+          </td>
+
+
+
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+	</div>
+
+</div>
+<style type="text/css">
+	body{
+        background: url("{% static '123.jpg' %}");
+        background-repeat: no-repeat;
+		background-size:cover;
+		background-attachment:fixed;
+		margin:0;
+		padding: 0;
+		font-family: sans-serif;
+	}
+	div.header{
+		background-color: #f9f9f9;
+		width: 100%;
+		margin: 0;
+		color: #454545;
+		text-align: center;
+		margin-bottom: 15px;
+		box-shadow: 0 0 2px #ccc;
+	}
+	div.header ul{
+		padding: 0;
+		margin: 0;
+	}
+	div.header ul li {
+		display: inline-block;
+		border-radius: 4px;
+		padding: 3px;
+		margin: 15px;
+		
+	}
+	div.header ul li:hover{
+		background-color: #fff;
+		color: #428bca;
+		cursor: pointer;
+	}
+	div.header a{
+		text-decoration: none;
+		color: inherit;
+	}
+	div.main{
+		text-align: center;
+	}
+	div.table{
+		width: 75%;
+		margin: auto;
+	}
+	 table{
+	 	width: 100%;
+		margin:auto;
+		margin-top: 25px;
+		margin-bottom: 15px;
+	}
+	 table td {
+		padding: 12px 56px;
+		background-color: #bdc3c7;
+
+	}
+	 table th	{
+		background-color: #3498db;
+		padding: 12px 6px;
+		color: #fff;
+		font-size: 0.8em;
+	}
+    .fa-male {
+  font-size: 20px;
+}
+.fa-female {
+  font-size: 20px;
+}
+</style>
+</body>
+</html>

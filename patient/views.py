@@ -11,7 +11,7 @@ from django.contrib import auth
 from patient.models import *
 from django.contrib.auth.decorators import login_required
 from urllib import urlencode
-
+from django.core.urlresolvers import reverse
 def register(request):
    c={}
    if request.method=="POST":
@@ -75,15 +75,15 @@ def register(request):
                         postal_code=request.POST['postal_code']
                     )
       patient.save()
-      c['birth']=birth
       c.update(csrf(request))
-      return render_to_response('login_all.html',c,context_instance=RequestContext(request))
+      #return render_to_response('login_all.html',c,context_instance=RequestContext(request))
+      return HttpResponseRedirect(reverse('rec_app:patients-list'))
    return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
     
 
 
 
-
+from schedule.models import schedule
 def home(request):
    try:
        if not (request.user.is_authenticated() and request.user.get_profile().user_type==2):
@@ -94,7 +94,15 @@ def home(request):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
-   c={}
+   try:
+       patient=Patient.objects.get(user=request.user)
+   except:
+       patient=None
+   try:
+       sch=schedule.objects.get(patient=patient)
+   except:
+       sch=None
+   c={'patient':patient,'sch':sch}
    c.update(csrf(request))
    return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
 

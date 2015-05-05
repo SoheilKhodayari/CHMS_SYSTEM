@@ -7,7 +7,7 @@ from .views import patient_create_view, patient_update_view,detail,delete,alloca
 
 
 urlpatterns = patterns('',
-    url(r'^home/','Receptionist.views.home'),
+    url(r'^search/','Receptionist.views.search_rec',name='rec_search'),
 
     url(r'^$', patient_list_view, name='patients-list'),
     url(

@@ -14,7 +14,7 @@ from patient.models import Guardian
 
 
 
-def home(request):
+def search_rec(request):
     try:
         if not (request.user.is_authenticated() and request.user.get_profile().user_type==0)  :
             d = {'server_message':"Not Logged In."}
@@ -36,13 +36,13 @@ def home(request):
                 found_entries = Patient.objects.filter(entry_query)
 
 
-            return render_to_response('Receptionist/Receptionist_home.html',
+            return render_to_response('Receptionist/rec_search.html',
                           { 'query_string': query_string, 'found_entries': found_entries },
                           context_instance=RequestContext(request))
 
     #To Do: Handle Other parts of Receptionsit Here
 
-    return render_to_response('Receptionist/Receptionist_home.html',{},context_instance=RequestContext(request))
+    return render_to_response('Receptionist/rec_search.html',{},context_instance=RequestContext(request))
 
 ###########################################################################################################
 
