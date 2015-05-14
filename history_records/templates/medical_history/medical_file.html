@@ -1,24 +1,105 @@
+
 <html>
 <head>
 	<title>Medical File</title>
 	<style type="text/css">
-	 .menus{
+	body{
+		padding: 0;
+		margin: 0;
+		font-family: sans-serif;
+
+	}
+	 div.menus{
+	 	background-color: #f9f9f9;
+		width: 100%;
+		margin: 0;
+		color: #454545;
+		text-align: center;
+		margin-bottom: 15px;
+		box-shadow: 0 0 2px #ccc;
+	 }
+	 .center{
+	 	width: 200px;
+	 	margin: auto;
+	 	margin-top: 15px;
+
+	 }
+	 .left{
+	 	/*float: left*/
+	 }
+	 .content{
 	 	width: 100%;
-	 	height: 50px;
-	 	border: solid;
-	 	text-align: center;
-	 	background-color: #666;
+	 	height: 60px;
+		margin-left: 25px;
+	 	padding-top: 5px;
+
+	 }
+	 .info{
+	 	position:relative;
+	 	display: block;
+	 	margin-top: 15px;
+	 	margin-left: 25px;
+	 	padding-bottom: 5px;
+	 	display: table;
+	 	table-layout: fixed;
+	 	width: 100%;
+	 	/*padding: -top: 5px;*/
+
+	 }
+	 .div1{
+	 	display: table-cell;
+	 	margin: 0px;
+	 	padding: 0px;
+	 	/*float: left;*/
+	 	/*width: 50%;*/
 
 
+	 }
+
+/*	 .info:after {
+	   content: ".";
+	   visibility: hidden;
+	   display: block;
+	   height: 0;
+	   clear: both;
+	   width: 0;
+	}*/
+	 .history{
+	 	clear: both;
+	 }
+	 .cell{
+	 	display: table-cell;
+	 	/*border: solid;*/
+	 }
+	 div.menus ul{
+	 	padding: 0;
+		margin: 0;
+	 }
+	 div.menus ul li{
+	 	display: inline-block;
+		border-radius: 4px;
+		padding: 3px;
+		margin: 15px;
+
+	 }
+	 div.menus ul li:hover{
+	 	background-color: #fff;
+		color: #428bca;
+		cursor: pointer;
+	 }
+	 a{
+
+		text-decoration: none;
+		color: inherit;
 	 }
 	</style>
 </head>
 <body><div class="menus">menus</div>
 		<center>
-		<p><a href="{% url 'history_records:medical_history'  patient.user_id  %}">Medical History Sheet</a></p>
-		<p><a href="{% url 'history_records:phycisian_orders'  patient.user_id  %}">Physician's Order Sheet</a></p>
-		<p><a href="{% url 'history_records:progress_notes'  patient.user_id  %}">Pregress Notes Sheet</a></p>
-		<p><a href="{% url 'history_records:unit_summary'  patient.user_id  %}">Unit Summary Sheet</a></p>
+		<p><a href="{% url 'history_records:medical_history'  patient.user.username  %}">Medical History Sheet</a></p>
+		<p><a href="{% url 'history_records:phycisian_orders'  patient.user.username  %}">Physician's Order Sheet</a></p>
+		<p><a href="{% url 'history_records:progress_notes'  patient.user.username  %}">Pregress Notes Sheet</a></p>
+		<p><a href="{% url 'history_records:unit_summary'  patient.user.username  %}">Unit Summary Sheet</a></p>
 </center>
 
 </body>

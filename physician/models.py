@@ -35,8 +35,8 @@ class Physician(Staff):
                           )
 
 
-    parent_hospital=models.ForeignKey(Hospital)
-    patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True)
+    # parent_hospital=models.ForeignKey(Hospital)
+    # patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True)
     specialty=models.CharField(max_length=3,choices=SPECIALITY_CHOICES)
     graduation_university_name=models.CharField(max_length=200)
     graduation_university_country=models.CharField(max_length=200)

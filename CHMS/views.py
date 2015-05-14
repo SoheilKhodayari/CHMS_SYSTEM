@@ -90,10 +90,10 @@ def login(request):
             auth.login(request,user)
             #return HttpResponseRedirect('/rec/home')
             c['user']=user
-            if user.get_profile().user_type==2 :
+            if user.profile.user_type==2 :
                 #return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
                 return HttpResponseRedirect(reverse("patient_app:patient_home"))
-            elif user.get_profile().user_type==0  :
+            elif user.profile.user_type==0  :
                 #return render_to_response('Receptionist/Receptionist_home.html',c,context_instance=RequestContext(request))
                 return HttpResponseRedirect(reverse("rec_app:rec_search"))
             else:

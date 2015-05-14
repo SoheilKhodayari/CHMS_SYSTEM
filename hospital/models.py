@@ -11,7 +11,8 @@ USER_CHOICES = (
        (2,'patient'),
        (3,'systemAdmin'),
        (4,'CasualUser'),
-       (5,'Pharmacy')
+       (5,'Pharmacy'),
+       (6,'Physician'),
 
        #TO DO : more/less user choices
    )

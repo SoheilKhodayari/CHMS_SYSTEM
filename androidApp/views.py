@@ -28,7 +28,7 @@ def login(request):
     user=User.objects.get(username=username)
 
     if user.check_password(password):
-        return JsonResponse({'success':1,'type':user.profile.user_type})
+        return JsonResponse({'success':'1','type':str(user.profile.user_type)   ,'user_id':str(user.id)})
     else:
         return JsonResponse({'success':0})
 @csrf_exempt
@@ -46,7 +46,7 @@ def get_patient_list(request):
     for patient in patients:
         medi_file=patient.medical_file.get()
         name=patient.user.first_name+' '+patient.user.last_name
-        patient_list.append({'id':patient.user_id,'name':name,
+        patient_list.append({'id':str(patient.user_id),'name':name,
                              'ward':medi_file.ward,'room':medi_file.room,'bed':medi_file.bed})
     response['response']=patient_list
     # a=  HttpResponse(response)
@@ -60,7 +60,7 @@ def get_patient_details(reuest):
     patient=Patient.objects.get(user_id=id)
     medi_file=patient.medical_file.get()
     name=patient.user.first_name+' '+patient.user.last_name
-    response={'id':patient.user_id,'name':name,
+    response={'id':str(patient.user_id),'name':name,
                              'birthday':patient.birthday,
                              'father_name':patient.father_name,
                              'ward':medi_file.ward,
@@ -117,6 +117,7 @@ def set_physician_order(request):
     date=request.POST['date']
     user_id=request.POST['user_id']
     physician=Physician.objects.get(user_id=user_id)
+
     description=request.POST['description']
     patient=Patient.objects.get(user_id=id)
     medi_file=patient.medical_file.get()
@@ -125,9 +126,9 @@ def set_physician_order(request):
         new_order=Order(date=date,time=time,order=description,physician=physician,sheet=orders_sheet)
         new_order.save()
         orders_sheet.orders.add(new_order)
-        return JsonResponse({'success':1})
+        return JsonResponse({'success':'1'})
     except:
-        return JsonResponse({'success':0})
+        return JsonResponse({'success':'0'})
 
 
 @csrf_exempt
@@ -162,7 +163,7 @@ def set_progress_note(request):
     treatment_note.save()
     prog_note.notes.add(treatment_note)
 
-    return JsonResponse({'success':1})
+    return JsonResponse({'success':'1'})
 
 @csrf_exempt
 def get_medical_history(request):
