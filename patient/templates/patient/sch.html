@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+	<div class="schedule" id="schedule">
+
+    {% if sch.event %}
+    <p> Event : {{ sch.event }} </p>
+    <p> Date : {{ sch.event_date }} </p>
+    <p> Time : {{ sch.event_time }} </p>
+    <p> Related_Divison : {{ sch.related_division }} </p>
+    <p> description : {{ sch.description }} </p>
+    {% else %}
+        <p>You have no upcoming event!</p>
+    {% endif %}
+	</div>
+</body>
+</html>

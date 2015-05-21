@@ -75,7 +75,7 @@ def PatientSearch(request):
 @csrf_exempt
 def logout(request):
     auth.logout(request)
-    return HttpResponse('Successfully Logged Out')
+    return HttpResponseRedirect('/')
 
 
 @csrf_exempt
@@ -90,20 +90,16 @@ def login(request):
             auth.login(request,user)
             #return HttpResponseRedirect('/rec/home')
             c['user']=user
-            try:
-            	if user.profile.user_type==2 :
+            if user.get_profile().user_type==2 :
                 #return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
-                	return HttpResponseRedirect(reverse("patient_app:patient_home"))
-            	elif user.profile.user_type==0  :
+                return HttpResponseRedirect(reverse("patient_app:patient_home"))
+            elif user.get_profile().user_type==0  :
                 #return render_to_response('Receptionist/Receptionist_home.html',c,context_instance=RequestContext(request))
-                	return HttpResponseRedirect(reverse("rec_app:rec_search"))
-            	else:
+                return HttpResponseRedirect(reverse("rec_app:rec_search"))
+            else:
 
-                	c['error'] = 'No Part'
-                	return render_to_response('login_all.html',c,context_instance=RequestContext(request))
-            except:
-               	c['error'] = 'wrong credentials try again'
-		return render_to_response('login_all.html',c,context_instance=RequestContext(request))
+                c['error'] = 'No Part'
+                return render_to_response('login_all.html',c,context_instance=RequestContext(request))
         else:
 			c['error'] = 'wrong credentials try again'
 			return render_to_response('login_all.html',c,context_instance=RequestContext(request))

@@ -2,70 +2,94 @@
 <head>
 	<title>Phsician Orders Sheet</title>
 	<style type="text/css">
-	 .menus{
-	 	width: 100%;
-	 	height: 50px;
-	 	border: solid;
-	 	text-align: center;
-	 	background-color: #666;
+	body{
+		padding: 0;
+		margin: 0;
+		font-family: sans-serif;
 
-
+	}
+	 div.menus{
+	 	background-color: #f9f9f9;
+		width: 100%;
+		margin: 0;
+		color: #454545;
+		text-align: center;
+		margin-bottom: 15px;
+		box-shadow: 0 0 2px #ccc;
 	 }
 	 .center{
 	 	width: 200px;
 	 	margin: auto;
-	 }
+	 	margin-top: 15px;
 
+	 }
+	 .left{
+	 	/*float: left*/
+	 }
 	 .content{
 	 	width: 100%;
 	 	height: 60px;
-	 	border: dotted 1px;
+		margin-left: 25px;
 	 	padding-top: 5px;
 
 	 }
 	 .info{
-	 	border: solid 1px;
 	 	position:relative;
 	 	display: block;
-	 	margin: 0px;
-	 	padding: 0px;
+	 	margin-top: 15px;
+	 	margin-left: 25px;
+	 	padding-bottom: 5px;
 	 	display: table;
 	 	table-layout: fixed;
 	 	width: 100%;
-
+	 	/*padding: -top: 5px;*/
 
 	 }
 	 .div1{
 	 	display: table-cell;
 	 	margin: 0px;
 	 	padding: 0px;
+	 	/*float: left;*/
+	 	/*width: 50%;*/
 
-	 	border: solid 1px;
-
-	 }
-
-	 .progress{
-	 	padding-top: 10px;
 
 	 }
-	 table{
-	 	/*padding-top: 100px;*/
-	 	border-collapse: collapse;
-	 }
-	 table,th,td{
-	 	border: 1px solid;
-	 }
-	 .notes{
-	 	width: 70%
 
+/*	 .info:after {
+	   content: ".";
+	   visibility: hidden;
+	   display: block;
+	   height: 0;
+	   clear: both;
+	   width: 0;
+	}*/
+	 .history{
+	 	clear: both;
 	 }
-	 .date{
-	 	width: 10%;
-	 }
-
 	 .cell{
 	 	display: table-cell;
 	 	/*border: solid;*/
+	 }
+	 div.menus ul{
+	 	padding: 0;
+		margin: 0;
+	 }
+	 div.menus ul li{
+	 	display: inline-block;
+		border-radius: 4px;
+		padding: 3px;
+		margin: 15px;
+
+	 }
+	 div.menus ul li:hover{
+	 	background-color: #fff;
+		color: #428bca;
+		cursor: pointer;
+	 }
+	 a{
+
+		text-decoration: none;
+		color: inherit;
 	 }
 	</style>
 </head>
@@ -77,20 +101,20 @@
 		<div>
 		<div class='info'>
 			<div class='div1'>
-			<p>First Name: {{ patient.firstname }} </p>
-			<p>Last Name: {{ patient.lastname }}</p>
+			<p>First Name: {{ patient.user.first_name }}</p>
+			<p>Last Name: {{ patient.user.last_name }}</p>
 			</div>
 			<div class='div1'>
-				<p>Father Name: </p>
+				<p>Father Name:{{ patient.father_name }} </p>
 				<p>Date of Birth: {{ patient.birthday }}</p>
 			</div>
 			<div class='div1'>
-				<p>Attending Physician: </p>
+				<p>Attending Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span>  </p>
 				<p>Date of Addmition: </p>
 			</div>
 		</div>
 		<div class='info' style='padding-top:5px;'>
-		<p class='cell'>Ward:</p><p class='cell'>Room:</p><p class='cell'>Bed:</p>
+		<p class='cell'>Ward:{{ sheet.medical_file.ward }}</p><p class='cell'>Room:{{ sheet.medical_file.room }}</p><p class='cell'>Bed:{{ sheet.medical_file.bed }}</p>
 	</div>
 		</div>
 		<div class='progress'>
@@ -101,26 +125,15 @@
 			    <td>Physician</td>
 			  </thead>
 			  <tbody>
-			    <td>mm/dd/yyy</td>
-			    <td>............................</td> 
-			    <td>Dr.</td>
+              {% for order in sheet.orders.all %}
+			    <td><span>{{ order.date}} </span><span>{{ order.time }}</span></td>
+			    <td>{{ order.order }}</td>
+			    <td><span>{{ order.physician.user.first_name}} </span><span>{{order.physician.user.last_name }}</span></td>
+
 			  </tr>
-			    <td>mm/dd/yyy</td>
-			    <td>............................</td> 
-			    <td>Dr.</td>
-			  </tr>
-			    <td>mm/dd/yyy</td>
-			    <td>............................</td> 
-			    <td>Dr.</td>
-			  </tr>
-			    <td>mm/dd/yyy</td>
-			    <td>............................</td> 
-			    <td>Dr.</td>
-			  </tr>
-			    <td>mm/dd/yyy</td>
-			    <td>............................</td> 
-			    <td>Dr.</td>
-			  </tr>
+
+              {% endfor %}
+
 			  </tbody>
 			</table>
 
