@@ -45,32 +45,6 @@ def PatientSearch(request):
 
     return render_to_response('PatientSearch.html',{},context_instance=RequestContext(request))
 
-# @csrf_exempt
-# def login(request):
-#     c={'error':'','user':''}
-#     if request.method == "POST":
-#         username = request.POST.get('username', '') #retunr '' if no username
-#         password = request.POST.get('password', '')
-#         user = auth.authenticate(username=username, password=password)
-#
-#         if user is not None:
-#             auth.login(request,user)
-#             #return HttpResponseRedirect('/rec/home')
-#             c['user']=user
-#             if user.username[0]=='p' :
-#                 return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
-#             elif user.username[0]=='r'  :
-#                 return render_to_response('Receptionist/Receptionist_home.html',c,context_instance=RequestContext(request))
-#             else:
-#
-#                 c['error'] = 'No Part'
-#                 return render_to_response('login_all.html',c,context_instance=RequestContext(request))
-#         else:
-# 			c['error'] = 'wrong credentials try again'
-# 			return render_to_response('login_all.html',c,context_instance=RequestContext(request))
-#
-#     c.update(csrf(request))
-#     return render_to_response('login_all.html',c,context_instance=RequestContext(request))
 
 @csrf_exempt
 def logout(request):
@@ -90,16 +64,21 @@ def login(request):
             auth.login(request,user)
             #return HttpResponseRedirect('/rec/home')
             c['user']=user
-            if user.get_profile().user_type==2 :
-                #return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
-                return HttpResponseRedirect(reverse("patient_app:patient_home"))
-            elif user.get_profile().user_type==0  :
-                #return render_to_response('Receptionist/Receptionist_home.html',c,context_instance=RequestContext(request))
-                return HttpResponseRedirect(reverse("rec_app:rec_search"))
-            else:
+            try:
+                if user.profile.user_type==2 :
+                    #return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
+                    return HttpResponseRedirect(reverse("patient_app:patient_home"))
+                elif user.profile.user_type==0  :
+                    #return render_to_response('Receptionist/Receptionist_home.html',c,context_instance=RequestContext(request))
+                    return HttpResponseRedirect(reverse("rec_app:rec_search"))
+                else:
 
-                c['error'] = 'No Part'
-                return render_to_response('login_all.html',c,context_instance=RequestContext(request))
+                    c['error'] = 'No Part'
+                    return render_to_response('login_all.html',c,context_instance=RequestContext(request))
+            except:
+                    c['error'] = 'wrong credentials try again'
+		    return render_to_response('login_all.html',c,context_instance=RequestContext(request))
+                
         else:
 			c['error'] = 'wrong credentials try again'
 			return render_to_response('login_all.html',c,context_instance=RequestContext(request))
