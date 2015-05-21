@@ -8,7 +8,7 @@ from medicine.views import *
 from django.http import HttpResponse
 from urllib import urlencode
 from django.views.decorators.csrf import csrf_exempt
-
+from hospital.models import BaseUser
 
 @csrf_exempt
 def login(request):
@@ -25,11 +25,19 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
 
         if user is not None :
-          if user.get_profile().user_type==5:
-            auth.login(request,user)
-            c['user']=user
-            #return render_to_response('medicine/list.html',c,context_instance=RequestContext(request))
-            return HttpResponseRedirect(reverse('medicine_app:medicines-list'))
+            try:
+              if user.profile.user_type==5:
+                auth.login(request,user)
+                c['user']=user
+                #return render_to_response('medicine/list.html',c,context_instance=RequestContext(request))
+                return HttpResponseRedirect(reverse('medicine_app:medicines-list'))
+            except:
+                c['error'] = 'not valid'
+                d = {'server_message':"wrong credentials try again"}
+                query_str = urlencode(d)
+                request.session['server_message']='wrong credentials try again'
+                return HttpResponseRedirect('/pharmacy/login/?' +query_str)
+                
         else:
                 c['error'] = 'wrong credentials try again'
                 #return render_to_response('pharmacy/pharmacy.html',c,context_instance=RequestContext(request))
