@@ -7,12 +7,9 @@ class Patient(BaseUser):
     firstname=models.CharField(max_length=50,blank=True) # used for searching
     lastname=models.CharField(max_length=50,blank=True)  # used for searching
 
-
-    #user=models.OneToOneField(User,primary_key=True,verbose_name='Patient')
-    parent_hospital=models.ForeignKey(Hospital,null=True)
-    # patient_hospital_id = models.CharField('Hospital_ID', max_length=15, unique=True,null=True) #To Be Deleted
-    patient_section=models.CharField("section",max_length=100,null=True)
-    patient_room=models.CharField("room_num",max_length=100,null=True)
+    parent_hospital=models.ForeignKey(Hospital,null=True,blank=True)
+    patient_section=models.CharField("section",max_length=100,null=True,blank=True)
+    patient_room=models.CharField("room_num",max_length=100,null=True,blank=True)
 
     def save(self, *args, **kwargs):
         self.username=self.user.username
@@ -34,7 +31,6 @@ class Patient(BaseUser):
         return self.user.first_name+" "+self.user.last_name
         # return "Salam"
 
-    #To Do : complete patient detail,methods
 
 class Guardian(models.Model):
 

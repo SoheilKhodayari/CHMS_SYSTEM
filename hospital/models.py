@@ -43,13 +43,6 @@ class BaseUser(models.Model): #Person
         ('F', 'Female'),
     )
 
-    # below fields are inherited via User
-    #username=models.CharField(max_length=50,unique=True,primary_key=True)
-    #password=models.CharField(max_length=50)
-    #first_name=models.CharField(max_length=50)
-    #last_name=models.CharField(max_length=50)
-    #email = models.EmailField(max_length=75,blank=True,null=True)
-
 
     #More basic Info
     Tel  = models.CharField(max_length=25,null=True,blank=True)
@@ -105,7 +98,7 @@ class BaseUser(models.Model): #Person
 #     if created:
 #        profile, created = BaseUser.objects.get_or_create(user=instance)
 #     post_save.connect(create_user_profile, sender=User)
-class Hospital(models.Model,object): #TO DO updating hospital equipment , drugstore ?
+class Hospital(models.Model,object): 
 
    def __init__(self, *args, **kwargs):
       super(Hospital,self).__init__(*args, **kwargs)
@@ -395,10 +388,10 @@ class Staff(BaseUser):
 
     staff_role = models.CharField("Staff Role",max_length=100,
                                          help_text=" This is the Role of the Staff in the Hospital",
-                                         choices=Hospital_STAFF_ROLE)
-    is_staff_head = models.BooleanField("Is Staff Head of the Department",default=None)
+                                         choices=Hospital_STAFF_ROLE,null=True,blank=True)
     photo=models.ImageField(null=True,blank=True,upload_to='images/')
-    hospital = models.ForeignKey(Hospital)
+    is_staff_head = models.BooleanField("Is Staff Head of the Department",default=False,blank=True)
+    hospital = models.ForeignKey(Hospital,null=True,blank=True)
 
 
     def __unicode__(self):

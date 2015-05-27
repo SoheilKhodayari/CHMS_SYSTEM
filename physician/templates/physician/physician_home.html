@@ -2,15 +2,14 @@
 {% load staticfiles %}
 <html>
 <head>
-	<title>patient page</title>
+	<title>physician page</title>
 	<meta charset="utf-8">
 </head>
 <body>
 <div class="sidebar">
 	<ul>
 		<a href="#profile"><li>Profile</li></a>
-		<a href="#history"><li>History</li></a>
-		<a href="#schedule"><li>Schedule</li></a>
+		<a href="#app"><li>app</li></a>
 		<a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
 		<a href="{% url 'PatientSearch' %}"><li>Search</li></a>
 	</ul>
@@ -18,32 +17,16 @@
 <div class="main">
 	<div class="module" id="profile">
 		<p><img src="{% static 'bg.jpg' %}"></p>
-		<p>Username : {{ patient.user.username}} </p>
-		<p>FirstName : {{ patient.user.first_name}} </p>
-		<p>LastName : {{ patient.user.last_name}} </p>
-		<p>Email: {{ patient.user.email}}</p>
-		<p>social security number :{{ patient.ssn}} </p>
-		<p>Birthday : {{ patient.birthday }}</p>
-		<p>Age : {{ patient.age }}</p>
-		<p>Occuption : {{ patient.occupation}} </p>
-		<p>Address : {{ patient.get_address_as_string }}</p>
+		<p>Username : {{ doc.user.username}} </p>
+		<p>FirstName : {{ doc.user.first_name}} </p>
+		<p>LastName : {{ doc.user.last_name}} </p>
+		<p>Email: {{ doc.user.email}}</p>
+		<p>social security number :{{ doc.ssn}} </p>
+		<p>Birthday : {{ doc.birthday }}</p>
+		<p>Age : {{ doc.age }}</p>
+		<p>Address : {{ doc.get_address_as_string }}</p>
 
-	</div>
-	<div class="module" id="history"></div>
-	<div class="schedule" id="schedule">
-
-    {% if sch.event %}
-    <p> Event : {{ sch.event }} </p>
-    <p> Date : {{ sch.event_date }} </p>
-    <p> Time : {{ sch.event_time }} </p>
-    <p> Related_Divison : {{ sch.related_division }} </p>
-    <p> description : {{ sch.description }} </p>
-    {% else %}
-        <p>You have no upcoming event!</p>
-    {% endif %}
-	</div>
-	<div class="module" id="messages"></div>
-	<div class="module" id="search"></div>
+    </div>
 </div>
 </body>
 <style type="text/css">

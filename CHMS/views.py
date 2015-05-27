@@ -26,7 +26,7 @@ def SystemHomePage(request):
 
 def PatientSearch(request):
     if request.method == 'GET':
-        if request.GET.get("submit_search_btn"): # if search submit button clicked
+        if request.GET.get("submit_search_btn"): 
             query_string = ''
             found_entries = None
             if ('q' in request.GET) and request.GET['q'].strip():
@@ -41,7 +41,6 @@ def PatientSearch(request):
                           { 'query_string': query_string, 'found_entries': found_entries },
                           context_instance=RequestContext(request))
 
-    #To Do: Handle Other parts of Receptionsit Here
 
     return render_to_response('PatientSearch.html',{},context_instance=RequestContext(request))
 
@@ -56,21 +55,20 @@ def logout(request):
 def login(request):
     c={'error':'','user':''}
     if request.method == "POST":
-        username = request.POST.get('username', '') #retunr '' if no username
+        username = request.POST.get('username', '') 
         password = request.POST.get('password', '')
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
             auth.login(request,user)
-            #return HttpResponseRedirect('/rec/home')
             c['user']=user
             try:
                 if user.profile.user_type==2 :
-                    #return render_to_response('patient/patient_home.html',c,context_instance=RequestContext(request))
                     return HttpResponseRedirect(reverse("patient_app:patient_home"))
                 elif user.profile.user_type==0  :
-                    #return render_to_response('Receptionist/Receptionist_home.html',c,context_instance=RequestContext(request))
                     return HttpResponseRedirect(reverse("rec_app:rec_search"))
+                elif user.profile.user_type==6 :
+                    return HttpResponseRedirect(reverse("doc_app:doc_home"))
                 else:
 
                     c['error'] = 'No Part'
