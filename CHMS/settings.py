@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'medicine',
     'androidApp',
     'schedule',
+    'nurse',
     'messages',
 )
 
@@ -109,6 +110,8 @@ USE_TZ = True
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR , "static"),
     )

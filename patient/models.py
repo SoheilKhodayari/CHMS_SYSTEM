@@ -28,7 +28,8 @@ class Patient(BaseUser):
                                             self.postal_code
                                             )
     def __unicode__(self):
-        return self.firstname+" "+self.lastname
+        return self.user.first_name+" "+self.user.last_name
+        # return "Salam"
 
 
 class Guardian(models.Model):

@@ -13,6 +13,7 @@ USER_CHOICES = (
        (4,'CasualUser'),
        (5,'Pharmacy'),
        (6,'Physician'),
+       (7,'Nurse'),
 
        #TO DO : more/less user choices
    )
@@ -388,6 +389,7 @@ class Staff(BaseUser):
     staff_role = models.CharField("Staff Role",max_length=100,
                                          help_text=" This is the Role of the Staff in the Hospital",
                                          choices=Hospital_STAFF_ROLE,null=True,blank=True)
+    photo=models.ImageField(null=True,blank=True,upload_to='images/')
     is_staff_head = models.BooleanField("Is Staff Head of the Department",default=False,blank=True)
     hospital = models.ForeignKey(Hospital,null=True,blank=True)
 
