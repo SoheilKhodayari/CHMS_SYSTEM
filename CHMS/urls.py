@@ -2,6 +2,14 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 from CHMS import views
+
+from django.conf import settings
+
+# ... your normal urlpatterns here
+
+
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'CHMS.views.home', name='home'),
@@ -24,3 +32,9 @@ urlpatterns = patterns('',
 
     
 )
+
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))
