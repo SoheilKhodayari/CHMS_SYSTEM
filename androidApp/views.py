@@ -235,7 +235,7 @@ def set_progress_note(request):
         physician=Physician.objects.get(user_id=user_id)
     except:
         return HttpResponse('Failed "no physician with this id"')
-        note=request.POST['description']
+    note=request.POST['description']
     try:
         patient=Patient.objects.get(user_id=id)
     except:
