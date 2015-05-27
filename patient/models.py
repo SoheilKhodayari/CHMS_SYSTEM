@@ -2,7 +2,7 @@ from django.db import models
 from hospital.models import BaseUser,Hospital
 from django.contrib.auth.models import User
 class Patient(BaseUser):
-
+    photo=models.ImageField(null=True,blank=True,upload_to='images/patient')
     username=models.CharField(max_length=50,unique=True,blank=True)
     firstname=models.CharField(max_length=50,blank=True) # used for searching
     lastname=models.CharField(max_length=50,blank=True)  # used for searching
