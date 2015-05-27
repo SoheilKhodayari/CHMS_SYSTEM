@@ -308,5 +308,6 @@ def get_physician_details(request):
         except:
             photo='None'
         response={'name':nurse.user.first_name+nurse.user.last_name,'speciality':'Nurse','photo':photo}
+    else:
+        return HttpResponse('not valid type')
     return JsonResponse(response)
-

@@ -9,12 +9,8 @@
 
 <div class="header">
 	<ul>
-		<a href="{% url 'rec_app:patients-list' %}"><li>Patient List</li></a>
-        <a href="{% url 'doc_app:doc_register' %}"><li>Physician Register</li></a>
-		<a href="{% url 'patient_app:patient_register' %}"><li>Patient Register</li></a>
+        <a href="{% url 'doc_app:doc_home' %}"><li>Profile</li></a>
         <a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
-		<a href="{% url 'messages_inbox' %}"><li>Hospital status</li></a>
-
 	</ul>
 </div>
 <div class="main">
@@ -41,7 +37,7 @@
     <tbody>
       {% for patient in found_entries %}
         <tr>
-          <td><a href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
+          <td><a href="{% url 'history_records:system_home' patient.user.username %}">{{ patient.user.username }}</a></td>
           <td>{{ patient.user.first_name }}</td>
           <td>{{ patient.user.last_name }}</td>
             <td>{{ patient.patient_section }}</td>

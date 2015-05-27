@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{%load static%}
 <html>
 <head>
 	<title>physician page</title>
@@ -8,10 +9,10 @@
 <body>
 <div class="sidebar">
 	<ul>
-		<a href="#profile"><li>Profile</li></a>
-		<a href="#app"><li>app</li></a>
+		<a href="#"><li>Profile</li></a>
+		<a href="{% url 'doc_app:download' %}"><li> Download App</li></a>
 		<a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
-		<a href="{% url 'PatientSearch' %}"><li>Search</li></a>
+		<a href="{% url 'doc_app:doc_search' %}"><li>Search</li></a>
 	</ul>
 </div>
 <div class="main">
