@@ -9,7 +9,12 @@ from django.core.context_processors import csrf
 from urllib import urlencode
 from patient.models import *
 from django.core.urlresolvers import reverse
-
+from Receptionist.search import *
+from django.conf import settings
+from django.core.servers.basehttp import FileWrapper
+from django.utils.encoding import smart_str
+import os
+import mimetypes
 
 def register(request):
    c={}
@@ -76,19 +81,55 @@ def home(request):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
+
    try:
        doc=Physician.objects.get(user=request.user)
    except:
        doc=None
 
-   c={'doc':doc,'sch':None}
+   c={'doc':doc}
    c.update(csrf(request))
    return render_to_response('physician/physician_home.html',c,context_instance=RequestContext(request))
 
 
+def doc_search(request):
+    try:
+        if not (request.user.is_authenticated() and request.user.profile.user_type==6)  :
+            d = {'server_message':"Not Logged In."}
+            query_str = urlencode(d)
+            return HttpResponseRedirect('/login_all/?' +query_str)
+    except:
+            d = {'server_message':"not logged in"}
+            query_str = urlencode(d)
+            return HttpResponseRedirect('/login_all/?' +query_str)
+    if request.method == 'GET':
+        if request.GET.get("submit_search_button"):
+            query_string = ''
+            found_entries = None
+            if ('q' in request.GET) and request.GET['q'].strip():
+                query_string = request.GET['q']
+
+                entry_query = get_query(query_string, ['firstname', 'lastname','patient_section','patient_room','user__username'])
+
+                found_entries = Patient.objects.filter(entry_query)
 
 
+            return render_to_response('physician/doc_search.html',
+                          { 'query_string': query_string, 'found_entries': found_entries },
+                          context_instance=RequestContext(request))
 
+
+    return render_to_response('physician/doc_search.html',{},context_instance=RequestContext(request))
+
+def download(request,file_name="app.txt"):
+    file_path = settings.MEDIA_ROOT +'/'+ file_name
+    file_wrapper = FileWrapper(file(file_path,'rb'))
+    file_mimetype = mimetypes.guess_type(file_path)
+    response = HttpResponse(file_wrapper, content_type=file_mimetype )
+    response['X-Sendfile'] = file_path
+    response['Content-Length'] = os.stat(file_path).st_size
+    response['Content-Disposition'] = 'attachment; filename=%s' % smart_str(file_name)
+    return response
 
 
 
