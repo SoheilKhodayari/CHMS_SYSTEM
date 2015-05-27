@@ -85,7 +85,7 @@ def get_patient_list(request):
             except:
                 pass
     else:
-        return HttpResponse('not valid type')
+        return HttpResponse('Failed')
 
     response['response']=patient_list
 
