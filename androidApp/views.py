@@ -102,6 +102,10 @@ def get_patient_details(reuest):
         medi_file=patient.medical_file.get()
     except:
         return HttpResponse('Failed')
+    try:
+        photo=patient.photo.url
+    except:
+        photo='None'
     name=patient.user.first_name+' '+patient.user.last_name
     response={'id':str(patient.user_id),'name':name,
                              'birthday':patient.birthday,
@@ -109,7 +113,8 @@ def get_patient_details(reuest):
                              'ward':medi_file.ward,
                              'room':medi_file.room,
                              'bed':medi_file.bed,
-                             'add_date':medi_file.date_of_addmition}
+                             'add_date':medi_file.date_of_addmition,
+                             'photo':photo}
 
     return JsonResponse(response)
 
