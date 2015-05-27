@@ -12,48 +12,24 @@ from patient.models import *
 from django.contrib.auth.decorators import login_required
 from urllib import urlencode
 from django.core.urlresolvers import reverse
+from schedule.models import schedule
+
 def register(request):
    c={}
    if request.method=="POST":
-#     username=request.POST['username']
-#     first_name=request.POST['first_name']
-#     last_name=request.POST['last_name']
-#     email=request.POST['email']
-#     Tel=request.POST['tel']
-#     ssn=request.POST['ssn']
-      #b_day=request.POST.get('day','')
-      #b_month=request.POST.get('month','')
-     # b_year=request.POST.get('year','')
-      #try:
-     # birth=datetime.datetime(b_year,b_month,b_day)
-      birth=request.POST['birthday']
-      #except:
-        # birth=None
-#     age=request.POST['age']
-#     marital_status=request.POST['marital_status']
-#     marital_status_notes=request.POST['marital_status_notes']
-#     occupation=request.POST['occupation']
-#     occupation_notes=request.POST['occupation_notes']
-#     country=request.POST['country']
-#     city=request.POST['city']
-#     district=request.POST['district']
-#     street=request.POST['street']
-#     alley=request.POST['alley']
-#     building_no=request.POST['building_no']
-#     postal_code=request.POST['postal_code']
-      fname=request.POST['first_name']
-      lname=request.POST['last_name']
-      user=User.objects.create_user(username=request.POST['username'] ,
-                password=request.POST['ssn'],
-                first_name=fname,
-                last_name=lname,
-                email=request.POST['email']
-                )
-      user.save()
+       try:
+                birth=request.POST['birthday']
+                fname=request.POST['first_name']
+                lname=request.POST['last_name']
+                user=User.objects.create_user(username=request.POST['username'] ,
+                        password=request.POST['ssn'],
+                        first_name=fname,
+                        last_name=lname,
+                        email=request.POST['email']
+                        )
+                user.save()
 
-
-    
-      patient=Patient(  #user_id=None,
+                patient=Patient(
                         user_type=2,
                         user=user,
                         firstname=fname,
@@ -63,9 +39,7 @@ def register(request):
                         birthday=birth,
                         age=request.POST['age'],
                         marital_status=request.POST['marital_status'],
-                        #marital_status_notes=request.POST['marital_status_notes'],
                         occupation=request.POST['occupation'],
-                        #occupation_notes=request.POST['occupation_notes'],
                         country=request.POST['country'],
                         city=request.POST['city'],
                         district=request.POST['district'],
@@ -73,17 +47,23 @@ def register(request):
                         alley=request.POST['alley'],
                         building_no=request.POST['building_no'],
                         postal_code=request.POST['postal_code']
-                    )
-      patient.save()
-      c.update(csrf(request))
-      #return render_to_response('login_all.html',c,context_instance=RequestContext(request))
-      return HttpResponseRedirect(reverse('rec_app:patients-list'))
+                     )
+                patient.save()
+       except:
+          try:
+            if user: user.delete()
+            if patient: patient.delete()
+          except:
+              pass
+          return HttpResponse("An Error Has Occured During Registration, Since Required Fields Are Not  \
+                              Entered Properly , Please Try Again" )
+
+
+       c.update(csrf(request))
+       return HttpResponseRedirect(reverse('rec_app:patients-list'))
    return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
-    
 
 
-
-from schedule.models import schedule
 def home(request):
    try:
        if not (request.user.is_authenticated() and request.user.get_profile().user_type==2):
