@@ -1,7 +1,53 @@
-{% extends "Receptionist/rec_base.html" %}
+<!DOCTYPE html>
 {% load staticfiles %}
+<html>
 
-{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Navbar -->
+
+</head>
+
+<body>
+
+<head>
+<body>
+<nav class="t">
+  <div class="header">
+
+    <div>
+      <ul class="header ul li">
+        <li class="active"><a href="{% url 'rec_app:patients-list' %}">Patient List</a></li>
+        <li><a href="{% url 'rec_app:rec_search' %}">Search</a></li>
+        <li><a href="{% url 'rec_app:patients-create' %}">BedRidden Registeration</a></li>
+        <li><a href="{% url 'messages_inbox' %}">Messages</a></li>
+        <a href="{% url 'history_records:system_home' patient.user.username %}"><li>Patient History</li></a>
+        {% if not ward %}
+         <a href="{% url 'rec_app:allocate-ward' patient.username %}"> <li>Allocate Guardian </li></a>
+         {% else %}
+         <a href="{% url 'rec_app:update-ward' patient.username %}" > <li>Update Guardian</li> </a>
+        {% endif %}
+     {% if not sch %}
+      <a href="{% url 'rec_app:set-schedule' patient.username %}" > <li>Set Schedule</li> </a>
+      {% else %}
+      <a href="{% url 'rec_app:update-schedule' patient.username %}" ><li> Update Schedule</li> </a>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+...
+</head>
+
+
+<div class="container">
+ {% block content %}
 
 <div class="panel panel-primary">
 
@@ -17,11 +63,11 @@
     {% if patient.username %}
       <p>Username: <strong>{{ patient.username }}</strong></p>
     {% endif %}
-    
+
     {% if patient.firstname %}
       <p>Firstname: <strong>{{ patient.firstname|title }}</strong></p>
     {% endif %}
-    
+
     {% if patient.lastname %}
       <p>Lastname: <strong>{{ patient.last_name|title }}</strong></p>
     {% endif %}
@@ -37,7 +83,7 @@
     {% if patient.ssn %}
       <p>SSN: <strong>{{ patient.ssn }}</strong></p>
     {% endif %}
-    
+
     {% if patient.age %}
       <p>Age: <strong>{{ patient.age }}</strong></p>
     {% endif %}
@@ -46,19 +92,19 @@
       <p>Birthday: <strong>{{ patient.birthday}}</strong></p>
     {% endif %}
 
-    
+
     {% if patient.gender %}
       <p>Gender: <strong>{{ patient.gender }}</strong></p>
     {% endif %}
-    
+
     {% if patient.get_address_as_string %}
       <p>Address: <strong>{{ patient.get_address_as_string }}</strong></p>
     {% endif %}
-    
+
     {% if patient.email %}
       <p>Email: <strong>{{ patient.email }}</strong></p>
     {% endif %}
-    
+
     {% if patient.Tel %}
       <p>Tel: <strong>{{ patient.Tel }}</strong></p>
     {% endif %}
@@ -120,25 +166,7 @@
     <p>
       <a href="{% url 'rec_app:patients-delete' patient.username %}" class="btn btn-primary btn-block"> Delete This Patient </a>
     </p>
-      {% if not ward %}
-        <p>
-      <a href="{% url 'rec_app:allocate-ward' patient.username %}" class="btn btn-primary btn-block"> Allocate Guardian </a>
-    </p>
-      {% else %}
-    <p>
-      <a href="{% url 'rec_app:update-ward' patient.username %}" class="btn btn-primary btn-block"> Update Guardian </a>
-    </p>
-      {% endif %}
 
-     {% if not sch %}
-        <p>
-      <a href="{% url 'rec_app:set-schedule' patient.username %}" class="btn btn-primary btn-block"> Set Schedule </a>
-    </p>
-      {% else %}
-    <p>
-      <a href="{% url 'rec_app:update-schedule' patient.username %}" class="btn btn-primary btn-block"> Update Schedule </a>
-    </p>
-      {% endif %}
   </article>
 
 </div>
@@ -147,3 +175,47 @@
 
 
 {% endblock content %}
+
+
+</div>
+
+{% block js %}
+  <!-- Jquery -->
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{% endblock js %}
+<style type="text/css">
+	div.header{
+		background-color: #f9f9f9;
+		width: 100%;
+		margin: 0;
+		color: #454545;
+		text-align: center;
+		margin-bottom: 15px;
+		box-shadow: 0 0 2px #ccc;
+	}
+	div.header ul{
+		padding: 0;
+		margin: 0;
+	}
+	div.header ul li {
+		display: inline-block;
+		border-radius: 4px;
+		padding: 3px;
+		margin: 15px;
+
+	}
+	div.header ul li:hover{
+		background-color: #fff;
+		color: #428bca;
+		cursor: pointer;
+	}
+	div.header a{
+		text-decoration: none;
+		color: inherit;
+	}
+</style>
+</body>
+
+</html>
