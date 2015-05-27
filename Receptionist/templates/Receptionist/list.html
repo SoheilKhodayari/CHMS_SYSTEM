@@ -1,25 +1,7 @@
-{% extends "base.html" %}
+{% extends "Receptionist/rec_base.html" %}
 {% load staticfiles %}
 
 {% block content %}
-
- <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    Comprehensive Search
-
-      <a href="{% url 'rec_app:rec_search' %}">
-       Here</a>.
-  </div>
-
-{% if not patients %}
-  <div class="alert alert-warning alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    There are no patients for now!
-
-      <a href="{% url 'rec_app:patients-create' %}">
-       Enter One</a>.
-    {% endif %}
-  </div>
 
 
 <div class="panel panel-primary">

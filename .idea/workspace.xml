@@ -2,36 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4df0fcb6-74e9-4ea5-a8b0-214e325e20d6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/management/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/management/commands/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templatetags/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/admin.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/compose.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/context_processors.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/management/commands/delete_deleted_messages.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/fields.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/inbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templatetags/inbox.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/models.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/new_message.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/outbox.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/trash.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/utils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/templates/messages/view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/messages/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CHMS_SYSTEM.iml" afterPath="$PROJECT_DIR$/.idea/CHMS_SYSTEM.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/patient/templates/patient/patient_home.html" afterPath="$PROJECT_DIR$/patient/templates/patient/patient_home.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physician/templates/physician/physician_home.html" afterPath="$PROJECT_DIR$/physician/templates/physician/physician_home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/allocate_ward.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/allocate_ward.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/create.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/create.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_schedule.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_schedule.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_ward.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_ward.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/detail.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/messages/templates/messages/index.html" afterPath="$PROJECT_DIR$/messages/templates/messages/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/list.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/navbar.css" afterPath="$PROJECT_DIR$/static/css/navbar.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_search.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHMS/settings.py" afterPath="$PROJECT_DIR$/CHMS/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/CHMS/urls.py" afterPath="$PROJECT_DIR$/CHMS/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/physician/views.py" afterPath="$PROJECT_DIR$/physician/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/set_schedule.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/set_schedule.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/update.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/update.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/update_schedule.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/update_schedule.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Receptionist/templates/Receptionist/ward_allocation_update.html" afterPath="$PROJECT_DIR$/Receptionist/templates/Receptionist/ward_allocation_update.html" />
     </list>
     <ignored path="CHMS_SYSTEM.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,7 +37,26 @@
     <favorites_list name="CHMS_SYSTEM" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="rec_base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="25" selection-start="320" selection-end="320" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1530">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rec_search.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_search.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="0" selection-start="70" selection-end="70" vertical-scroll-proportion="0.20286396" vertical-offset="0" max-vertical-offset="2431">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -72,14 +75,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/CHMS/settings.py" />
-        <option value="$PROJECT_DIR$/CHMS/urls.py" />
+        <option value="$PROJECT_DIR$/messages/views.py" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/create.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/allocate_ward.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_schedule.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_ward.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/detail.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/set_schedule.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/update.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/update_schedule.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/ward_allocation_update.html" />
+        <option value="$PROJECT_DIR$/static/css/navbar.css" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/list.html" />
+        <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_base.html" />
         <option value="$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_search.html" />
         <option value="$PROJECT_DIR$/messages/templates/messages/index.html" />
-        <option value="$PROJECT_DIR$/patient/templates/patient/patient_home.html" />
-        <option value="$PROJECT_DIR$/physician/templates/physician/physician_home.html" />
-        <option value="$PROJECT_DIR$/physician/views.py" />
-        <option value="$PROJECT_DIR$/messages/views.py" />
       </list>
     </option>
   </component>
@@ -158,6 +169,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHMS_SYSTEM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHMS_SYSTEM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHMS_SYSTEM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHMS_SYSTEM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="schedule" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -204,7 +247,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="management" />
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -218,15 +265,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="messages" />
+              <option name="myItemId" value="Receptionist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHMS_SYSTEM" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CHMS_SYSTEM" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="management" />
+              <option name="myItemId" value="Receptionist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -250,6 +307,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\soheil\Documents\GitHub\CHMS_SYSTEM\Receptionist\templates\Receptionist" />
       <recent name="C:\Users\soheil\Documents\GitHub\CHMS_SYSTEM" />
     </key>
   </component>
@@ -424,14 +482,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19897959" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.8010204" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24944155" sideWeight="0.8010204" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -458,131 +516,115 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/messages/templates/messages/outbox.html">
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_ward.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/PatientSearch.html">
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/delete_schedule.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="14" selection-start="337" selection-end="337" vertical-scroll-proportion="-0.081145585" vertical-offset="255" max-vertical-offset="1530">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/Receptionist_home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/set_schedule.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/update_schedule.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/ward_allocation_update.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="42" selection-start="42" selection-end="42" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.20286396" vertical-offset="0" max-vertical-offset="1122">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/navbar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="0" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="8" selection-start="131" selection-end="131" vertical-scroll-proportion="0.16229117" vertical-offset="51" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="1" selection-start="315" selection-end="315" vertical-scroll-proportion="0.3935185" vertical-offset="0" max-vertical-offset="1598">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Receptionist/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.2988764" vertical-offset="133" max-vertical-offset="1394">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/messages/templates/messages/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="26" selection-start="83" selection-end="83" vertical-scroll-proportion="0.16229117" vertical-offset="0" max-vertical-offset="1683">
+        <state line="9" column="4" selection-start="120" selection-end="120" vertical-scroll-proportion="-1.947494" vertical-offset="969" max-vertical-offset="1700">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patient/templates/patient/patient_home.html">
+    <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="66" selection-start="337" selection-end="337" vertical-scroll-proportion="0.5274463" vertical-offset="0" max-vertical-offset="1853">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physician/templates/physician/physician_home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="39" selection-start="226" selection-end="226" vertical-scroll-proportion="0.20286396" vertical-offset="102" max-vertical-offset="1564">
+        <state line="12" column="25" selection-start="320" selection-end="320" vertical-scroll-proportion="-7.8461537" vertical-offset="0" max-vertical-offset="1530">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Receptionist/templates/Receptionist/rec_search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="9" selection-start="359" selection-end="417" vertical-scroll-proportion="0.5274463" vertical-offset="0" max-vertical-offset="2414">
+        <state line="5" column="0" selection-start="70" selection-end="70" vertical-scroll-proportion="0.20286396" vertical-offset="0" max-vertical-offset="2431">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/physician/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="7" selection-start="2616" selection-end="2616" vertical-scroll-proportion="1.8337078" vertical-offset="255" max-vertical-offset="1751">
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/management/commands/delete_deleted_messages.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="646">
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/context_processors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/fields.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.3611112" vertical-offset="588" max-vertical-offset="1020">
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1037">
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-3.1712964" vertical-offset="1370" max-vertical-offset="1802">
-          <folding>
-            <element signature="e#0#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="445">
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.9168539" vertical-offset="408" max-vertical-offset="1173">
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/messages/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="164" column="0" selection-start="6198" selection-end="6198" vertical-scroll-proportion="0.43287036" vertical-offset="2601" max-vertical-offset="3230">
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
