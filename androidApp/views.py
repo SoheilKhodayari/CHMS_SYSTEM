@@ -29,15 +29,15 @@ def login(request):
     try:
         user=User.objects.get(username=username)
     except:
-        return JsonResponse({'success':0})
+        return JsonResponse({'success':'0'})
     # if (user.profile.user_type==1):
     if user.check_password(password):
         if user.profile.user_type==7 or user.profile.user_type==6:
             return JsonResponse({'success':'1','type':str(user.profile.user_type),'user_id':str(user.id)})
         else:
-            return JsonResponse({'success':0})
+            return JsonResponse({'success':'0'})
     else:
-        return JsonResponse({'success':0})
+        return JsonResponse({'success':'0'})
 @csrf_exempt
 def get_diagnose_file(request):
 
@@ -84,6 +84,8 @@ def get_patient_list(request):
                                      'ward':medi_file.ward,'room':medi_file.room,'bed':medi_file.bed})
             except:
                 pass
+    else:
+        return HttpResponse('not valid type')
 
     response['response']=patient_list
 
