@@ -14,7 +14,7 @@ from django.core.urlresolvers import reverse
 def register(request):
    c={}
    if request.method=="POST":
-       #try:
+       try:
             birth=request.POST['birthday']
             fname=request.POST['first_name']
             lname=request.POST['last_name']
@@ -48,20 +48,20 @@ def register(request):
                         graduation_university_city=request.POST['graduation_university_city'],
                         degree=request.POST['degree'])
             physician.save()
-       #except:
-            #try:
-                #if user:
-                #    user.delete()
-               # if physician:
-                #    physician.delete()
-            #except:
-            #    pass
-            #return HttpResponse("An Error Has Occured During Registration, Since Required Fields Are Not    \
-                            #    Entered Properly , Please Try Again" )
+       except:
+            try:
+                if user:
+                    user.delete()
+                if physician:
+                    physician.delete()
+            except:
+                pass
+            return HttpResponse("An Error Has Occured During Registration, Since Required Fields Are Not    \
+                                Entered Properly , Please Try Again" )
 
 
-            c.update(csrf(request))
-            return HttpResponseRedirect(reverse('rec_app:rec_search'))
+       c.update(csrf(request))
+       return HttpResponseRedirect(reverse('rec_app:rec_search'))
    return render_to_response('physician/register.html',c,context_instance=RequestContext(request))
 
 
@@ -81,7 +81,7 @@ def home(request):
    except:
        doc=None
 
-   c={'doc':doc}
+   c={'doc':doc,'sch':None}
    c.update(csrf(request))
    return render_to_response('physician/physician_home.html',c,context_instance=RequestContext(request))
 

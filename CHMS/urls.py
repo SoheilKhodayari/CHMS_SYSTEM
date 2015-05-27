@@ -19,6 +19,6 @@ urlpatterns = patterns('',
     url(r'^medicine/', include('medicine.urls',namespace='medicine_app')), # pharmacy
     url(r'^reports/',views.get_reports,name='reports'),
     url(r'^physician/',include('physician.urls',namespace='doc_app')),
-
+    url(r'^messages/', include('messages.urls')),
     
 )
