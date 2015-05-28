@@ -387,21 +387,38 @@ The lorem ipsum text is typically a scrambled section of De finibus bonorum et m
 		</div>
 	</div>
 </div>
+<div class="forground"></div>
 <style type="text/css">
 	body{
 		margin:0;
 		padding: 0;
 		font-family: sans-serif;
+        background: url("{% static 'bg.jpg' %}");
+        background-size: cover;
+        background-attachment: fixed;
+        color: #fff;
+        font-size: 12px;
 	}
 	div.header{
-		background-color: #f9f9f9;
+		background-color: rgba(155,155,155,0.3);
 		width: 100%;
 		margin: 0;
-		color: #454545;
 		text-align: center;
-		margin-bottom: 15px;
+		
 		box-shadow: 0 0 2px #ccc;
 	}
+    .forground{
+        background:rgba(0,0,0,0.9);
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        margin: 0 !important;
+        top:0;
+        left: 0;
+        z-index: -999;
+        text-align: center;
+        padding-top: 25px;
+    }
 	div.header ul{
 		padding: 0;
 		margin: 0;
@@ -411,10 +428,11 @@ The lorem ipsum text is typically a scrambled section of De finibus bonorum et m
 		border-radius: 4px;
 		padding: 3px;
 		margin: 15px;
+
 		
 	}
 	div.header ul li:hover{
-		background-color: #fff;
+		background-color: rgba(255,255,255,0.8);
 		color: #428bca;
 		cursor: pointer;
 	}
@@ -423,11 +441,16 @@ The lorem ipsum text is typically a scrambled section of De finibus bonorum et m
 		color: inherit;
 	}
 	div.slideshow{
+        padding: 5px;
 		text-align: center;
+        background-color: rgba(0,0,0,0.5);
+        margin-top: 0px;
+        border-bottom:1px solid #000;
 	}
 
 	div.main{
 		text-align: center;
+
 	}
 	div.sidebar{
 		width: 25%;
@@ -435,19 +458,27 @@ The lorem ipsum text is typically a scrambled section of De finibus bonorum et m
 		text-align: center;
 		float: left;
 		margin-left: 15px;
+        margin-top: 15px;
+        background:rgba(155,155,155,0.3);
 	}
 	div.sidebar ul {
 		padding: 0;
 		list-style: none;
+        margin: 0;
+
 	}
 
 	div.sidebar ul li {
 		text-align: justify;
-		border-bottom: 1px solid #e3e3e3;
+		border:1px solid #454545;
+        padding: 5px;
 	}
 	div.maincontent{
-		width: 60%;
+        background:rgba(155,155,155,0.3);
+		min-width: 65%;
 		display: inline-block;
+        border:1px solid #454545;
+        margin-top: 15px;
 	}
 </style>
 </body>
