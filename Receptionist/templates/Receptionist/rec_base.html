@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title></title>
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
   <!-- FontAwesome -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- Navbar -->
@@ -54,10 +54,14 @@
       padding: 0;
       font-family: sans-serif;
       background: url("{% static 'bg.jpg' %}");
-          background-size: cover;
-          background-attachment: fixed;
-         
-          font-size: 12px;
+      background-size: cover;
+      background-attachment: fixed;
+      color:#fff;
+      font-size: 12px;
+      text-align: center;
+    }
+    a{
+    	color: #fff;
     }
     div.header{
       background-color: rgba(155,155,155,0.3);
@@ -99,6 +103,68 @@
 	div.header a{
 		text-decoration: none;
 		color: inherit;
+	}
+	form{
+		
+		text-transform: capitalize;	
+	}
+	select{
+		margin-top: 15px;
+	}
+	input{
+		margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #fff;
+		margin-top:15px;
+	}
+	input[type="submit"]{
+		background-color: transparent;
+		border-radius: 15px;
+		color: #1abc9c;
+		font-weight: bold;
+		cursor: pointer;
+		border-color: green;
+		border:2px solid #1abc9c;
+
+	}
+	input[type="submit"]:hover{
+		background-color: #1abc9c;
+		color: #454545;
+		border-radius: 15px;
+	}
+	 table{
+		width: 85%;
+		margin:auto;
+		background-color: rgba(155,155,155,0.3);
+		margin-top: 15px;
+	}
+	table a{
+		color: #fff;
+	}
+	table td {
+		padding: 12px 56px;
+		color:#fff;
+
+	}
+	table th	{
+		background-color: transparent;
+		padding: 12px 6px;
+		color: #fff;
+		font-size: 0.8em;
+		border:1px solid #666;
+	}
+	select{
+		background: transparent;
+		border:1px solid #ccc;
+		color: #f1f1f1;
+		padding: 6px 12px;
+		-webkit-apperance:none;
+	}
+	select option {
+		background: #000;
 	}
 </style>
 </body>
