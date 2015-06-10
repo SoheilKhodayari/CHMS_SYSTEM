@@ -32,14 +32,14 @@
 
 			<form method='post'>
 				{% csrf_token %}
-			<div class='content'>Chief Complaint:<input class='inp' type='text' value={{ sheet.chief_complain }} disabled='true'></div>
-			<div class='content'>History of Present Illness:<input class='inp' type='text' value={{ sheet.history_of_present_illness }} disabled='true'> </div>
-			<div class='content'>Past Diseases History:<input class='inp' type='text' value={{ sheet.pass_diseases_history }} disabled='true'> </div>
-			<div class='content'>Current Drug Theraphy & Other Addiction:<input class='inp' type='text' value={{ sheet.current_drug_theraphy_and_other_addiction }} disabled='true'> </div>
-			<div class='content'>Allergy to:<input class='inp' type='text' value={{ sheet.allergy_to }} disabled='true'> </div>
-			<div class='content'>Family History:<input class='inp' type='text' value={{ sheet.family_history }} disabled='true'> </div>
-			<div class='content' style='height:300px;'>SUMMARY:<textarea class='txtarea' disabled>{{ sheet.summary }} </textarea> </div>
-			<div class='content' style='height:300px;'>Primary DX:<textarea class='txtarea' disabled>{{ sheet.primary_dx }}</textarea> </div>
+			<div class='content'>Chief Complaint:<input name="cf" class='inp' type='text' value={{ sheet.chief_complain }} disabled='true'></div>
+			<div class='content'>History of Present Illness:<input name="hopi" class='inp' type='text' value={{ sheet.history_of_present_illness }} disabled='true'> </div>
+			<div class='content'>Past Diseases History:<input name="pdh" class='inp' type='text' value={{ sheet.pass_diseases_history }} disabled='true'> </div>
+			<div class='content'>Current Drug Theraphy & Other Addiction:<input name="crtoa" class='inp' type='text' value={{ sheet.current_drug_theraphy_and_other_addiction }} disabled='true'> </div>
+			<div class='content'>Allergy to:<input name="at" class='inp' type='text' value={{ sheet.allergy_to }} disabled='true'> </div>
+			<div class='content'>Family History:<input name="fh" class='inp' type='text' value={{ sheet.family_history }} disabled='true'> </div>
+			<div class='content' style='height:300px;'>SUMMARY:<textarea name="summary" class='txtarea' disabled>{{ sheet.summary }} </textarea> </div>
+			<div class='content' style='height:300px;'>Primary DX:<textarea name="pdx" class='txtarea' disabled>{{ sheet.primary_dx }}</textarea> </div>
             <div class='content' >Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span> </div>
 			<div class="button-holder">
             		<input type="submit" disabled id='submit'>
