@@ -119,23 +119,45 @@
 		</div>
 		<div class='history'>
 
-			<div class='content'>Chief Complaint:{{ sheet.chief_complain }}</div>
-			<div class='content'>History of Present Illness: {{ sheet.history_of_present_illness }}</div>
-			<div class='content'>Past Diseases History: {{ sheet.pass_diseases_history }}</div>
-			<div class='content'>Current Drug Theraphy & Other Addiction: {{ sheet.current_drug_theraphy_and_other_addiction }}</div>
-			<div class='content'>Allergy to: {{ sheet.allergy_to }}</div>
-			<div class='content'>Family History: {{ sheet.family_history }}</div>
-			<div class='content' style='height:300px;'>SUMMARY: {{ sheet.summary }}</div>
-			<div class='content' style='height:300px;'>Primary DX: {{ sheet.primary_dx }}</div>
+
+			<form method='post'>
+				{% csrf_token %}
+			<div class='content'>Chief Complaint:<input class='inp' type='text' value={{ sheet.chief_complain }} disabled='true'></div>
+			<div class='content'>History of Present Illness:<input class='inp' type='text' value={{ sheet.history_of_present_illness }} disabled='true'> </div>
+			<div class='content'>Past Diseases History:<input class='inp' type='text' value={{ sheet.pass_diseases_history }} disabled='true'> </div>
+			<div class='content'>Current Drug Theraphy & Other Addiction:<input class='inp' type='text' value={{ sheet.current_drug_theraphy_and_other_addiction }} disabled='true'> </div>
+			<div class='content'>Allergy to:<input class='inp' type='text' value={{ sheet.allergy_to }} disabled='true'> </div>
+			<div class='content'>Family History:<input class='inp' type='text' value={{ sheet.family_history }} disabled='true'> </div>
+			<div class='content' style='height:300px;'>SUMMARY:<textarea class='txtarea' disabled>{{ sheet.summary }} </textarea> </div>
+			<div class='content' style='height:300px;'>Primary DX:<textarea class='txtarea' disabled>{{ sheet.primary_dx }}</textarea> </div>
             <div class='content' >Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span> </div>
 			
+            		<input type="submit" disabled id='submit'>
+			</form>
 
-
-
+            <button onclick="Edit()">Edit</button>
 		</div>
 
 	</div>
-
+	<script type="text/javascript">
+		function Edit(){
+			var list=	document.getElementsByClassName("inp");
+			// console.log('salam');
+			
+			for (i=0;i<list.length;i++){
+				list[i].disabled=false;
+				// element.disabled=false;
+			}
+			var list=	document.getElementsByClassName("txtarea");
+			// console.log('salam');
+			
+			for (i=0;i<list.length;i++){
+				list[i].disabled=false;
+				// element.disabled=false;
+			}
+			document.getElementById('submit').disabled=false;
+		}
+	</script>
 
 </body>
 </html>
