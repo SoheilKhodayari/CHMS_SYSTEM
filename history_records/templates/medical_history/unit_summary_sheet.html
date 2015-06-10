@@ -44,11 +44,13 @@
 			<div class='content'>Patient's Condition on Discharge:<input class='inp' type='text' value={{ sheet.patient_condition_on_discharge }} disabled='true'> </div>
 			<div class='content' style='height:300px;'>Recommendations after Discharge:<input class='inp' type='text' value={{ sheet.recommendations_after_discharge }} disabled='true'> </div>
 			<div class='content' >Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span> </div>
-			
+			<div class="button-holder">
 			            		<input type="submit" disabled id='submit' value="submit">
+			            		</div>
 			</form>
-
+<div class="button-holder">
 <button onclick="Edit()">Edit</button>
+</div>
 		</div>
 
 	</div>
@@ -236,6 +238,27 @@
 	}
 	select option {
 		background: #000;
+	}
+		div.progress{
+		text-align: center;
+	}
+	button{
+		background: none;
+		border : 1px solid #e74c3c;
+		color: #e74c3c;
+		border-radius: 4px;
+		width: 200px;
+		min-height: 35px;
+		margin:auto;
+		margin-bottom: 15px;
+	}
+	button:hover{
+		background: #e74c3c;
+		color: #fff;
+		cursor: pointer;
+	}
+	div.button-holder{
+		text-align: center;
 	}
 </style>
 </body>

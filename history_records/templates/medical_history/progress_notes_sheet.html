@@ -111,7 +111,6 @@ function addRow(){
 		width: 100%;
 		margin: 0;
 		text-align: center;
-		
 		box-shadow: 0 0 2px #ccc;
 	}
 	div.header ul{
@@ -123,8 +122,6 @@ function addRow(){
 		border-radius: 4px;
 		padding: 3px;
 		margin: 15px;
-
-		
 	}
 	div.header ul li:hover{
 		background-color: rgba(255,255,255,0.8);
@@ -224,6 +221,8 @@ function addRow(){
 		margin:auto;
 		background-color: rgba(155,155,155,0.3);
 		margin-top: 15px;
+		border-bottom:1px solid #ccc;
+		border-top:1px solid #ccc;
 	}
 	table a{
 		color: #fff;
@@ -231,18 +230,19 @@ function addRow(){
 	table td {
 		padding: 12px 56px;
 		color:#fff;
-		border-bottom:1px solid #ccc;
-		border-right:1px solid #ccc;
+		
+		/*border-right:1px solid #ccc;*/
 	}
 	table td:last-child{
 		border-right: none;
 	}
-	table th	{
+	thead td{
 		background-color: transparent;
 		padding: 12px 6px;
 		color: #fff;
 		font-size: 0.8em;
 		border:1px solid #666;
+		border-bottom: 1px solid #ccc;
 	}
 	select{
 		background: transparent;
@@ -254,8 +254,26 @@ function addRow(){
 	select option {
 		background: #000;
 	}
+	div.progress{
+		text-align: center;
+	}
+	button{
+		background: none;
+		border : 1px solid #e74c3c;
+		color: #e74c3c;
+		border-radius: 4px;
+		width: 200px;
+		min-height: 35px;
+		margin:auto;
+		margin-bottom: 15px;
+	}
+	button:hover{
+		background: #e74c3c;
+		color: #fff;
+		cursor: pointer;
+	}
 </style>
-</style>
+
 
 </body>
 </html>

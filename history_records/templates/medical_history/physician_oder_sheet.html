@@ -50,11 +50,14 @@
 			  </tbody>
 
 			</table>
+			<div class="button-holder">
 			            		<input type="submit" disabled id='submit' value="submit">
+			</div>
 			</form>
 
-
+			<div class="button-holder">
 			<button onclick="addRow()" style='float:bottom' id='add'>Add order</button>
+			</div>
 
 
 
@@ -196,7 +199,7 @@ function addRow(){
 		background-color: #e67e22 !important;
 	}
 	form{
-		
+		text-align: center;
 		text-transform: capitalize;	
 	}
 	select{
@@ -220,6 +223,7 @@ function addRow(){
 		border-color: green;
 		border:2px solid #1abc9c;
 
+
 	}
 	input[type="submit"]:hover{
 		background-color: #1abc9c;
@@ -238,8 +242,8 @@ function addRow(){
 	table td {
 		padding: 12px 56px;
 		color:#fff;
-		border-bottom:1px solid #ccc;
-		border-right:1px solid #ccc;
+		/*border-bottom:1px solid #ccc;
+		border-right:1px solid #ccc;*/
 	}
 	table td:last-child{
 		border-right: none;
@@ -260,6 +264,42 @@ function addRow(){
 	}
 	select option {
 		background: #000;
+	}
+	div.progress{
+		text-align: center;
+	}
+	button{
+		background: none;
+		border : 1px solid #e74c3c;
+		color: #e74c3c;
+		border-radius: 4px;
+		width: 200px;
+		min-height: 35px;
+		margin:auto;
+		margin-bottom: 15px;
+	}
+	button:hover{
+		background: #e74c3c;
+		color: #fff;
+		cursor: pointer;
+	}
+		div.progress{
+		text-align: center;
+	}
+	button{
+		background: none;
+		border : 1px solid #e74c3c;
+		color: #e74c3c;
+		border-radius: 4px;
+		width: 200px;
+		min-height: 35px;
+		margin:auto;
+		margin-bottom: 15px;
+	}
+	button:hover{
+		background: #e74c3c;
+		color: #fff;
+		cursor: pointer;
 	}
 </style>
 </body>
