@@ -7,7 +7,7 @@
 
 	<p class='center' >Medical History Sheet</p>
 	<div>
-		<p class='left' style='border:solid;width:150px;padding-bottom:0;margin-bottom:0;'>File No.:{{ patient.firstname }}</p>
+		<p class='left' style='border:solid;width:150px;padding-bottom:0;margin-bottom:0;'>File No.: {{ sheet.id }}</p>
 		<div>
 		<div class='info'>
 			<div class='div1'>
@@ -103,6 +103,11 @@
 		padding: 0;
 		margin: 0;
 	}
+
+	.inp{
+		width: 700px;
+	}
+
 	div.header ul li {
 		display: inline-block;
 		border-radius: 4px;
@@ -122,6 +127,7 @@
 	}
 	.center{
 		text-align: center;
+		margin-top: 15px;
 	}
 	div.h{
 		margin-top: 15%;
@@ -208,9 +214,12 @@
 		margin-top:15px;
 	}
 	textarea{
-			margin-left: 15px;
+		margin-left: 15px;
 		margin-right: 15px;
-		padding: 6px 12px ;
+		padding: 12px ;
+		min-width: 350px;
+		min-height: 25ex;
+		vertical-align: top;
 		background-color: transparent;
 		border:1px solid #666;
 		color: #1abc9c;
