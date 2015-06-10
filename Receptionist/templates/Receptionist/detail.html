@@ -157,13 +157,13 @@
 
 
     <p>
-      <a href="{% url 'rec_app:patients-list' %}" class="btn btn-primary btn-block"> Back To List </a>
+      <a href="{% url 'rec_app:patients-list' %}" class="btn btn-primary btn-block"> >> Back To List << </a>
     </p>
     <p>
-      <a href="{% url 'rec_app:patients-update' patient.username %}" class="btn btn-primary btn-block"> Modify This Patient </a>
+      <a href="{% url 'rec_app:patients-update' patient.username %}" class="btn btn-primary btn-block"> >> Modify This Patient <<</a>
     </p>
     <p>
-      <a href="{% url 'rec_app:patients-delete' patient.username %}" class="btn btn-primary btn-block"> Delete This Patient </a>
+      <a href="{% url 'rec_app:patients-delete' patient.username %}" class="btn btn-primary btn-block"> >> Delete This Patient <<</a>
     </p>
 
   </article>
@@ -196,6 +196,32 @@
          
           font-size: 12px;
     }
+    div.panel{
+      background: rgba(155,155,155,0.3);
+      color:#fff;
+    }
+    div.panel-heading{
+      background: rgba(155,155,155,0.3) !important;
+    }
+    .panel-primary{
+      border:none !important;
+    }
+    .btn{
+      background-color: transparent;
+    border-radius: 15px;
+    color: #1abc9c;
+    font-weight: bold;
+    cursor: pointer;
+    border-color: green;
+    border:2px solid #1abc9c;
+
+    }
+    .btn:hover{
+      background-color: #1abc9c;
+    color: #454545;
+    border-radius: 15px;
+    }
+
     div.header{
       background-color: rgba(155,155,155,0.3);
       width: 100%;
