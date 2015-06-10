@@ -111,7 +111,6 @@ function addRow(){
 		width: 100%;
 		margin: 0;
 		text-align: center;
-		
 		box-shadow: 0 0 2px #ccc;
 	}
 	div.header ul{
@@ -123,8 +122,6 @@ function addRow(){
 		border-radius: 4px;
 		padding: 3px;
 		margin: 15px;
-
-		
 	}
 	div.header ul li:hover{
 		background-color: rgba(255,255,255,0.8);
@@ -195,7 +192,7 @@ function addRow(){
 	select{
 		margin-top: 15px;
 	}
-	input{
+	input[disabled]{
 		margin-left: 15px;
 		margin-right: 15px;
 		padding: 6px 12px ;
@@ -203,6 +200,43 @@ function addRow(){
 		border:1px solid #666;
 		color: #fff;
 		margin-top:15px;
+	}
+	input{
+		margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #1abc9c;
+		margin-top:15px;
+	}
+	textarea[disabled]{
+			margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #fff;
+		margin-top:15px;
+	}
+	textarea{
+			margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #1abc9c;
+		margin-top:15px;
+	}
+	input[type="submit" ][disabled]{
+		border-color: #454545;
+		color: #454545;
+	}
+
+	input[type="submit" ][disabled]:hover{
+		border-color: #454545;
+		background: none;
+		color: #454545;
 	}
 	input[type="submit"]{
 		background-color: transparent;
@@ -212,6 +246,7 @@ function addRow(){
 		cursor: pointer;
 		border-color: green;
 		border:2px solid #1abc9c;
+
 
 	}
 	input[type="submit"]:hover{
@@ -224,6 +259,8 @@ function addRow(){
 		margin:auto;
 		background-color: rgba(155,155,155,0.3);
 		margin-top: 15px;
+		border-bottom:1px solid #ccc;
+		border-top:1px solid #ccc;
 	}
 	table a{
 		color: #fff;
@@ -231,18 +268,19 @@ function addRow(){
 	table td {
 		padding: 12px 56px;
 		color:#fff;
-		border-bottom:1px solid #ccc;
-		border-right:1px solid #ccc;
+		
+		/*border-right:1px solid #ccc;*/
 	}
 	table td:last-child{
 		border-right: none;
 	}
-	table th	{
+	thead td{
 		background-color: transparent;
 		padding: 12px 6px;
 		color: #fff;
 		font-size: 0.8em;
 		border:1px solid #666;
+		border-bottom: 1px solid #ccc;
 	}
 	select{
 		background: transparent;
@@ -254,8 +292,26 @@ function addRow(){
 	select option {
 		background: #000;
 	}
+	div.progress{
+		text-align: center;
+	}
+	button{
+		background: none;
+		border : 1px solid #e74c3c;
+		color: #e74c3c;
+		border-radius: 4px;
+		width: 200px;
+		min-height: 35px;
+		margin:auto;
+		margin-bottom: 15px;
+	}
+	button:hover{
+		background: #e74c3c;
+		color: #fff;
+		cursor: pointer;
+	}
 </style>
-</style>
+
 
 </body>
 </html>

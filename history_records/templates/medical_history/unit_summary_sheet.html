@@ -44,11 +44,13 @@
 			<div class='content'>Patient's Condition on Discharge:<input name="pd" class='inp' type='text' value={{ sheet.patient_condition_on_discharge }} disabled='true'> </div>
 			<div class='content' style='height:300px;'>Recommendations after Discharge:<input name="ra" class='inp' type='text' value={{ sheet.recommendations_after_discharge }} disabled='true'> </div>
 			<div class='content' >Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span> </div>
-			
+				<div class="button-holder">
 			            		<input type="submit" disabled id='submit' value="submit">
+			    </div>
 			</form>
-
+<div class="button-holder">
 <button onclick="Edit()">Edit</button>
+</div>
 		</div>
 
 	</div>
@@ -178,7 +180,7 @@
 	select{
 		margin-top: 15px;
 	}
-	input{
+	input[disabled]{
 		margin-left: 15px;
 		margin-right: 15px;
 		padding: 6px 12px ;
@@ -186,6 +188,43 @@
 		border:1px solid #666;
 		color: #fff;
 		margin-top:15px;
+	}
+	input{
+		margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #1abc9c;
+		margin-top:15px;
+	}
+	textarea[disabled]{
+			margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #fff;
+		margin-top:15px;
+	}
+	textarea{
+			margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #1abc9c;
+		margin-top:15px;
+	}
+	input[type="submit" ][disabled]{
+		border-color: #454545;
+		color: #454545;
+	}
+
+	input[type="submit" ][disabled]:hover{
+		border-color: #454545;
+		background: none;
+		color: #454545;
 	}
 	input[type="submit"]{
 		background-color: transparent;
@@ -195,6 +234,7 @@
 		cursor: pointer;
 		border-color: green;
 		border:2px solid #1abc9c;
+
 
 	}
 	input[type="submit"]:hover{
@@ -236,6 +276,27 @@
 	}
 	select option {
 		background: #000;
+	}
+		div.progress{
+		text-align: center;
+	}
+	button{
+		background: none;
+		border : 1px solid #e74c3c;
+		color: #e74c3c;
+		border-radius: 4px;
+		width: 200px;
+		min-height: 35px;
+		margin:auto;
+		margin-bottom: 15px;
+	}
+	button:hover{
+		background: #e74c3c;
+		color: #fff;
+		cursor: pointer;
+	}
+	div.button-holder{
+		text-align: center;
 	}
 </style>
 </body>
