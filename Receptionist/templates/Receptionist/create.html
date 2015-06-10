@@ -13,44 +13,37 @@
     <form action="" method="post" role="form">
       {% csrf_token %}
       <div class="form-group">
-        <label for="username">username</label>
-        <input name="username" id="username" type="text" class="form-control" required>
+        <input name="username" id="username" type="text" class="form-control" placeholder="Username"required>
       </div>
 
       <div class="form-group">
-        <label for="first_name">first_name</label>
-        <input name="first_name" id="first_name" type="text" class="form-control" required>
+        <input name="first_name" id="first_name" type="text" class="form-control" placeholder="First name" required>
       </div>
 
       <div class="form-group">
-        <label for="last_name">last_name</label>
-        <input name="last_name" id="last_name" type="text" class="form-control" required>
+        <input name="last_name" id="last_name" type="text" class="form-control" placeholder="Last name"required>
       </div>
             <div class="form-group">
-        <label for="section">section</label>
-        <input name="section" id="section" type="text" class="form-control" required>
+        <input name="section" id="section" type="text" class="form-control" placeholder="Section"required>
       </div>
               <div class="form-group">
-        <label for="room">room</label>
-        <input name="room" id="room" type="text" class="form-control" required>
+        <input name="room" id="room" type="text" class="form-control" placeholder="Room"required>
       </div>
 
       <div class="form-group">
-        <label for="age">age</label>
-        <input name="age" id="age" type="number" class="form-control" required>
+        <input name="age" id="age" type="number" class="form-control" placeholder="Age"required>
       </div>
 
       <div class="form-group">
-        <label for="gender">gender</label>
-        <select name="gender" id="gender" class="form-control" required>
+        <select name="gender" label="gender" id="gender" class="form-control" required>
+        <option selected disabled>Gender</option>
           <option value="M">Male</option>
-          <option value="F">Female</option>
+          <option value="F">Female</option>  
         </select>
       </div>
 
       <div class="form-group">
-        <label for="ssn">ssn</label>
-        <input name="ssn" id="ssn" type="text" class="form-control" required="">
+        <input name="ssn" id="ssn" type="text" class="form-control" placeholder="SSN"required="">
       </div>
 
       <div class="form-group">
@@ -58,59 +51,51 @@
         <input name="birthday" id="birthday" type="date" class="form-control">
       </div>
             <div class="form-group">
-        <label for="Tel">Tel</label>
-        <input name="Tel" id="Tel" type="text" class="form-control">
+        
+        <input name="Tel" id="Tel" type="text" class="form-control" placeholder="Tel">
       </div>
 
       <div class="form-group">
-        <label for="occupation">occupation</label>
-        <input name="occupation" id="occupation" type="text" class="form-control">
+        <input name="occupation" id="occupation" type="text" class="form-control" placeholder="Occupation">
       </div>
        <div class="form-group">
-        <label for="email">email</label>
-        <input name="email" id="email" type="text" class="form-control">
+        <input name="email" id="email" type="text" class="form-control"placeholder="Email">
       </div>
 
       <div class="form-group">
-        <label for="marital_status">marital_status</label>
+      
         <select name="marital_status" id="marital_status" class="form-control" required>
+        <option selected disabled class="gray">Marital status</option>
           <option value="single">Single</option>
           <option value="married">Married</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="country">country</label>
-        <input name="country" id="country" type="text" class="form-control">
+        <input name="country" id="country" type="text" class="form-control" placeholder="Country">
       </div>
 
         <div class="form-group">
-        <label for="city">city</label>
-        <input name="city" id="city" type="text" class="form-control">
+        <input name="city" id="city" type="text" class="form-control" placeholder="City">
       </div>
 
       <div class="form-group">
-        <label for="district">district</label>
-        <input name="district" id="district" type="text" class="form-control">
+        <input name="district" id="district" type="text" class="form-control" placeholder="District">
       </div>
 
       <div class="form-group">
-        <label for="street">street</label>
-        <input name="street" id="street" type="text" class="form-control">
+        <input name="street" id="street" type="text" class="form-control" placeholder="Street">
       </div>
 
       <div class="form-group">
-        <label for="alley">alley</label>
-        <input name="alley" id="alley" type="text" class="form-control">
+        <input name="alley" id="alley" type="text" class="form-control" placeholder="Alley">
       </div>
 
       <div class="form-group">
-        <label for="building_no">building_no</label>
-        <input name="building_no" id="building_no" type="number" class="form-control">
+        <input name="building_no" id="building_no" type="number" class="form-control" placeholder="Building No">
       </div>
 
       <div class="form-group">
-        <label for="postal_code">postal_code</label>
-        <input name="postal_code" id="postal_code" type="text" class="form-control">
+        <input name="postal_code" id="postal_code" type="text" class="form-control" placeholder="Postal Code">
       </div>
 
 

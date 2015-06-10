@@ -1,99 +1,9 @@
+{% load staticfiles %}
 <html>
 <head>
 	<title>Progress Notes Sheet</title>
-	<style type="text/css">
-	body{
-		padding: 0;
-		margin: 0;
-		font-family: sans-serif;
-
-	}
-	 div.menus{
-	 	background-color: #f9f9f9;
-		width: 100%;
-		margin: 0;
-		color: #454545;
-		text-align: center;
-		margin-bottom: 15px;
-		box-shadow: 0 0 2px #ccc;
-	 }
-	 .center{
-	 	width: 200px;
-	 	margin: auto;
-	 	margin-top: 15px;
-
-	 }
-	 .left{
-	 	/*float: left*/
-	 }
-	 .content{
-	 	width: 100%;
-	 	height: 60px;
-		margin-left: 25px;
-	 	padding-top: 5px;
-
-	 }
-	 .info{
-	 	position:relative;
-	 	display: block;
-	 	margin-top: 15px;
-	 	margin-left: 25px;
-	 	padding-bottom: 5px;
-	 	display: table;
-	 	table-layout: fixed;
-	 	width: 100%;
-	 	/*padding: -top: 5px;*/
-
-	 }
-	 .div1{
-	 	display: table-cell;
-	 	margin: 0px;
-	 	padding: 0px;
-	 	/*float: left;*/
-	 	/*width: 50%;*/
-
-
-	 }
-
-/*	 .info:after {
-	   content: ".";
-	   visibility: hidden;
-	   display: block;
-	   height: 0;
-	   clear: both;
-	   width: 0;
-	}*/
-	 .history{
-	 	clear: both;
-	 }
-	 .cell{
-	 	display: table-cell;
-	 	/*border: solid;*/
-	 }
-	 div.menus ul{
-	 	padding: 0;
-		margin: 0;
-	 }
-	 div.menus ul li{
-	 	display: inline-block;
-		border-radius: 4px;
-		padding: 3px;
-		margin: 15px;
-
-	 }
-	 div.menus ul li:hover{
-	 	background-color: #fff;
-		color: #428bca;
-		cursor: pointer;
-	 }
-	 a{
-
-		text-decoration: none;
-		color: inherit;
-	 }
-	</style>
 </head>
-<body><div class="menus">menus</div>
+<body><div class="header">menus</div>
 
 	<p class='center' >Progress Notes Sheet</p>
 	<div>
@@ -147,7 +57,6 @@
 		</div>
 
 	</div>
-
 <script type="text/javascript">
 function addRow(){
 	// var tbl=document.getElementById('table');
@@ -179,5 +88,174 @@ function addRow(){
 	// body.appendChild(tbl)
 }
 </script>
+<div class="forground"></div>
+<style type="text/css"> 
+@font-face{
+    font-family: 'Mitra';
+    src: url("{% static 'fonts/BMitra.eot?#iefix' %}") format('embedded-opentype'),
+    url("{% static 'fonts/BMitra.woff' %}") format('woff'),
+    url("{% static 'fonts/BMitra.ttf' %") format('truetype');
+}
+	body{
+		background: url("{% static 'bg.jpg' %}");
+		background-repeat: no-repeat;
+		background-size:cover;
+		background-attachment:fixed;
+		padding: 0;
+		margin: 0;
+		font-family: 'Mitra',sans-serif;
+		color: #fff;
+	}
+	div.header{
+		background-color: rgba(155,155,155,0.3);
+		width: 100%;
+		margin: 0;
+		text-align: center;
+		
+		box-shadow: 0 0 2px #ccc;
+	}
+	div.header ul{
+		padding: 0;
+		margin: 0;
+	}
+	div.header ul li {
+		display: inline-block;
+		border-radius: 4px;
+		padding: 3px;
+		margin: 15px;
+
+		
+	}
+	div.header ul li:hover{
+		background-color: rgba(255,255,255,0.8);
+		color: #428bca;
+		cursor: pointer;
+	}
+	div.header a{
+		text-decoration: none;
+		color: inherit;
+	}
+	.center{
+		text-align: center;
+	}
+	div.h{
+		margin-top: 15%;
+		height: 25%;
+	}
+	div.button{
+		width: 200px;
+		margin: auto;
+		margin-top: 15px;
+	}
+	p{
+		margin-left: 25px;
+	}
+	/*div{
+		margin-left: 25px;
+	}*/
+	.forground{
+		background:rgba(0,0,0,0.8);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		margin: 0 !important;
+		text-align: center;
+		padding-top: 25px;
+		top:0;
+		z-index: -999;
+	}
+	a.button{
+		padding: 10px 19px;
+		width: 100%;
+		font-size: 20px;
+		line-height: 2;
+		font-weight: 400;
+		display: block;
+		text-decoration: none;
+		color: #fff;
+		border:1px solid;
+		border-color: #fff;
+		background-color: transparent;
+		border-radius: 12px;
+		position: relative;
+	}
+	a.button:hover{
+		background: #47a447;
+	}
+	a.orange{
+		background:transparent !important;
+	}
+	a.orange:hover{
+		background-color: #e67e22 !important;
+	}
+	form{
+		
+		text-transform: capitalize;	
+	}
+	select{
+		margin-top: 15px;
+	}
+	input{
+		margin-left: 15px;
+		margin-right: 15px;
+		padding: 6px 12px ;
+		background-color: transparent;
+		border:1px solid #666;
+		color: #fff;
+		margin-top:15px;
+	}
+	input[type="submit"]{
+		background-color: transparent;
+		border-radius: 15px;
+		color: #1abc9c;
+		font-weight: bold;
+		cursor: pointer;
+		border-color: green;
+		border:2px solid #1abc9c;
+
+	}
+	input[type="submit"]:hover{
+		background-color: #1abc9c;
+		color: #454545;
+		border-radius: 15px;
+	}
+	 table{
+		width: 50%;	
+		margin:auto;
+		background-color: rgba(155,155,155,0.3);
+		margin-top: 15px;
+	}
+	table a{
+		color: #fff;
+	}
+	table td {
+		padding: 12px 56px;
+		color:#fff;
+		border-bottom:1px solid #ccc;
+		border-right:1px solid #ccc;
+	}
+	table td:last-child{
+		border-right: none;
+	}
+	table th	{
+		background-color: transparent;
+		padding: 12px 6px;
+		color: #fff;
+		font-size: 0.8em;
+		border:1px solid #666;
+	}
+	select{
+		background: transparent;
+		border:1px solid #ccc;
+		color: #f1f1f1;
+		padding: 6px 12px;
+		-webkit-apperance:none;
+	}
+	select option {
+		background: #000;
+	}
+</style>
+</style>
+
 </body>
 </html>
