@@ -1,6 +1,7 @@
 .navbar {
   margin-bottom: 48px;
-  background-color: #3b50ce;
+  background-color: #454545;
+  box-shadow: 0 0 2px #ccc;
   border: none;
   border-radius: 0px;
 }
@@ -77,7 +78,15 @@ td .fa-stethoscope {
 #prescription {
 	margin-bottom: 12px;
 }
+
 .panel{
 width:75%;
 margin:auto;
+}
+.panel-primary{
+  border-color: #454545;
+}
+.panel-heading{
+  border-color: #454545 !important;
+  background-color: #454545 !important;
 }
