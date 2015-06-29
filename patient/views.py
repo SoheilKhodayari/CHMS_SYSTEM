@@ -66,7 +66,7 @@ def register(request):
 
 def home(request):
    try:
-       if not (request.user.is_authenticated() and request.user.get_profile().user_type==2):
+       if not (request.user.is_authenticated() and request.user.profile.user_type==2):
            d = {'server_message':"Not Logged In."}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)

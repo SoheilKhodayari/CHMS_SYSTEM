@@ -1,8 +1,35 @@
-{% extends "Receptionist/rec_base.html" %}
+
+
+<!DOCTYPE html>
 {% load staticfiles %}
+<html>
+
+<head>
+	<title>CHMS | PatientList</title>
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <link href="{% static 'css/recNew.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
+		<a href="{% url 'rec_app:patients-list' %}"><li>Patient List</li></a>
+        <a href="{% url 'rec_app:rec_search' %}"><li>Search</li></a>
+        <a href="{% url 'rec_app:patients-create' %}"><li>BedRidden Registeration</li></a>
+        <a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
+        <a href="{% url  'rec_app:delete-ward' patient.username %}"><li> Delete This Guardian</li> </a>
+       <a href="/rec/{{ username }}" c><li> Back To Details </li></a>
+
+	</ul>
+</div>
 
 {% block content %}
-
+    <article>
+        <p> &nbsp</p>
+        <p> &nbsp</p>
+        <p> &nbsp</p>
+    </article>
 <div class="panel panel-primary">
 
   <div class="panel-heading">
@@ -29,23 +56,28 @@
       </div>
 
 
+        <button type="submit" class="btn btn-success  btn-block"/>Update</button>
 
-
-      <p>
-        <button type="submit" class="btn btn-success btn-block"/>Update</button>
-      </p>
     </form>
-
-    <section>
-       <p>
-        <a href="/rec/{{ username }}" class="btn btn-primary btn-block"> Back To Details </a>
-      </p>
-       <p>
-        <a href="{% url  'rec_app:delete-ward' patient.username %}" class="btn btn-primary btn-block"> Delete This Guardian </a>
-      </p>
-    </section>
   </article>
-  
+
 </div>
 
+
+
+
+  <script src="{% static 'js/jquery.js' %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 {% endblock content %}
+</div>
+<div class="container">
+</div>
+  <div class="forground">
+  </div>
+<div class="pattern"></div>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{ % static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+</html>

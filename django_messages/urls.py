@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url
 from django.views.generic import RedirectView
-from messages.views import *
+from django_messages.views import *
 
 urlpatterns = patterns('',
     url(r'^$', RedirectView.as_view(url='inbox/'), name='messages_redirect'),

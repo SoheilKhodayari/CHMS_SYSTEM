@@ -1,9 +1,12 @@
-{% extends "Receptionist/rec_base.html" %}
+{% extends "Receptionist/Create_delete_update_Patient_base.html" %}
 {% load staticfiles %}
 
 {% block content %}
-
-<div class="panel panel-danger">
+<article>
+<p> &nbsp</p>
+ <p> &nbsp</p>
+    </article>
+<div class="panel panel-primary">
 
   <div class="panel-heading">
     <h1 class="panel-title">
@@ -14,18 +17,18 @@
   <article class="panel-body">
     <form action="" method="post">
       {% csrf_token %}
-      <h2>Are you sure to remove <strong>{{ patient.firstname|title }} {{ patient.lastname|title }}</strong> with Username: <strong>{{ patient.username }}</strong>?</h2>
-      <p>
-        <button type="submit"  class="btn btn-danger btn-block"/>Confirm</button>
+      <p>Are you sure to remove <strong>{{ patient.firstname|title }} {{ patient.lastname|title }}</strong> with Username: <strong>{{ patient.username }}</strong>?</p>
+        <article>
+        <p> &nbsp</p>
+    </article>
+        <p>
+        <button type="submit"  class="btn btn-success btn-block"/>Confirm</button>
       </p>
     </form>
 
     <section>
       <p>
-        <a href="{% url 'rec_app:patients-list' %}" class="btn btn-success btn-block"> Back To list </a>
-      </p>
-      <p>
-        <a href="{% url 'rec_app:patients-update' patient.username %}" class="btn btn-primary btn-block"> Modify Patient </a>
+        <a href="{% url 'rec_app:patients-list' %}" class="btn btn-primary btn-block"> Back To list </a>
       </p>
     </section>
 

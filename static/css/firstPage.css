@@ -1,0 +1,34 @@
+body{
+		padding: 0;
+		margin: 0;
+		text-align: center;
+		font-family: 'Gill Sans MT';
+		color: #454545;
+		background-color: #e3e3e3;
+
+	}
+
+	div.welcome{
+		margin-top: 250px;
+	}
+	a{
+		text-decoration: none;
+	}
+	div.logo{
+		position: absolute;
+		width: 100%;
+		text-align: center;
+		margin-top: -150px;
+	}
+	img{
+		height: 120px;
+		width: auto;
+		clear: both;
+		top: 100px;
+	}
+	img:hover{
+		cursor: auto;
+	}
+	div.btn{
+		margin-top: 25px;
+	}

@@ -12,7 +12,7 @@ from physician.models import *
 
 def index(request,username):
     try:
-       if not (request.user.is_authenticated() and request.user.profile.user_type==6):
+       if not (request.user.is_authenticated() and (request.user.profile.user_type==6 or request.user.profile.user_type==0)):
            d = {'server_message':"Not Logged In."}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
@@ -26,7 +26,7 @@ def index(request,username):
 
 def medical_history(request,username):
     try:
-       if not (request.user.is_authenticated() and request.user.profile.user_type==6):
+        if not (request.user.is_authenticated() and (request.user.profile.user_type==6 or request.user.profile.user_type==0)):
            d = {'server_message':"Not Logged In."}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
@@ -34,7 +34,7 @@ def medical_history(request,username):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
-    if (request.user.profile.user_type!=6):
+    if not (request.user.profile.user_type==6 or request.user.profile.user_type==0 ):
         return HttpResponse('access denied')
     if request.method=="POST":
        return  edit_medical_history(request,username)
@@ -53,7 +53,7 @@ def medical_history(request,username):
 
 def progress_notes(request,username):
     try:
-       if not (request.user.is_authenticated() and request.user.profile.user_type==6):
+       if not (request.user.is_authenticated() and (request.user.profile.user_type==6 or request.user.profile.user_type==0)):
            d = {'server_message':"Not Logged In."}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
@@ -61,7 +61,7 @@ def progress_notes(request,username):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
-    if (request.user.profile.user_type!=6):
+    if not (request.user.profile.user_type==6 or request.user.profile.user_type==0):
         return HttpResponse('access denied')
     if request.method=="POST":
         return edit_progress_notes(request,username)
@@ -76,7 +76,7 @@ def progress_notes(request,username):
 
 def physician_orders(request,username):
     try:
-       if not (request.user.is_authenticated() and request.user.profile.user_type==6):
+       if not (request.user.is_authenticated() and (request.user.profile.user_type==6 or request.user.profile.user_type==0)):
            d = {'server_message':"Not Logged In."}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
@@ -84,7 +84,7 @@ def physician_orders(request,username):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
-    if (request.user.profile.user_type!=6):
+    if not (request.user.profile.user_type==6 or request.user.profile.user_type==0) :
         return HttpResponse('access denied')
     if request.method=="POST":
         return edit_physician_orders(request,username)
@@ -101,7 +101,7 @@ def physician_orders(request,username):
 
 def unit_summary(request,username):
     try:
-       if not (request.user.is_authenticated() and request.user.profile.user_type==6):
+       if not (request.user.is_authenticated() and (request.user.profile.user_type==6 or request.user.profile.user_type==0)):
            d = {'server_message':"Not Logged In."}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
@@ -109,7 +109,7 @@ def unit_summary(request,username):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
-    if (request.user.profile.user_type!=6):
+    if not (request.user.profile.user_type==6 or request.user.profile.user_type==0):
         return HttpResponse('access denied')
     if request.method=="POST":
         return edit_unit_summary(request,username)
@@ -167,6 +167,7 @@ def edit_physician_orders(request,username):
 def edit_progress_notes(request,username):
         patient=Patient.objects.get(user__username=username)
         progress_note_sheet=patient.medical_file.get().progress_note_sheet
+        user=request.user
         phys=Physician.objects.get(user=user)
         new_progress_note=Progress_note(date=request.POST['date'],treatment_progress=request.POST['tp'],sheet=progress_note_sheet,physician=phys)
         new_progress_note.save()

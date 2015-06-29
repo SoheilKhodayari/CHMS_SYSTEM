@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load i18n %}
+{% load url from future %}
+<html>
+<head>
+	<title>Message | Compose</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/message.css' %}">
+</head>
+<body>
+	<div class="header">
+		<ul>
+			<li class="brand"><img src="{% static 'logo.png' %}"></li>
+            <a href="{% url 'messages_inbox' %} "><li>{% trans "Inbox" %}</li></a>
+            <a href="{% url 'messages_outbox' %} "><li>{% trans "Sent Messages" %}</li></a>
+            <a href="{% url 'messages_compose' %} "><li>{% trans "New Message" %}</li></a>
+             <a href="{% url 'messages_trash' %} "><li>{% trans "Trash" %}</li></a>
+		</ul>
+	</div>
+    {% block content %}
+    <h1 style="color:#34495e">{% trans "Compose Message"%}</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+		<input type="submit" class="btn success" value="{% trans "Send" %} &raquo;"/>
+	</form>
+
+{% endblock %}
+
+<div class="pattern"></div>
+<div class="forground"></div>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+	$('input.btn').hoverIntent(function(){
+		dingDong($(this));
+	},function(){});
+
+</script>
+</html>

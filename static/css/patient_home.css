@@ -1,0 +1,31 @@
+.sidebar{
+	float: left;
+	text-align: center;
+	width: 15%;
+}
+.sidebar ul {
+	padding: 0;
+	list-style: none;
+}
+.sidebar li {
+	margin: auto;
+	margin-top: 0px;
+}
+a{
+
+	margin-top: 0px !important;
+}
+.main{
+	border-left: 1px solid #cdcdcd;
+	float: left;
+	margin-left:1%;
+	text-align: left;
+	background: #fff;
+	width: 82.9%;
+	padding-left: 1%;
+}	
+.main img{
+	width: 105px;
+	height: 105px;
+	border-radius: 60%;
+}

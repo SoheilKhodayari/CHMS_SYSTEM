@@ -1,0 +1,17 @@
+table{
+	margin-top: 25px;
+	background: #fff;
+}
+td:last-child{
+	text-align: left;
+}
+
+input{
+	width: 80%;
+}
+textarea{
+	width: 80%;
+	min-height: 150px;
+	padding: 0;
+	margin-right: 0;
+}
