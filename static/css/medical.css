@@ -1,0 +1,40 @@
+div.sheet table{
+	
+}
+div.sheet table td{
+	text-align: left;
+	padding: 15px 5px;
+
+}
+div.sheet table td:first-child{
+	width: 400px;
+	
+	color: #fff;
+}
+tr.green td:first-child{
+	background: #2ecc71;
+}
+tr.red td:first-child{
+	background: #e74c3c;
+}
+tr.blue td:first-child{
+	background: #3498db;
+}
+
+
+div.sheet textarea[disabled],div.sheet input[disabled]{
+	background: #fff;
+	border:none;
+}
+div.sheet textarea{
+	width: 205px;
+	min-height: 85px;
+	max-width: 450px;
+	max-height: 150px;
+}
+ul{
+	padding: 0;
+}
+ul li{
+	display: inline-block;
+}

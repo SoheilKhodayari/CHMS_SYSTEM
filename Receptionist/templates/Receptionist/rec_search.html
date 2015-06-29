@@ -2,31 +2,33 @@
 {% load staticfiles %}
 <html>
 <head>
-	<title></title>
-
+	<title>CHMS | SEARCH</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
 </head>
 <body>
-
 <div class="header">
 	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
 		<a href="{% url 'rec_app:patients-list' %}"><li>Patient List</li></a>
         <a href="{% url 'doc_app:doc_register' %}"><li>Physician Register</li></a>
 		<a href="{% url 'patient_app:patient_register' %}"><li>Patient Register</li></a>
         <a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
 		<a href="{% url 'messages_inbox' %}"><li>Hospital status</li></a>
-
 	</ul>
 </div>
-<div class="main">
+<div class="search">
+		<h1 style="color:#34495e">Search Patient</h1>
+		<p>Receptionist Search Panel</p>
 	<form method="get" action="">
-		<input type="text" name="q" id="id_q" placeholder="search" />
-        <input type="submit" value="Submit" name="submit_search_button" />
+		<input class="large"  type="text" name="q" id="id_q" placeholder="search" />
+        <input class="btn  warning" type="submit" value="Submit" name="submit_search_button" />
 
 	</form>
-
-	<div class="table">
-<table class="table table-striped">
-    <thead>
+</div>
+<div class="result">
+	<table>
+<thead>
       <tr>
         <th>Username</th>
         <th>Firstname</th>
@@ -41,7 +43,7 @@
     <tbody>
       {% for patient in found_entries %}
         <tr>
-          <td><a href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
+          <td><a style="color:#34495e" href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
           <td>{{ patient.user.first_name }}</td>
           <td>{{ patient.user.last_name }}</td>
             <td>{{ patient.patient_section }}</td>
@@ -60,126 +62,16 @@
         </tr>
       {% endfor %}
     </tbody>
-  </table>
-	</div>
-
+	</table>
 </div>
 <div class="pattern"></div>
-<div class="forground"></div>
-<style type="text/css">
-	body{
-      margin:0;
-      padding: 0;
-      font-family: sans-serif;
-      background: url("{% static 'bg.jpg' %}");
-      background-size: cover;
-      background-attachment: fixed;
-         
-      font-size: 12px;
-    }
-    div.header{
-      background-color: rgba(155,155,155,0.3);
-      width: 100%;
-      margin: 0;
-      text-align: center;
-      color: #f1f1f1;
-      font-size: 12px;
-      box-shadow: 0 0 2px #ccc;
-    }
-    .forground{
-        background:rgba(0,0,0,0.9);
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        margin: 0 !important;
-        top:0;
-        left: 0;
-        z-index: -999;
-        text-align: center;
-        padding-top: 25px;
-    }
-	div.header ul{
-		padding: 0;
-		margin: 0;
-	}
-	div.header ul li {
-		display: inline-block;
-		border-radius: 4px;
-		padding: 3px;
-		margin: 15px;
-
-	}
-	div.header ul li:hover{
-		background-color: #fff;
-		color: #428bca;
-		cursor: pointer;
-	}
-	div.header a{
-		text-decoration: none;
-		color: inherit;
-	}
-	div.main{
-		text-align: center;
-	}
-	div.table{
-		width: 75%;
-		margin: auto;
-	}
-	input{
-		margin-left: 15px;
-		margin-right: 15px;
-		padding: 12px 6px ;
-		background-color: transparent;
-		border:1px solid #666;
-		color: #fff;
-		margin-top:5px;
-	}
-	input[type="submit"]{
-		background-color: transparent;
-		border-radius: 15px;
-		color: #1abc9c;
-		font-weight: bold;
-		cursor: pointer;
-		border-color: green;
-		border:2px solid #1abc9c;
-
-	}
-	input[type="submit"]:hover{
-		background-color: #1abc9c;
-		color: #454545;
-		border-radius: 15px;
-	}
-	 table{
-		width: 100%;
-		margin:0;
-		background-color: rgba(155,155,155,0.3);
-		margin-top: 15px;
-	}
-	table a{
-		color: #fff;
-	}
-	table td {
-		padding: 12px 56px;
-		color:#fff;
-
-	}
-	table th	{
-		background-color: transparent;
-		padding: 12px 6px;
-		color: #fff;
-		font-size: 0.8em;
-		border:1px solid #666;
-	}
-    .fa-male {
-  font-size: 20px;
-}
-.fa-female {
-  font-size: 20px;
-}
-a.btn{
-	background-color: #fff;
-	padding: 12px 6px ;
-}
-</style>
 </body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{ % static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+	$('input.btn').hoverIntent(function(){
+		$(this).animate({"border-radius": "-=30px"},300);
+	},function(){$(this).animate({"border-radius": "+=30px"},300);});
+</script>
 </html>

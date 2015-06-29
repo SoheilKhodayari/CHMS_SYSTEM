@@ -1,8 +1,40 @@
-{% extends "Receptionist/rec_base.html" %}
-{% load staticfiles %}
 
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+	<title>CHMS | PatientList</title>
+	  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <!-- FontAwesome -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Navbar -->
+
+         <link href="{% static 'css/recNew.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="header">
+	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
+		<a href="{% url 'rec_app:patients-list' %}"><li>Patient List</li></a>
+        <a href="{% url 'rec_app:rec_search' %}"><li>Search</li></a>
+        <a href="{% url 'rec_app:patients-create' %}"><li>BedRidden Registeration</li></a>
+        <a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
+	</ul>
+</div>
 {% block content %}
 
+    <article>
+        <p> &nbsp</p>
+        <p> &nbsp</p>
+        <p> &nbsp</p><p> &nbsp</p>
+
+
+    </article>
 <div class="panel panel-primary">
 
   <div class="panel-heading">
@@ -38,6 +70,26 @@
 
     </p>
   </article>
+      <script src="{% static 'js/jquery.js' %}"></script>
+  <!-- Bootstrap JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 {% endblock content %}
 </div>
+
+<div class="container">
+
+
+</div>
+  <div class="forground"></div>
+
+
+
+
+<div class="pattern"></div>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{ % static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+</html>

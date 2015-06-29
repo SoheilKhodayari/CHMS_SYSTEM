@@ -4,14 +4,14 @@
 {% block content %}
 
 
-<div class="panel panel-primary">
+<div xmlns="http://www.w3.org/1999/html">
 
-  <div class="panel-heading">
+  <div >
     <h1 class="panel-title">Patient List</h1>
   </div>
 
 
-  <table class="table table-striped">
+  <table class="result">
     <thead>
       <tr>
         <th>Username</th>
@@ -27,7 +27,7 @@
     <tbody>
       {% for patient in patients %}
         <tr>
-          <td><a href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
+          <td><a style="color:#34495e" href="{% url 'rec_app:patients-detail' patient.username %}">{{ patient.username }}</a></td>
           <td>{{ patient.user.first_name }}</td>
           <td>{{ patient.user.last_name }}</td>
             <td>{{ patient.patient_section }}</td>
@@ -49,12 +49,11 @@
   </table>
 
 
-    <article class="panel-body">
-      <p>
-        <a href="{% url 'rec_app:patients-create' %}" class="btn btn-success btn-block"> Patient Registration </a>
-      </p>
+    <article>
+      <ul >
+       <div class="btn warning"><a href="{% url 'rec_app:patients-create' %}" > Insert </a></div>
+      </ul>
     </article>
-
 
 </div>
 

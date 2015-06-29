@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_messages',
     'history_records',
     'Medical Diagnosis File',
     'hospital',
@@ -48,7 +49,6 @@ INSTALLED_APPS = (
     'androidApp',
     'schedule',
     'nurse',
-    'messages',
 )
 
 MIDDLEWARE_CLASSES = (

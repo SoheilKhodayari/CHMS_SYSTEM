@@ -1,0 +1,140 @@
+	body{
+		color: #454545;
+		background-color: #e3e3e3;
+
+	}
+	.header{
+		min-height: 55px;
+		color: #f1f1f1;
+		box-shadow: 0 0 2px #ccc;
+		z-index: 999;
+		margin-top: 0;
+		padding: 0;
+		line-height: 100%;
+		background-color: #fff;
+		text-align: left;
+	}
+	.header ul {
+		margin: 0;
+		padding: 0;
+		color: #1abc9c;
+	}
+
+	.brand img{
+		width: 45px;
+		height: 45px;
+		margin-top: 5px;
+		margin-left: 1px;
+		margin-right: 64px;
+	}
+	.header ul li {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 25px;
+		text-align: center;
+	}
+	.header ul a{
+		text-decoration: none;
+		color: inherit;
+	}
+	.header ul li:hover::before{
+		height: 1px;
+		display: block;
+		width: 100%;
+		margin-top: -1px;
+		background-color: #1abc9c;
+		content: '';
+	}
+
+	.navbar {
+  margin-bottom: 48px;
+  background-color: #454545;
+  box-shadow: 0 0 2px #ccc;
+  border: none;
+  border-radius: 0px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+  background-color: #5677fc;
+}
+.dropdown-menu {
+  background-color: #5677fc;
+}
+.dropdown-menu>li>a {
+  color: #fff;
+}
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  color: #fff;
+  background-color: #738ffe;
+}
+.navbar-nav>li>a {
+  color: #fff !important;
+}
+.navbar-nav, .navbar-form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.navbar-brand {
+  height: 70px;
+}
+.navbar-brand img {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.center-block {
+  width: 40%;
+}
+
+.panel-title {
+  font-size: 28px;
+}
+.fa-male {
+  font-size: 20px;
+}
+.fa-female {
+  font-size: 20px;
+}
+td .fa-file-text {
+  font-size: 20px;
+}
+td .fa-stethoscope {
+  font-size: 20px;
+}
+.center-label {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.fa-add, .fa-delete {
+  cursor: pointer;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.fa-add {
+  color: #2ecc71;
+}
+.fa-delete {
+  color: #e74c3c;
+}
+.row-medicine {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: rgba(236, 240, 241, 0.5);
+}
+
+#prescription {
+	margin-bottom: 12px;
+}
+
+.panel{
+width:75%;
+margin:auto;
+}
+.panel-primary{
+  border-color: #454545;
+}
+.panel-heading{
+  border-color: #454545 !important;
+  background-color: #454545 !important;
+}

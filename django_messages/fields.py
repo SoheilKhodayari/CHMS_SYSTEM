@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import widgets
 from django.utils.translation import ugettext_lazy as _
-from messages.utils import get_user_model, get_username_field
+from django_messages.utils import get_user_model, get_username_field
 
 User = get_user_model()
 

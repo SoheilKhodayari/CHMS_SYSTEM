@@ -1,0 +1,16 @@
+legend{
+	text-align: left; !important;
+	margin: auto;
+	margin-bottom:64px;
+	font-size: 36px;
+}
+form{
+	width: 280px;
+	padding-top: 15px;
+
+	min-height: 350px;
+	background-color: #fff;
+	text-align: center;
+	margin: auto;
+	margin-top: 100px;
+}

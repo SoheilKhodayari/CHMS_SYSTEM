@@ -13,7 +13,7 @@ from django.conf import settings
 urlpatterns = patterns('',
 
     url(r'hospital/$', include('hospital.urls')),
-    url(r'pharmacy/', include('pharmacy.urls')),
+    url(r'pharmacy/', include('pharmacy.urls',namespace='phar_app')),
     url(r'history/', include('history_records.urls',namespace='history_records')),
     url(r'app/', include('androidApp.urls',namespace='android_app')),
     url(r'^admin/', include(admin.site.urls)),
@@ -27,7 +27,7 @@ urlpatterns = patterns('',
     url(r'^medicine/', include('medicine.urls',namespace='medicine_app')), # pharmacy
     url(r'^reports/',views.get_reports,name='reports'),
     url(r'^physician/',include('physician.urls',namespace='doc_app')),
-    url(r'^messages/', include('messages.urls')),
+    url(r'^messages/', include('django_messages.urls')),
     
 )
 

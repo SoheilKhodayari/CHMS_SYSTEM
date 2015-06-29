@@ -1,78 +1,40 @@
+<!DOCTYPE html>
 {% load staticfiles %}
 <html>
 <head>
-	<title>Medical File</title>
+	<title>CHMS | Medical File</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/medical.css' %}">
 </head>
 <body>
-		<center>
-		<p><a class="button"href="{% url 'history_records:medical_history'  patient.user.username  %}">Medical History Sheet</a></p>
-		<p><a class="button" href="{% url 'history_records:phycisian_orders'  patient.user.username  %}">Physician's Order Sheet</a></p>
-		<p><a class="button" href="{% url 'history_records:progress_notes'  patient.user.username  %}">Pregress Notes Sheet</a></p>
-		<p><a class="button" href="{% url 'history_records:unit_summary'  patient.user.username  %}">Unit Summary Sheet</a></p>
-</center>
-<div class="forground"></div>
-<style type="text/css" >
-@font-face{
-    font-family: 'Mitra';
-    src: url("{% static 'fonts/BMitra.eot?#iefix' %}") format('embedded-opentype'),
-    url("{% static 'fonts/BMitra.woff' %}") format('woff'),
-    url("{% static 'fonts/BMitra.ttf' %") format('truetype');
-}
-	body{
-		background: url("{% static 'bg.jpg' %}");
-		background-repeat: no-repeat;
-		background-size:cover;
-		background-attachment:fixed;
-		padding: 0;
-		margin: 0;
-		font-family: 'Mitra',sans-serif;
-		color: #fff;
-	}
-	div.h{
-		margin-top: 15%;
-		height: 25%;
-	}
-	p{
-		width: 450px;
-		margin: auto;
-		margin-top: 15px;
-	}
-	.forground{
-		background:rgba(0,0,0,0.8);
-		width: 100%;
-		height: 100%;
-		position: fixed;
-		margin: 0 !important;
-		text-align: center;
-		padding-top: 25px;
-		top:0;
-		z-index: -999;
-	}
-	a.button{
-		padding: 10px 19px;
-		width: 100%;
-		font-size: 20px;
-		line-height: 2;
-		font-weight: 400;
-		display: block;
-		text-decoration: none;
-		color: #fff;
-		border:1px solid;
-		border-color: #fff;
-		background-color: transparent;
-		border-radius: 12px;
-		position: relative;
-	}
-	a.button:hover{
-		background: #47a447;
-	}
-	a.orange{
-		background:transparent !important;
-	}
-	a.orange:hover{
-		background-color: #e67e22 !important;
-	}
-</style>
+<div class="header">
+	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
+		<a href="{% url 'SystemHomePage' %}"><li>SystemHomePage</li></a>
+		<a href="{% url 'phar_app:login' %}"><li>Pharmacy</li></a>
+		<a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
+		<a href="{% url 'PatientSearch' %}" ><li>Search Patient</li></a>
+		<a href="#"><li>Contact</li></a>
+		
+	</ul>
+</div>
+<br><br>
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:medical_history'  patient.user.username  %}">Medical History Sheet</a></div>
 
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:phycisian_orders'  patient.user.username  %}">Physician's Order Sheet</a></div>
+
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:progress_notes'  patient.user.username  %}">Progress Notes Sheet</a></div>
+
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:unit_summary'  patient.user.username  %}">Unit Summary Sheet</a></div>
+
+<div class="pattern"></div>
 </body>
+<script src="js/jquery.js"></script>
+<script src="js/hoverIntent.js"></script>
+<script src="js/script.js"></script>
+<script type="text/javascript">
+	$('div.btn').hoverIntent(function(){
+		$(this).animate({"border-radius": "+=30px"},300);
+	},function(){$(this).animate({"border-radius": "-=30px"},300);});
+</script>
 </html>

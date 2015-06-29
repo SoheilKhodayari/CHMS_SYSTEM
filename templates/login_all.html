@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-<html lang='en'>
+<html>
 <head>
-    <meta charset="UTF-8" /> 
-    <title>
-        HTML Document Structure
-    </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'login_all.css' %}" />
+	<title>CHMS | LOGIN</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 </head>
 <body>
-
-<div id="wrapper">
-
-	<form name="login-form" class="login-form" action="/login_all/" method="POST">
-	{% csrf_token %}
-		<div class="header">
-		<h1>Login Form</h1>
-		<span>Fill out the form below to login </span>
-		</div>
-	
-		<div class="content">
-		<input name="username" type="text" id="username" class="input username" placeholder="Username" />
-		<div class="user-icon"></div>
-		<input name="password" type="password" id="password" class="input password" placeholder="Password" />
-		<div class="pass-icon"></div>		
-		</div>
-
-		<div class="footer">
-		<input type="submit" name="submit" value="Login" class="button" />
-        <p class="error">{{ error}}</p>
-		</div>
-	
-	</form>
-
+<div class="header">
+	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
+		<a href="{% url 'SystemHomePage' %}"><li>Home</li></a>
+		<a href="{% url 'phar_app:login' %}"><li>Pharmacy</li></a>
+		<a href="#"><li>Hospitals</li></a>
+		<a href="#"><li>Contact</li></a>
+		<a href="#"><li>About Us</li></a>
+	</ul>
 </div>
-<!-- <div class="gradient"></div> -->
-<div class="forground"></div>
+	<div>
+		<form name="login-form" action="/login_all/" method="POST">
+			{% csrf_token %}
+			<legend>Login</legend>
+			<p class="fade">Fill the form below to login</p>
+			<p><input   name="username" type="text" id="username"  placeholder="Username"></p>
+			<p><input   name="password" type="password" id="password"  placeholder="Password"></p>
+			<p><input type="submit" name="submit" class="btn warning " value="login"></p>
+			<p class="error">{{ error}}</p>
+		</form>
+	</div>
+	<div class="pattern"></div>
 
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+	$('input.btn').hoverIntent(function(){
+		$(this).animate({"border-radius": "+=30px"},300);
+	},function(){$(this).animate({"border-radius": "-=30px"},300);});
+</script>
 </body>
 </html>

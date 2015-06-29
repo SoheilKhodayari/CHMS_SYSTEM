@@ -31,7 +31,7 @@ class MedicineViewSet(viewsets.ModelViewSet):
 
 
 def medicine_list_view(request):
-    if not request.user.is_authenticated() or request.user.get_profile().user_type!=5:
+    if not request.user.is_authenticated() or request.user.profile.user_type!=5:
             d = {'server_message':"Not Logged In."}
             query_str = urlencode(d)
             return HttpResponseRedirect('/pharmacy/login/?' +query_str)
@@ -94,7 +94,7 @@ def record_medicine(request):
 
 
 def medicine_create_view(request):
-        if not request.user.is_authenticated() or request.user.get_profile().user_type!=5:
+        if not request.user.is_authenticated() or request.user.profile.user_type!=5:
             d = {'server_message':"Not Logged In."}
             query_str = urlencode(d)
             return HttpResponseRedirect('/pharmacy/login/?' +query_str)
@@ -136,7 +136,7 @@ def update_medicine(request, code):
 
 
 def medicine_update_view(request, code):
-        if not request.user.is_authenticated() or request.user.get_profile().user_type!=5:
+        if not request.user.is_authenticated() or request.user.profile.user_type!=5:
             d = {'server_message':"Not Logged In."}
             query_str = urlencode(d)
             return HttpResponseRedirect('/pharmacy/login/?' +query_str)

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load i18n %}
+{% load url from future %}
+<html>
+<head>
+	<title>CHMS | Message</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/message.css' %}">
+</head>
+<body>
+	<div class="header">
+		<ul>
+			<li class="brand"><img src="{% static 'logo.png' %}"></li>
+            <a href="{% url 'messages_inbox' %} "><li>{% trans "Inbox" %}</li></a>
+            <a href="{% url 'messages_outbox' %} "><li>{% trans "Sent Messages" %}</li></a>
+            <a href="{% url 'messages_compose' %} "><li>{% trans "New Message" %}</li></a>
+             <a href="{% url 'messages_trash' %} "><li>{% trans "Trash" %}</li></a>
+		</ul>
+	</div>
+
+<div class="pattern"></div>
+<div class="forground"></div>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+	$('input.btn').hoverIntent(function(){
+		dingDong($(this));
+	},function(){});
+
+</script>
+</html>

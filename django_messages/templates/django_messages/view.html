@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load i18n %}
+{% load url from future %}
+<html>
+<head>
+	<title>CHMS | Message</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/viewMsg.css' %}">
+</head>
+<body>
+	<div class="header">
+		<ul>
+			<li class="brand"><img src="{% static 'logo.png' %}"></li>
+            <a href="{% url 'messages_inbox' %} "><li>{% trans "Inbox" %}</li></a>
+            <a href="{% url 'messages_outbox' %} "><li>{% trans "Sent Messages" %}</li></a>
+            <a href="{% url 'messages_compose' %} "><li>{% trans "New Message" %}</li></a>
+             <a href="{% url 'messages_trash' %} "><li>{% trans "Trash" %}</li></a>
+		</ul>
+	</div>
+    {% block content %}
+ <div>
+<h1 style="color:#34495e">{% trans "View Message" %}</h1>
+
+
+</div >
+<div class="sheet">
+
+     <table>
+        <tr class="blue">
+			<td >{% trans "Subject: " %} </td>
+			<td> {{ message.subject }} </td>
+		</tr>
+		<tr class="blue">
+			<td>{% trans "Sender:" %} </td>
+			<td> {{ message.sender }}</td>
+		</tr>
+		<tr class="blue">
+			<td>{% trans "Date:" %} </td>
+			<td> {{ message.sent_at|date:_("DATETIME_FORMAT")}}</td>
+		</tr>
+		<tr class="blue">
+			<td>{% trans "Recipient:" %} </td>
+			<td> {{ message.recipient }} </td>
+		</tr>
+         <tr class="blue">
+			<td>{% trans "Body:" %} </td>
+			<td><textarea name="textarea"  disabled="">{{ message.body|linebreaksbr }}</textarea> </td>
+		</tr>
+     </table>
+</div>
+
+{% ifequal message.recipient.pk user.pk %}
+<div style="display:inline-block" class="btn success" ><a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a></div>
+{% endifequal %}
+<div style="display:inline-block" class="btn warning" ><a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a></div>
+
+
+{% comment %}Example reply_form integration
+{% if reply_form %}
+<h1>{% trans "Compose reply"%}</h1>
+<form action="{% url 'messages_reply' message.id %}" method="post">
+{% csrf_token %}
+<table>
+{{ reply_form.as_table }}
+</table>
+<input type="submit" value="{% trans "Send" %} &raquo;"/>
+</form>
+{% endif %}
+{% endcomment %}
+  </div>
+{% endblock %}
+
+
+<div class="pattern"></div>
+<div class="forground"></div>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+	$('input.btn').hoverIntent(function(){
+		dingDong($(this));
+	},function(){});
+
+</script>
+</html>
