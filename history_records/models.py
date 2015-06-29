@@ -3,6 +3,7 @@ from patient.models import Patient
 from datetime import  datetime
 # from django.contrib.auth.models import
 from physician.models import Physician
+from hospital.models import Hospital
 class MedicationList(models.Model):
 
     """
@@ -38,9 +39,11 @@ class MedicationList(models.Model):
 
 
 class MedicalFile(models.Model):
+    parent_hospital=models.ForeignKey(Hospital)
     patient=models.ForeignKey(Patient,related_name='medical_file')
     date_of_addmition=models.DateField(default=datetime.now())
     date_of_discharge=models.DateField(blank=True,null=True)
+    open=models.BooleanField(default=0)
     ward=models.CharField(max_length=4)
     room=models.CharField(max_length=4)
     bed=models.CharField(max_length=2)
