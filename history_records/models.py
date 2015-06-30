@@ -41,7 +41,7 @@ class MedicationList(models.Model):
 class MedicalFile(models.Model):
     parent_hospital=models.ForeignKey(Hospital)
     patient=models.ForeignKey(Patient,related_name='medical_file')
-    date_of_addmition=models.DateField(default=datetime.now())
+    date_of_addmition=models.DateField(auto_now_add=True)
     date_of_discharge=models.DateField(blank=True,null=True)
     open=models.BooleanField(default=0)
     ward=models.CharField(max_length=4)
@@ -143,25 +143,25 @@ class Surgery(models.Model): # Surgery
 
 class Progress_notes_sheet(models.Model):
     medical_file=models.OneToOneField(MedicalFile,related_name='progress_note_sheet')
-    date=models.DateField(default=datetime.now())
+    date=models.DateField(auto_now_add=True)
     attending_physician=models.ForeignKey(Physician)
 
 
 class Progress_note(models.Model):
-    date=models.DateField(default=datetime.now())
-    treatment_progress=models.CharField(max_length=200)
+    date=models.DateField(auto_now_add=True)
+    treatment_progress=models.CharField(max_length=200,default='insert value')
     sheet=models.ForeignKey(Progress_notes_sheet,related_name='notes')
     physician=models.ForeignKey(Physician)
 
 class Physician_order_sheet(models.Model):
     medical_file=models.OneToOneField(MedicalFile,related_name='physician_order_sheet')
-    date=models.DateTimeField(default=datetime.now(),blank=True)
+    date=models.DateTimeField(auto_now_add=True,blank=True)
     attending_physician=models.ForeignKey(Physician)
 
 class Order(models.Model):
-    date=models.DateField(default=datetime.now())
-    time=models.TimeField(default=datetime.now().time())
-    order=models.CharField(max_length=200)
+    date=models.DateField(auto_now_add=True)
+    time=models.TimeField(auto_now_add=True)
+    order=models.CharField(max_length=200,default='insert value')
     sheet=models.ForeignKey(Physician_order_sheet,related_name='orders')
     physician=models.ForeignKey(Physician,related_name='orders')
 
@@ -170,27 +170,27 @@ class Unit_summary_sheet(models.Model):
     medical_file=models.OneToOneField(MedicalFile,related_name='unit_summary_sheet')
     attending_physician=models.ForeignKey(Physician,related_name='unit_summaries')
     other_physicians=models.ManyToManyField(Physician,related_name='summary_attend')
-    chief_complaint_and_primary_diagnosis=models.CharField(max_length=200)
-    final_diagnosis=models.CharField(max_length=200)
-    medical_and_surgical_procedures=models.CharField(max_length=200)
-    results_of_paraclinical_examinations=models.CharField(max_length=200)
-    disease_progress=models.CharField(max_length=200)
-    patient_condition_on_discharge=models.CharField(max_length=200)
-    recommendations_after_discharge=models.CharField(max_length=200)
-    recommendations_for_family_physician=models.CharField(max_length=200)
+    chief_complaint_and_primary_diagnosis=models.CharField(max_length=200,default='insert value')
+    final_diagnosis=models.CharField(max_length=200,default='insert value')
+    medical_and_surgical_procedures=models.CharField(max_length=200,default='insert value')
+    results_of_paraclinical_examinations=models.CharField(max_length=200,default='insert value')
+    disease_progress=models.CharField(max_length=200,default='insert value')
+    patient_condition_on_discharge=models.CharField(max_length=200,default='insert value')
+    recommendations_after_discharge=models.CharField(max_length=200,default='insert value')
+    recommendations_for_family_physician=models.CharField(max_length=200,default='insert value')
 
 
 class  Medical_history_sheet(models.Model):
     medical_file=models.OneToOneField(MedicalFile,related_name='medical_history_sheet')
     attending_physician=models.ForeignKey(Physician,related_name='medical_history_sheets')
-    chief_complain=models.CharField(max_length=200)
-    history_of_present_illness=models.CharField(max_length=200)
-    pass_diseases_history=models.CharField(max_length=200)
-    current_drug_theraphy_and_other_addiction=models.CharField(max_length=200)
-    allergy_to=models.CharField(max_length=200)
-    family_history=models.CharField(max_length=200)
-    summary=models.TextField()
-    primary_dx=models.TextField()
+    chief_complain=models.CharField(max_length=200,default='insert value')
+    history_of_present_illness=models.CharField(max_length=200,default='insert value')
+    pass_diseases_history=models.CharField(max_length=200,default='insert value')
+    current_drug_theraphy_and_other_addiction=models.CharField(max_length=200,default='insert value')
+    allergy_to=models.CharField(max_length=200,default='insert value')
+    family_history=models.CharField(max_length=200,default='insert value')
+    summary=models.TextField(default='insert value')
+    primary_dx=models.TextField(default='insert value')
 
 
 

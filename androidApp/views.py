@@ -119,7 +119,31 @@ def get_patient_details(reuest):
     return JsonResponse(response)
 
 
+@csrf_exempt
+def get_files(request):
+    id=request.POST['id']
+    try:
+        patient=Patient.objects.get(user_id=id)
+    except:
+        return HttpResponse('Failed "no patient with this id"')
+    try:
+        user_id=request.POST['user_id']
+        phys=Physician.objects.get(user_id=user_id)
+    except:
+        return HttpResponse('Failed "user_id error"')
+    try:
+        medical_files=patient.medical_file.all().filter(parent_hospital=phys.hospital).order_by('date_of_addmition')
+    except:
+        return HttpResponse('Failed "user has no medical file"')
+    if medical_files:
+        files=[]
+        for file in medical_files:
+            files.append({'id':file.id,'date':file.date_of_addmition})
+        response={'files':files}
+        return JsonResponse(response)
 
+    else:
+        return HttpResponse('Failed "user has no medical file"')
 @csrf_exempt
 def get_unit_summary(request):
     id=request.POST['id']
@@ -128,7 +152,8 @@ def get_unit_summary(request):
     except:
         return HttpResponse('Failed "no patient with this id"')
     try:
-        medi_file=patient.medical_file.get()
+        file_id=request.POST['file_id']
+        medi_file=patient.medical_file.get(id=file_id)
     except:
         return HttpResponse('Failed "user has no medical file"')
     try:
@@ -156,7 +181,8 @@ def get_physician_order(request):
     except:
         return HttpResponse('Failed "no patient with this id')
     try:
-        medi_file=patient.medical_file.get()
+        file_id=request.POST['file_id']
+        medi_file=patient.medical_file.get(id=file_id)
     except:
         return HttpResponse('Failed "user has no medical file"')
     try:
@@ -190,8 +216,8 @@ def set_physician_order(request):
     description=request.POST['description']
     try:
         patient=Patient.objects.get(user_id=id)
-
-        medi_file=patient.medical_file.get()
+        file_id=request.POST['file_id']
+        medi_file=patient.medical_file.get(id=file_id)
         orders_sheet=medi_file.physician_order_sheet
     except:
         return HttpResponse('Failed  "user has no medical file or unit_order_sheet"')
@@ -212,7 +238,8 @@ def get_progress_note(request):
     except:
         return HttpResponse('Failed "no patient with this id"')
     try:
-        medi_file=patient.medical_file.get()
+        file_id=request.POST['file_id']
+        medi_file=patient.medical_file.get(id=file_id)
     except:
         return HttpResponse('Failed  "user has no medical file"')
     try:
@@ -246,7 +273,8 @@ def set_progress_note(request):
     except:
         return HttpResponse('Failed "no patient with this id"')
     try:
-        medi_file=patient.medical_file.get()
+        file_id=request.POST['file_id']
+        medi_file=patient.medical_file.get(id=file_id)
     except:
         return  HttpResponse('Failed  "user has no medical file"')
     try:
@@ -270,7 +298,8 @@ def get_medical_history(request):
     except:
         return HttpResponse('Failed "no patient with this id"')
     try:
-        medi_file=patient.medical_file.get()
+        file_id=request.POST['file_id']
+        medi_file=patient.medical_file.get(id=file_id)
     except:
         return HttpResponse('Failed  "user has no medical file"')
     try:

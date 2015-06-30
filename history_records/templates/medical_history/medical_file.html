@@ -19,19 +19,19 @@
 	</ul>
 </div>
 <br><br>
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:medical_history'  patient.user.username  %}">Medical History Sheet</a></div>
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:medical_history'  patient.user.username file.id %}">Medical History Sheet</a></div>
 
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:phycisian_orders'  patient.user.username  %}">Physician's Order Sheet</a></div>
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:phycisian_orders'  patient.user.username file.id %}">Physician's Order Sheet</a></div>
 
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:progress_notes'  patient.user.username  %}">Progress Notes Sheet</a></div>
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:progress_notes'  patient.user.username  file.id %}">Progress Notes Sheet</a></div>
 
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:unit_summary'  patient.user.username  %}">Unit Summary Sheet</a></div>
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:unit_summary'  patient.user.username  file.id %}">Unit Summary Sheet</a></div>
 
 <div class="pattern"></div>
 </body>
-<script src="js/jquery.js"></script>
-<script src="js/hoverIntent.js"></script>
-<script src="js/script.js"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 <script type="text/javascript">
 	$('div.btn').hoverIntent(function(){
 		$(this).animate({"border-radius": "+=30px"},300);

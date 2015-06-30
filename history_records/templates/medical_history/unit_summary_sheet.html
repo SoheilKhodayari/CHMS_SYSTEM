@@ -1,55 +1,76 @@
 {% load staticfiles %}
 <html>
 <head>
-	<title>Unit Summary Sheet</title>
+	<title>CHMS | Medical File</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/medical.css' %}">
 	
 </head>
-<body><div class="header">menus</div>
+<body>
+	<div class="header">
+	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
+		<a href="{% url 'SystemHomePage' %}"><li>SystemHomePage</li></a>
+		<a href="{% url 'phar_app:login' %}"><li>Pharmacy</li></a>
+		<a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
+		<a href="{% url 'PatientSearch' %}" ><li>Search Patient</li></a>
+		<a href="#"><li>Contact</li></a>
+		
+	</ul>
+</div>
 
-	<p class='center' >Unit Summary Sheet</p>
-	<div>
-		<p class='left' style='border:solid;width:150px;padding-bottom:0;margin-bottom:0;'>File No.:</p>
-		<div>
-		<div class='info'>
-			<div class='div1'>
-            <p>First Name: {{ patient.user.first_name }}</p>
-			<p>Last Name: {{ patient.user.last_name }}</p>
-			<p>Father Name :{{ patient.father_name }}</p>
-			</div>
-			<div class='div1'>
-				<p>Sex: {{ patient.get_gender_display }}</p>
-				<p>Date of Birth: {{ patient.birthday }}</p>
-				<p>Occupation: {{ patient.occupation }}</p>
-			</div>
-			<div class='div1'>
-				<p>Attending Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span> </p>
-				<p>Date of Addmition:</p>
-				<p>Date of Discharge:</p>
-			</div>
-		</div>
-		<div class='info' style='padding-top:5px;'>
-		<p class='cell'>Ward: {{ sheet.medical_file.ward }}</p><p class='cell'>Room: {{ sheet.medical_file.room }}</p><p class='cell'>Bed: {{ sheet.medical_file.bed }}</p>
-	</div>
-		<p class='add_no' >Address:</p>
-		<p class='add_no'>Phone No.:</p>
-		</div>
-		<div class='history'>
+	<h3>Unit Summary Sheet</h3>
+	<h4>File No :</h4>
+	<div class="sheet">
+		
+		<table>
+            <tr class="green">
+				<td>First Name : </td>
+				<td> {{ patient.user.first_name }} </td>
+			</tr>
+			<tr class="green">
+				<td>Last Name : </td>
+				<td> {{ patient.user.last_name }} </td>
+			</tr>
+			<tr class="green">
+					<td>Father Name : </td>
+					<td> {{ patient.father_name }} </td>
+			</tr>
+			
+				<tr class="blue"><td>Sex:</td><td> {{ patient.get_gender_display }}</td></tr>
+				<tr class="blue"><td>Date of Birth:</td><td> {{ patient.birthday }}</td></tr>
+				<tr class="blue"><td>Occupation:</td><td> {{ patient.occupation }}</td></tr>
+			
+			
+				<tr class="green"><td>Attending Physician:</td><td>{{ sheet.attending_physician.user.first_name}}{{sheet.attending_physician.user.last_name }}</td> </tr>
+				<tr class="green"><td>Date of Addmition:</td><td></td></tr>
+				<tr class="green"><td>Date of Discharge:</td><td></td></tr>
+			
+		
+		
+		<tr class="blue"><td>Ward: </td><td>{{ sheet.medical_file.ward }}</td></tr>
+		<tr class="blue"><td>Room:</td><td> {{ sheet.medical_file.room }}</td></tr>
+		<tr class="blue"><td>Bed: </td><td>{{ sheet.medical_file.bed }}</td></tr>
+		<tr class="blue"><td>Address:</td><td></td></tr>
+		<tr class="blue"><td>Phone No.:</td><td></td></tr>
+		
 						<form method='post'>
 				{% csrf_token %}
-			<div class='content'>Chief Complaint of the Patient & Primary Diagnosis:<input name='ccapd' class='inp' type='text' value={{ sheet.chief_complaint_and_primary_diagnosis }} disabled='true'> </div>
-			<div class='content'>Final Diagnosis: <input class='inp' name="fd" type='text' value={{ sheet.final_diagnosis }} disabled='true'> </div>
-			<div class='content'>Medical & Surgical Procedures:<input name="masp" class='inp' type='text' value={{ sheet.medical_and_surgical_procedures }} disabled='true'> </div>
-			<div class='content'>Results of Paraclinical Examination:<input name="rope" class='inp' type='text' value={{ sheet.results_of_paraclinical_examinations }} disabled='true'> </div>
-			<div class='content'>Disease Progress (Cause of Death):<input name="dp" class='inp' type='text' value={{ sheet.disease_progress }} disabled='true'> </div>
-			<div class='content'>Patient's Condition on Discharge:<input name="pd" class='inp' type='text' value={{ sheet.patient_condition_on_discharge }} disabled='true'> </div>
-			<div class='content' style='height:300px;'>Recommendations after Discharge:<input name="ra" class='inp' type='text' value={{ sheet.recommendations_after_discharge }} disabled='true'> </div>
-			<div class='content' >Physician: <span>{{ sheet.attending_physician.user.first_name}} </span><span>{{sheet.attending_physician.user.last_name }}</span> </div>
-				<div class="button-holder">
-			            		<input type="submit" disabled id='submit' value="submit">
-			    </div>
+			<tr class="blue"><td>Chief Complaint of the Patient & Primary Diagnosis:</td><td><input name='ccapd' class='inp' type='text' value="{{ sheet.chief_complaint_and_primary_diagnosis }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Final Diagnosis: </td><td><input class='inp' name="fd" type='text' value="{{ sheet.final_diagnosis }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Medical & Surgical Procedures:</td><td><input name="masp" class='inp' type='text' value="{{ sheet.medical_and_surgical_procedures }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Results of Paraclinical Examination:</td><td><input name="rope" class='inp' type='text' value="{{ sheet.results_of_paraclinical_examinations }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Disease Progress (Cause of Death):</td><td><input name="dp" class='inp' type='text' value="{{ sheet.disease_progress }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Patient's Condition on Discharge:</td><td><input name="pd" class='inp' type='text' value="{{ sheet.patient_condition_on_discharge }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Recommendations after Discharge:</td><td><input name="ra" class='inp' type='text' value="{{ sheet.recommendations_after_discharge }}" disabled='true'></td> </tr>
+			<tr class="blue"><td>Physician: </td><td>{{ sheet.attending_physician.user.first_name}} {{sheet.attending_physician.user.last_name }}</td></tr>
+				</table>
+			</div>
+			          <input class="btn" type="submit" disabled id='submit' value="submit">
+			    
 			</form>
 <div class="button-holder">
-<button onclick="Edit()">Edit</button>
+<button id="edit" class="btn warning"onclick="Edit()">Edit</button>
 </div>
 		</div>
 
@@ -73,236 +94,24 @@
 			document.getElementById('submit').disabled=false;
 		}
 	</script>
-<div class="forground"></div>
-<style type="text/css"> 
-@font-face{
-    font-family: 'Mitra';
-    src: url("{% static 'fonts/BMitra.eot?#iefix' %}") format('embedded-opentype'),
-    url("{% static 'fonts/BMitra.woff' %}") format('woff'),
-    url("{% static 'fonts/BMitra.ttf' %") format('truetype');
-}
-	body{
-		background: url("{% static 'bg.jpg' %}");
-		background-repeat: no-repeat;
-		background-size:cover;
-		background-attachment:fixed;
-		padding: 0;
-		margin: 0;
-		font-family: 'Mitra',sans-serif;
-		color: #fff;
-	}
-	div.header{
-		background-color: rgba(155,155,155,0.3);
-		width: 100%;
-		margin: 0;
-		text-align: center;
-		
-		box-shadow: 0 0 2px #ccc;
-	}
-	div.header ul{
-		padding: 0;
-		margin: 0;
-	}
-	div.header ul li {
-		display: inline-block;
-		border-radius: 4px;
-		padding: 3px;
-		margin: 15px;
+<div class="pattern"></div>
+	<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 
-		
-	}
-	div.header ul li:hover{
-		background-color: rgba(255,255,255,0.8);
-		color: #428bca;
-		cursor: pointer;
-	}
-	div.header a{
-		text-decoration: none;
-		color: inherit;
-	}
-	.center{
-		text-align: center;
-	}
-	div.h{
-		margin-top: 15%;
-		height: 25%;
-	}
-	div.button{
-		width: 200px;
-		margin: auto;
-		margin-top: 15px;
-	}
-	p{
-		margin-left: 25px;
-	}
-	/*div{
-		margin-left: 25px;
-	}*/
-	.forground{
-		background:rgba(0,0,0,0.8);
-		width: 100%;
-		height: 100%;
-		position: fixed;
-		margin: 0 !important;
-		text-align: center;
-		padding-top: 25px;
-		top:0;
-		z-index: -999;
-	}
-	a.button{
-		padding: 10px 19px;
-		width: 100%;
-		font-size: 20px;
-		line-height: 2;
-		font-weight: 400;
-		display: block;
-		text-decoration: none;
-		color: #fff;
-		border:1px solid;
-		border-color: #fff;
-		background-color: transparent;
-		border-radius: 12px;
-		position: relative;
-	}
-	a.button:hover{
-		background: #47a447;
-	}
-	a.orange{
-		background:transparent !important;
-	}
-	a.orange:hover{
-		background-color: #e67e22 !important;
-	}
-	form{
-		text-transform: capitalize;	
-	}
-	select{
-		margin-top: 15px;
-	}
-	input[disabled]{
-		margin-left: 15px;
-		margin-right: 15px;
-		padding: 6px 12px ;
-		background-color: transparent;
-		border:1px solid #666;
-		color: #fff;
-		margin-top:15px;
-	}
-	input{
-		margin-left: 15px;
-		margin-right: 15px;
-		padding: 6px 12px ;
-		background-color: transparent;
-		border:1px solid #666;
-		color: #1abc9c;
-		margin-top:15px;
-	}
-	.inp{
-		width: 700px;
-	}
-	textarea[disabled]{
-			margin-left: 15px;
-		margin-right: 15px;
-		padding: 6px 12px ;
-		background-color: transparent;
-		border:1px solid #666;
-		color: #fff;
-		margin-top:15px;
-	}
-	textarea{
-		margin-left: 15px;
-		margin-right: 15px;
-		padding: 12px ;
-		min-width: 350px;
-		min-height: 25ex;
-		vertical-align: top;
-		background-color: transparent;
-		border:1px solid #666;
-		color: #1abc9c;
-		margin-top:15px;
-	}
-	input[type="submit" ][disabled]{
-		border-color: #454545;
-		color: #454545;
-	}
+<script type="text/javascript">
+	$('button.btn').hoverIntent(function(){
+		$(this).animate({"border-radius": "+=30px"},300);
+	},function(){$(this).animate({"border-radius": "-=30px"},300);});
+	$('input.btn').hoverIntent(function(){
+		$(this).animate({"border-radius": "+=30px"},300);
+	},function(){$(this).animate({"border-radius": "-=30px"},300);});
+	$('#edit').click(function(){
+		// $('input[disabled]').removeAttr('disabled');
+		$('input.btn').addClass('success');
+		// $('textarea[disabled]').removeAttr('disabled');
+	});
+</script>
 
-	input[type="submit" ][disabled]:hover{
-		border-color: #454545;
-		background: none;
-		color: #454545;
-	}
-	input[type="submit"]{
-		background-color: transparent;
-		border-radius: 15px;
-		color: #1abc9c;
-		font-weight: bold;
-		cursor: pointer;
-		border-color: green;
-		border:2px solid #1abc9c;
-
-
-	}
-	input[type="submit"]:hover{
-		background-color: #1abc9c;
-		color: #454545;
-		border-radius: 15px;
-	}
-	 table{
-		width: 50%;	
-		margin:auto;
-		background-color: rgba(155,155,155,0.3);
-		margin-top: 15px;
-	}
-	table a{
-		color: #fff;
-	}
-	table td {
-		padding: 12px 56px;
-		color:#fff;
-		border-bottom:1px solid #ccc;
-		border-right:1px solid #ccc;
-	}
-	table td:last-child{
-		border-right: none;
-	}
-	table th	{
-		background-color: transparent;
-		padding: 12px 6px;
-		color: #fff;
-		font-size: 0.8em;
-		border:1px solid #666;
-	}
-	select{
-		background: transparent;
-		border:1px solid #ccc;
-		color: #f1f1f1;
-		padding: 6px 12px;
-		-webkit-apperance:none;
-	}
-	select option {
-		background: #000;
-	}
-		div.progress{
-		text-align: center;
-	}
-	button{
-		background: none;
-		border : 1px solid #e74c3c;
-		color: #e74c3c;
-		border-radius: 4px;
-		width: 200px;
-		min-height: 35px;
-		margin:auto;
-		margin-bottom: 15px;
-	}
-	button:hover{
-		background: #e74c3c;
-		color: #fff;
-		cursor: pointer;
-	}
-	div.button-holder{
-		text-align: center;
-	}
-</style>
 </body>
 </html>
