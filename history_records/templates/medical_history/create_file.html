@@ -19,13 +19,8 @@
 	</ul>
 </div>
 <br><br>
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:medical_history'  patient.user.username file.id %}">Medical History Sheet</a></div>
+<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:create_medical_file'  username  %}">Create New Medical File</a></div>
 
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:phycisian_orders'  patient.user.username file.id %}">Physician's Order Sheet</a></div>
-
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:progress_notes'  patient.user.username  file.id %}">Progress Notes Sheet</a></div>
-
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:unit_summary'  patient.user.username  file.id %}">Unit Summary Sheet</a></div>
 
 <div class="pattern"></div>
 </body>

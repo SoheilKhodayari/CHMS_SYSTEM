@@ -19,13 +19,14 @@
 	</ul>
 </div>
 <br><br>
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:medical_history'  patient.user.username file.id %}">Medical History Sheet</a></div>
+<form method='post'>
+	{% csrf_token %}
+<p>ward:<input type='text' name='ward'></p>
+<p>room:<input type='text' name='room'></p>
+<p>bed:<input type='text' name='bed'></p>
+<input type='submit' value="submit">
+</form>
 
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:phycisian_orders'  patient.user.username file.id %}">Physician's Order Sheet</a></div>
-
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:progress_notes'  patient.user.username  file.id %}">Progress Notes Sheet</a></div>
-
-<div class="btn warning large"><a class="btn warning" href="{% url 'history_records:unit_summary'  patient.user.username  file.id %}">Unit Summary Sheet</a></div>
 
 <div class="pattern"></div>
 </body>
