@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>CHMS | Medical File</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/general-style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/medical.css' %}">
+</head>
+<body>
+<div class="header">
+	<ul>
+		<li class="brand"><img src="{% static 'logo.png' %}"></li>
+		<a href="{% url 'SystemHomePage' %}"><li>SystemHomePage</li></a>
+		<a href="{% url 'phar_app:login' %}"><li>Pharmacy</li></a>
+		<a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
+		<a href="{% url 'PatientSearch' %}" ><li>Search Patient</li></a>
+		<a href="#"><li>Contact</li></a>
+		
+	</ul>
+</div>
+<br><br>
+<form method='post'>
+	{% csrf_token %}
+<p>ward:<input type='text' name='ward'></p>
+<p>room:<input type='text' name='room'></p>
+<p>bed:<input type='text' name='bed'></p>
+<input type='submit' value="submit">
+</form>
+
+
+<div class="pattern"></div>
+</body>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/hoverIntent.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script type="text/javascript">
+	$('div.btn').hoverIntent(function(){
+		$(this).animate({"border-radius": "+=30px"},300);
+	},function(){$(this).animate({"border-radius": "-=30px"},300);});
+</script>
+</html>
