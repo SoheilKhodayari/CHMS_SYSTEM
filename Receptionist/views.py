@@ -17,14 +17,14 @@ from models import Receptionist
 
 def search_rec(request):
     try:
-        if not (request.user.is_authenticated() and request.user.profile.user_type==0)  :
-            d = {'server_message':"Access Denied"}
+        if not (request.user.is_authenticated() and request.user.get_profile().user_type==0)  :
+            d = {'server_message':"Not Logged In."}
             query_str = urlencode(d)
-            return HttpResponse(query_str)
+            return HttpResponseRedirect('/login_all/?' +query_str)
     except:
-            d = {'server_message':"Access Denied"}
+            d = {'server_message':"not logged in"}
             query_str = urlencode(d)
-            return HttpResponse(query_str)
+            return HttpResponseRedirect('/login_all/?' +query_str)
     if request.method == 'GET':
         rec=Receptionist.objects.get(user=request.user)
         if request.GET.get("submit_search_button"): # if search submit button clicked
@@ -84,8 +84,15 @@ class PatientViewSet(viewsets.ModelViewSet):
 
 
 def patient_list_view(request):
-    # if not request.user.is_authenticated():
-    #     return HttpResponseNotAllowed(['GET'])
+    try:
+        if not (request.user.is_authenticated() and request.user.get_profile().user_type==0)  :
+            d = {'server_message':"Not Logged In."}
+            query_str = urlencode(d)
+            return HttpResponseRedirect('/login_all/?' +query_str)
+    except:
+            d = {'server_message':"not logged in"}
+            query_str = urlencode(d)
+            return HttpResponseRedirect('/login_all/?' +query_str)
 
     patients = None
     search = request.GET.get("search", False)
