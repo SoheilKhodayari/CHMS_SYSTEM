@@ -39,7 +39,7 @@ class MedicationList(models.Model):
 
 
 class MedicalFile(models.Model):
-    parent_hospital=models.ForeignKey(Hospital)
+    parent_hospital=models.ForeignKey(Hospital,null=True)
     patient=models.ForeignKey(Patient,related_name='medical_file')
     date_of_addmition=models.DateField(auto_now_add=True)
     date_of_discharge=models.DateField(blank=True,null=True)
