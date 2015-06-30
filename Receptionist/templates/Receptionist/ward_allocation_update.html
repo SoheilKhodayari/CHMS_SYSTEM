@@ -20,6 +20,7 @@
         <a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
         <a href="{% url  'rec_app:delete-ward' patient.username %}"><li> Delete This Guardian</li> </a>
        <a href="/rec/{{ username }}" c><li> Back To Details </li></a>
+        <a href="{% url 'logout' %}"><li>LogOut</li></a>
 
 	</ul>
 </div>

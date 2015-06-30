@@ -16,6 +16,7 @@ from django.utils.encoding import smart_str
 import os
 import mimetypes
 from models import Physician
+from Receptionist.models import Receptionist
 
 def register(request):
    try:
@@ -36,8 +37,9 @@ def register(request):
                 email=request.POST['email']
                 )
             user.save()
-
+            rec=Receptionist.objects.get(user=request.user)
             physician=Physician(
+                        hospital=rec.hospital,
                         user_type=6,
                         user=user,
                         Tel=request.POST['tel'],
