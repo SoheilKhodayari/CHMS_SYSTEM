@@ -29,6 +29,17 @@ class MedicineViewSet(viewsets.ModelViewSet):
         'medicine_type',
     )
 
+def medicine_color_help(request):
+    if not request.user.is_authenticated() or request.user.profile.user_type!=5:
+            d = {'server_message':"Not Logged In."}
+            query_str = urlencode(d)
+            return HttpResponseRedirect('/pharmacy/login/?' +query_str)
+    ctx = {}
+    return render_to_response(
+            'medicine/color_help.html',
+            ctx,
+            context_instance=RequestContext(request),
+        )
 
 def medicine_list_view(request):
     if not request.user.is_authenticated() or request.user.profile.user_type!=5:

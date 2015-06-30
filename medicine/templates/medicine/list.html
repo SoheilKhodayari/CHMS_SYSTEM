@@ -55,7 +55,9 @@
         if(Number(amounts[i].outerText) <10){
             amounts[i].style.backgroundColor="#e74c3c";
         }
-     else if( 11  < Number(amounts[i].outerText)  && 50> Number(amounts[i].outerText) ){  amounts[i].style.backgroundColor="orange";
+     else if( 11  < Number(amounts[i].outerText)  && 10> Number(amounts[i].outerText) ){  amounts[i].style.backgroundColor="red";
+     }
+     else if( 11  < Number(amounts[i].outerText)  && 100> Number(amounts[i].outerText) ){  amounts[i].style.backgroundColor="orange";
      }
      }
 

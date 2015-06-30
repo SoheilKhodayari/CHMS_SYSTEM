@@ -35,7 +35,6 @@
         <li ><a href="{% url 'medicine_app:medicines-list' %}">Medicines List</br></a></li>
         <li><a href="{% url 'medicine_app:medicines-create' %}">Add Medicine</a></li>
         <li><a href="{% url 'messages_inbox' %}">Messages</a></li>
-         <li><a href="{% url 'medicine_app:color_help' %}">ColorHelp</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
       </ul>
     </div>
@@ -43,11 +42,42 @@
 
        </div>
         </div>
+
   </nav>
 </head>
+    <p><&nbsp</p>
+    <p><&nbsp</p>
+ <p><&nbsp</p>
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+    <h1 class="panel-title"> &nbsp &nbsp  Color Help <i class="fa fa-medkit"></i></h1>
+  </div>
+
+  <table class="table table-striped">
+    <thead >
+      <tr >
+        <th style="text-align:center">Red</th>
+        <th style="text-align:center">Orange</th>
+        <th style="text-align:center">White</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr >
+
+          <td style="text-align:center" >Low</td>
+          <td style="text-align:center"> Very Low</td>
+          <td style="text-align:center"> Normal </td>
+
+        </tr>
+    </tbody>
+  </table>
+
+
+</div>
 
 <div class="container">
-  {% block content %} 
+  {% block content %}
   {% endblock content %}
 
 </div>
