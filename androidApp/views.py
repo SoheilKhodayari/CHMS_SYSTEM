@@ -49,6 +49,8 @@ def get_patient_list(request):
     id=request.POST['user_id']
     type=request.POST['type']
     response={}
+    
+    ids=[]
     if type=='6':
         patient_list=[]
 
@@ -64,9 +66,11 @@ def get_patient_list(request):
             except:
                 return HttpResponse('Failed')
             patient=medi_file.patient
-            name=patient.user.first_name+' '+patient.user.last_name
-            patient_list.append({'id':str(patient.user_id),'name':name,
-                                 'ward':medi_file.ward,'room':medi_file.room,'bed':medi_file.bed})
+            if not (patient.user_id in ids):
+                ids.append(patient.user_id)
+                name=patient.user.first_name+' '+patient.user.last_name
+                patient_list.append({'id':str(patient.user_id),'name':name,
+                                     'ward':medi_file.ward,'room':medi_file.room,'bed':medi_file.bed})
     elif type=='7':
         try:
 
@@ -75,10 +79,10 @@ def get_patient_list(request):
         except:
             return HttpResponse('Failed')
         patient_list=[]
-        patients=Patient.objects.all()
+        patients=Patient.objects.all().fileter(parent_hospital=user.hospital)
         for patient in patients:
             try:
-                medi_file=patient.medical_file.get()
+                medi_file=patient.medical_file.all().order_by('date_of_addmition').reverse()[0]
                 name=patient.user.first_name+' '+patient.user.last_name
                 patient_list.append({'id':str(patient.user_id),'name':name,
                                      'ward':medi_file.ward,'room':medi_file.room,'bed':medi_file.bed})
@@ -90,7 +94,7 @@ def get_patient_list(request):
     response['response']=patient_list
 
     return JsonResponse(response)
-    # return JsonResponse
+
 @csrf_exempt
 def get_patient_details(reuest):
     id=reuest.POST['id']
