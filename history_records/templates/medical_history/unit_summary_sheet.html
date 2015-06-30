@@ -38,9 +38,9 @@
 					<td> {{ patient.father_name }} </td>
 			</tr>
 			
-				<tr class="blue"><td>Sex:</td><td> {{ patient.get_gender_display }}</td></tr>
-				<tr class="blue"><td>Date of Birth:</td><td> {{ patient.birthday }}</td></tr>
-				<tr class="blue"><td>Occupation:</td><td> {{ patient.occupation }}</td></tr>
+				<tr class="green"><td>Sex:</td><td> {{ patient.get_gender_display }}</td></tr>
+				<tr class="green"><td>Date of Birth:</td><td> {{ patient.birthday }}</td></tr>
+				<tr class="green"><td>Occupation:</td><td> {{ patient.occupation }}</td></tr>
 			
 			
 				<tr class="green"><td>Attending Physician:</td><td>{{ sheet.attending_physician.user.first_name}}{{sheet.attending_physician.user.last_name }}</td> </tr>
@@ -49,11 +49,11 @@
 			
 		
 		
-		<tr class="blue"><td>Ward: </td><td>{{ sheet.medical_file.ward }}</td></tr>
-		<tr class="blue"><td>Room:</td><td> {{ sheet.medical_file.room }}</td></tr>
-		<tr class="blue"><td>Bed: </td><td>{{ sheet.medical_file.bed }}</td></tr>
-		<tr class="blue"><td>Address:</td><td></td></tr>
-		<tr class="blue"><td>Phone No.:</td><td></td></tr>
+		<tr class="green"><td>Ward: </td><td>{{ sheet.medical_file.ward }}</td></tr>
+		<tr class="green"><td>Room:</td><td> {{ sheet.medical_file.room }}</td></tr>
+		<tr class="green"><td>Bed: </td><td>{{ sheet.medical_file.bed }}</td></tr>
+		<tr class="green"><td>Address:</td><td></td></tr>
+		<tr class="green"><td>Phone No.:</td><td></td></tr>
 		
 						<form method='post'>
 				{% csrf_token %}

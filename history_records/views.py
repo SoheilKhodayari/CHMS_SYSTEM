@@ -216,17 +216,20 @@ def create_medical_file(request,username):
     user=request.user
     phys=Physician.objects.get(user=user)
     if request.method=='POST':
-        medi_file=MedicalFile(parent_hospital=phys.hospital,patient=patient,date_of_addmition=datetime.datetime.today().date(),open=1,ward=request.POST['ward'],room=request.POST['room'],bed=request.POST['bed'])
-        medi_file.save()
-        progress_sheet=Progress_notes_sheet(medical_file=medi_file,date=datetime.datetime.today().date(),attending_physician=phys)
-        progress_sheet.save()
-        history_sheet=Medical_history_sheet(medical_file=medi_file,attending_physician=phys)
-        history_sheet.save()
-        summary_sheet=Unit_summary_sheet(medical_file=medi_file,attending_physician=phys)
-        summary_sheet.save()
-        order_sheet=Physician_order_sheet(medical_file=medi_file,attending_physician=phys)
-        order_sheet.save()
-        return HttpResponseRedirect('/history/' +username)
+	try:
+        	medi_file=MedicalFile(parent_hospital=phys.hospital,patient=patient,date_of_addmition=datetime.datetime.today().date(),open=1,ward=request.POST['ward'],room=request.POST['room'],bed=request.POST['bed'])
+        	medi_file.save()
+        	progress_sheet=Progress_notes_sheet(medical_file=medi_file,date=datetime.datetime.today().date(),attending_physician=phys)
+        	progress_sheet.save()
+        	history_sheet=Medical_history_sheet(medical_file=medi_file,attending_physician=phys)
+        	history_sheet.save()
+        	summary_sheet=Unit_summary_sheet(medical_file=medi_file,attending_physician=phys)
+        	summary_sheet.save()
+       		order_sheet=Physician_order_sheet(medical_file=medi_file,attending_physician=phys)
+        	order_sheet.save()
+        	return HttpResponseRedirect('/history/' +username)
+	except:
+		return render(request,'medical_history/medical_history_form.html')
         
     else:
         return render(request,'medical_history/medical_history_form.html')
