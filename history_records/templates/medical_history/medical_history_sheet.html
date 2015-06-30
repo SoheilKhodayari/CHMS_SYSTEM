@@ -10,11 +10,11 @@
 <div class="header">
 	<ul>
 		<li class="brand"><img src="{% static 'logo.png' %}"></li>
-		<a href="#"><li>Login</li></a>
-		<a href="#"><li>Register</li></a>
-		<a href="#"><li>Hospitals</li></a>
-		<a href="#"><li>Contact</li></a>
-		<a href="#"><li>About Us</li></a>
+		<a href="{% url 'SystemHomePage' %}"><li>SystemHomePage</li></a>
+		<a href="{% url 'phar_app:login' %}"><li>Pharmacy</li></a>
+		<a href="{% url 'messages_inbox' %}"><li>Messages</li></a>
+		<a href="{% url 'PatientSearch' %}" ><li>Search Patient</li></a>
+        <a href="{% url 'logout' %}"><li>Logout</li></a>
 	</ul>
 </div>
 <form method="post">

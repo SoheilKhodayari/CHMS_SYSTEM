@@ -208,6 +208,10 @@ def create_file(request,username):
     return render(request,'medical_history/create_file.html',{'username':username})
 
 def create_medical_file(request,username):
+    if not( request.user.is_authenticated and request.user.profile.user_type==6):
+        d={'server_messge':'Access Denied'}
+        query_str=urlencode(d)
+        return HttpResponseRedirect('/history/' +username+'/?'+query_str)
     patient=Patient.objects.get(user__username=username)
     user=request.user
     phys=Physician.objects.get(user=user)
