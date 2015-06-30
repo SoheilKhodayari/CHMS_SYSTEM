@@ -15,8 +15,14 @@ from django.core.servers.basehttp import FileWrapper
 from django.utils.encoding import smart_str
 import os
 import mimetypes
+from models import Physician
 
 def register(request):
+   try:
+        if not (request.user.is_authenticated() and request.user.profile.user_type==0)  :
+            return HttpResponse("server_message: Access Denied")
+   except:
+            return HttpResponse("server_message: Access Denied")
    c={}
    if request.method=="POST":
        try:
@@ -103,6 +109,7 @@ def doc_search(request):
             query_str = urlencode(d)
             return HttpResponseRedirect('/login_all/?' +query_str)
     if request.method == 'GET':
+        doc=Physician.objects.get(user=request.user)
         if request.GET.get("submit_search_button"):
             query_string = ''
             found_entries = None
@@ -112,7 +119,7 @@ def doc_search(request):
                 entry_query = get_query(query_string, ['firstname', 'lastname','patient_section','patient_room','user__username'])
 
                 found_entries = Patient.objects.filter(entry_query)
-
+                found_entries=found_entries.filter(parent_hospital= doc.hospital)
 
             return render_to_response('physician/doc_search.html',
                           { 'query_string': query_string, 'found_entries': found_entries },

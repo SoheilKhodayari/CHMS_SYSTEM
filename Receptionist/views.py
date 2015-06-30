@@ -11,20 +11,22 @@ from patient.models import Patient
 from django.contrib.auth.models import User
 from urllib import urlencode
 from patient.models import Guardian
+from models import Receptionist
 
 
 
 def search_rec(request):
     try:
         if not (request.user.is_authenticated() and request.user.profile.user_type==0)  :
-            d = {'server_message':"Not Logged In."}
+            d = {'server_message':"Access Denied"}
             query_str = urlencode(d)
-            return HttpResponseRedirect('/login_all/?' +query_str)
+            return HttpResponse(query_str)
     except:
-            d = {'server_message':"not logged in"}
+            d = {'server_message':"Access Denied"}
             query_str = urlencode(d)
-            return HttpResponseRedirect('/login_all/?' +query_str)
+            return HttpResponse(query_str)
     if request.method == 'GET':
+        rec=Receptionist.objects.get(user=request.user)
         if request.GET.get("submit_search_button"): # if search submit button clicked
             query_string = ''
             found_entries = None
@@ -34,7 +36,7 @@ def search_rec(request):
                 entry_query = get_query(query_string, ['firstname', 'lastname','patient_section','patient_room','user__username'])
 
                 found_entries = Patient.objects.filter(entry_query)
-
+                found_entries=found_entries.filter(parent_hospital= rec.hospital)
 
             return render_to_response('Receptionist/rec_search.html',
                           { 'query_string': query_string, 'found_entries': found_entries },
@@ -87,6 +89,7 @@ def patient_list_view(request):
 
     patients = None
     search = request.GET.get("search", False)
+    rec=Receptionist.objects.get(user=request.user)
     if search:
         try:
             patients = Patient.objects.filter(username__icontains=search) | \
@@ -96,7 +99,7 @@ def patient_list_view(request):
             patients = None
     else:
         patients = Patient.objects.all()
-
+        patients=patients.filter( parent_hospital= rec.hospital)
     ctx = {'patients': patients}
 
     return render_to_response(

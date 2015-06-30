@@ -15,8 +15,13 @@ from django.core.urlresolvers import reverse
 from schedule.models import schedule
 
 def register(request):
-   c={}
-   if request.method=="POST":
+    try:
+        if not (request.user.is_authenticated() and request.user.profile.user_type==0)  :
+            return HttpResponse("server_message: Access Denied")
+    except:
+            return HttpResponse("server_message: Access Denied")
+    c={}
+    if request.method=="POST":
        try:
                 birth=request.POST['birthday']
                 fname=request.POST['first_name']
@@ -61,7 +66,7 @@ def register(request):
 
        c.update(csrf(request))
        return HttpResponseRedirect(reverse('rec_app:patients-list'))
-   return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
+    return render_to_response('patient/register.html',c,context_instance=RequestContext(request))
 
 
 def home(request):
