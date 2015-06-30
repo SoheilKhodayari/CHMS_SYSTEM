@@ -21,10 +21,12 @@
 	{%csrf_token%}
 <h3>Medical History Sheet</h3>
 <h4>File No : </h4>
+{% ifequal type 6 %}
 <ul>
 	<li><div id="edit" class="btn warning" style="display:inline-block">Edit</div></li>
-	<li><input id="submit" type="submit" class="btn success" style="dislay:inline-block"></li>
+	<li><input id="submit" type="submit" class="btn success" style="dislay:inline-block" disabled></li>
 </ul>
+{% endifequal %}
 
 
 <div class="sheet">

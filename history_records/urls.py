@@ -3,7 +3,7 @@ import views
 
 urlpatterns = patterns('',
 
-    url(r'^(?P<username>[\w]+)/$', views.index, name='files'),
+    url(r'^(?P<username>[\w]+)/$', views.index, name='system_home'),
     # url(r'^show$',views.show,name='show_history')
     url(r'^(?P<username>[\w]+)/(?P<file_id>\d+)/$', views.medical_file, name='medical_file'),
     url(r'^(?P<username>[\w]+)/(?P<file_id>[\d]+)/medical_history$', views.medical_history, name='medical_history'),

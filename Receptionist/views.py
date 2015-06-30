@@ -174,7 +174,9 @@ def record_patient(request):
 
       section=request.POST['section']
       room=request.POST['room']
+      rec=Receptionist.objects.get(user=request.user)
       patient=Patient(  username=usrname,
+                        parent_hospital=rec.hospital,
                         user_type=2,
                         user=user,
                         firstname=fname,

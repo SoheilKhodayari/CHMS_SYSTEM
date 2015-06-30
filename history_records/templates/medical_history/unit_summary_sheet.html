@@ -65,13 +65,16 @@
 			<tr class="blue"><td>Recommendations after Discharge:</td><td><input name="ra" class='inp' type='text' value="{{ sheet.recommendations_after_discharge }}" disabled='true'></td> </tr>
 			<tr class="blue"><td>Physician: </td><td>{{ sheet.attending_physician.user.first_name}} {{sheet.attending_physician.user.last_name }}</td></tr>
 				</table>
-			</div>
-			          <input class="btn" type="submit" disabled id='submit' value="submit">
-			    
+			</div>{% ifequal type 6 %}
+
+			          <input class="btn" type="submit" disabled id='submit' value="submit" disabled>
+			    {% endifequal %}
 			</form>
+			{% ifequal type 6 %}
 <div class="button-holder">
 <button id="edit" class="btn warning"onclick="Edit()">Edit</button>
 </div>
+{% endifequal %}
 		</div>
 
 	</div>

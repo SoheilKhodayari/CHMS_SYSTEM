@@ -13,6 +13,7 @@ from django.contrib.auth.decorators import login_required
 from urllib import urlencode
 from django.core.urlresolvers import reverse
 from schedule.models import schedule
+from Receptionist.models import Receptionist
 
 def register(request):
     try:
@@ -33,8 +34,9 @@ def register(request):
                         email=request.POST['email']
                         )
                 user.save()
-
+                rec=Receptionist.objects.get(user=request.user)
                 patient=Patient(
+                        parent_hospital=rec.hospital,
                         user_type=2,
                         user=user,
                         firstname=fname,

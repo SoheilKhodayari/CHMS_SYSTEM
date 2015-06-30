@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from urllib import  urlencode
 from django.http.response import HttpResponseRedirect
 from physician.models import *
+from Receptionist.models import Receptionist
 from history_records.models import *
 import datetime
 from django.template.loaders import filesystem
@@ -23,8 +24,12 @@ def index(request,username):
            return HttpResponseRedirect('/login_all/?' +query_str)
     patient=Patient.objects.get(user__username=username)
     user=request.user
-    phys=Physician.objects.get(user=user)
-    medical_files=patient.medical_file.all().filter(parent_hospital=phys.hospital).order_by('date_of_addmition')
+    if user.profile.user_type==6:
+        phys=Physician.objects.get(user=user)
+        medical_files=patient.medical_file.all().filter(parent_hospital=phys.hospital).order_by('date_of_addmition')
+    elif user.profile.user_type==0:
+        rec=Receptionist.objects.get(user=user)
+        medical_files=patient.medical_file.all().filter(parent_hospital=rec.hospital).order_by('date_of_addmition')
 #     if medical_files:
     
     return render(request,'medical_history/medical_files.html',{'patient':patient,'files':medical_files})
@@ -65,12 +70,12 @@ def medical_history(request,username,file_id):
         try:
             patient=Patient.objects.get(user__username=username)
             history=patient.medical_file.get(id=file_id).medical_history_sheet
+            type=request.user.profile.user_type
 
-            return render(request,'medical_history/medical_history_sheet.html',{'patient':patient,'sheet':history})
         except:
             
             return HttpResponse("Currently No Records")
-
+        return render(request,'medical_history/medical_history_sheet.html',{'patient':patient,'sheet':history,'type':type})
 
 
 
@@ -92,7 +97,7 @@ def progress_notes(request,username,file_id):
     try:
         patient=Patient.objects.get(user__username=username)
         progress_note_sheet=patient.medical_file.get(id=file_id).progress_note_sheet
-        return render(request,'medical_history/progress_notes_sheet.html',{'patient':patient,'sheet':progress_note_sheet})
+        return render(request,'medical_history/progress_notes_sheet.html',{'patient':patient,'sheet':progress_note_sheet,'type':type})
     except:
         return HttpResponse("Currently No Records")
 
@@ -116,7 +121,7 @@ def physician_orders(request,username,file_id):
         patient=Patient.objects.get(user__username=username)
         orders=patient.medical_file.get(id=file_id).physician_order_sheet
 
-        return render(request,'medical_history/physician_oder_sheet.html',{'patient':patient,'sheet':orders})
+        return render(request,'medical_history/physician_oder_sheet.html',{'patient':patient,'sheet':orders,'type':type})
     except:
         return HttpResponse("Currently No Records")
 
@@ -142,7 +147,7 @@ def unit_summary(request,username,file_id):
         patient=Patient.objects.get(user__username=username)
         unit_summary_sheet=patient.medical_file.get(id=file_id).unit_summary_sheet
 
-        return render(request,'medical_history/unit_summary_sheet.html',{'patient':patient,'sheet':unit_summary_sheet})
+        return render(request,'medical_history/unit_summary_sheet.html',{'patient':patient,'sheet':unit_summary_sheet,'type':type})
     except:
         return HttpResponse("Currently No Records")
 

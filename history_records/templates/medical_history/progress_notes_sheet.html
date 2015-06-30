@@ -80,11 +80,12 @@
 
 			  </tbody>
 			</table>
-
+{% ifequal type 6 %}
 			<input  class="btn" type="submit" disabled id='submit' value="submit">
 			</form>
 
-			<button class="btn warning" onclick="addRow()" style='float:bottom' id='add'>Add order</button>
+			<button class="btn warning" onclick="addRow()" style='float:bottom' id='add'>Add Progress Note</button>
+			{% endifequal %}
 
 
 
