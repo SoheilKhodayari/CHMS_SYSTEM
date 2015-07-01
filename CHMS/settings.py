@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'CHMS.wsgi.application'
 #     }
 # }
 
- DATABASES = {
+DATABASES = {
      'default': {
          'NAME': 'CHMS',
          'ENGINE': 'mysql.connector.django',
