@@ -102,16 +102,16 @@ WSGI_APPLICATION = 'CHMS.wsgi.application'
 # }
 
 DATABASES = {
-     'default': {
-         'NAME': 'CHMS',
-         'ENGINE': 'mysql.connector.django',
-         'USER': 'root',
-         'PASSWORD': 'soheil',
-         'OPTIONS': {
-           'autocommit': True,
-         },
-     }
- }
+      'default': {
+          'NAME': 'CHMS',
+          'ENGINE': 'mysql.connector.django',
+          'USER': 'root',
+          'PASSWORD': 'soheil',
+          'OPTIONS': {
+            'autocommit': True,
+          },
+      }
+  }
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
