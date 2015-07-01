@@ -90,6 +90,7 @@ def progress_notes(request,username,file_id):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
+    type=request.user.profile.user_type
     if not (request.user.profile.user_type==6 or request.user.profile.user_type==0):
         return HttpResponse('access denied')
     if request.method=="POST":
@@ -113,6 +114,7 @@ def physician_orders(request,username,file_id):
            d = {'server_message':"not logged in"}
            query_str = urlencode(d)
            return HttpResponseRedirect('/login_all/?' +query_str)
+    type=request.user.profile.user_type
     if not (request.user.profile.user_type==6 or request.user.profile.user_type==0) :
         return HttpResponse('access denied')
     if request.method=="POST":
@@ -140,6 +142,7 @@ def unit_summary(request,username,file_id):
            return HttpResponseRedirect('/login_all/?' +query_str)
     if not (request.user.profile.user_type==6 or request.user.profile.user_type==0):
         return HttpResponse('access denied')
+    type=request.user.profile.user_type
     if request.method=="POST":
         return edit_unit_summary(request,username,file_id)
     try:

@@ -103,7 +103,7 @@ def get_patient_details(reuest):
     except:
         return HttpResponse('Failed')
     try:
-        medi_file=patient.medical_file.get()
+        medi_file=patient.medical_file.all().order_by('date_of_addmition').reverse()[0]
     except:
         return HttpResponse('Failed')
     try:

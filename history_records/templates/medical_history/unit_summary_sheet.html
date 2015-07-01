@@ -44,16 +44,16 @@
 			
 			
 				<tr class="green"><td>Attending Physician:</td><td>{{ sheet.attending_physician.user.first_name}}{{sheet.attending_physician.user.last_name }}</td> </tr>
-				<tr class="green"><td>Date of Addmition: {{sheet.medical_file.date_of_addmition}}</td><td></td></tr>
-				<tr class="green"><td>Date of Discharge:{{sheet.medical_file.date_of_discharge}}</td><td></td></tr>
+				<tr class="green"><td>Date of Addmition: </td><td>{{sheet.medical_file.date_of_addmition}}</td></tr>
+				<tr class="green"><td>Date of Discharge:</td><td>{{sheet.medical_file.date_of_discharge}}</td></tr>
 			
 		
 		
 		<tr class="green"><td>Ward: </td><td>{{ sheet.medical_file.ward }}</td></tr>
 		<tr class="green"><td>Room:</td><td> {{ sheet.medical_file.room }}</td></tr>
 		<tr class="green"><td>Bed: </td><td>{{ sheet.medical_file.bed }}</td></tr>
-		<tr class="green"><td>Address:{{ patient.get_address_as_string }}</td><td></td></tr>
-		<tr class="green"><td>Phone No.: {{ patient.Tel }}</td><td></td></tr>
+		<tr class="green"><td>Address:</td><td>{{ patient.get_address_as_string }}</td></tr>
+		<tr class="green"><td>Phone No.: </td><td>{{ patient.Tel }}</td></tr>
 		
 						<form method='post'>
 				{% csrf_token %}
