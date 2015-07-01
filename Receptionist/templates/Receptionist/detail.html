@@ -66,11 +66,11 @@
 		</tr>
 		<tr class="blue">
 			<td>Firstname </td>
-			<td> {% if patient.firstname %} {{ patient.firstname|title }}{% endif %} </td>
+			<td> {% if patient.user.first_name %} {{ patient.user.first_name|title }}{% endif %} </td>
 		</tr>
 		<tr class="blue">
 			<td>Lastname </td>
-			<td> {% if patient.lastname %}{{ patient.lastname|title }}{% endif %} </td>
+			<td> {% if patient.user.last_name %}{{ patient.user.last_name|title }}{% endif %} </td>
 		</tr>
 		<tr class="blue">
 			<td>Section </td>
